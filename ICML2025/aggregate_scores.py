@@ -5,6 +5,11 @@ import time
 import argparse
 import math
 
+WEIGHTS_PER_ORIGIN = {
+    "OR": 1.5,
+    "dblp": 1.5,
+    "other": 1.0,
+}
 
 def weighted_quantile(data, weights, quantile):
     # Sort data and weights by data
@@ -32,7 +37,7 @@ if __name__ == "__main__":
     initial_time = time.time()
     print("Reading scores file in chunks")
 
-    csv_path = os.path.join(os.getcwd(), "ICML2025/data/scores_specter2_scincl.csv")
+    csv_path = os.path.join(os.getcwd(), "ICML2025/data/scores_with_origin.csv")
 
     chunk_size = 10000  # Process 10,000 rows at a time
 
@@ -54,7 +59,6 @@ if __name__ == "__main__":
 
             # Process the chunk when it reaches the specified size
             if len(current_chunk) == chunk_size:
-                chunk_start_time = time.time()
 
                 # Process the current chunk
                 for row in current_chunk:
@@ -65,9 +69,12 @@ if __name__ == "__main__":
                     for value in scores_raw:
                         try:
                             scores.append(float(value))
-                            weights.append(1)  # Default weight
                         except ValueError:
-                            continue
+                            try:
+                                weights.append(WEIGHTS_PER_ORIGIN.get(value, 1.0))
+                            except KeyError:
+                                # Exhausted the row
+                                break
 
                     if scores:
                         weighted_quantile_value = weighted_quantile(scores, weights, QUANTILE)
@@ -76,11 +83,10 @@ if __name__ == "__main__":
                 # Reset the chunk
                 current_chunk = []
                 chunk_counter += 1
-                print(f"Processed chunk {chunk_counter}/{total_chunks} in {time.time() - chunk_start_time:.2f} seconds")
+                print(f"Processed chunk {chunk_counter}/{total_chunks} in {time.time() - initial_time:.2f} seconds")
 
         # Process the remaining rows in the last chunk
         if current_chunk:
-            chunk_start_time = time.time()
             for row in current_chunk:
                 paper_id, reviewer_id, *scores_raw = row
                 scores = []
@@ -98,7 +104,7 @@ if __name__ == "__main__":
                     aggregated_data.append([paper_id, reviewer_id, weighted_quantile_value])
 
             chunk_counter += 1
-            print(f"Processed chunk {chunk_counter}/{total_chunks} in {time.time() - chunk_start_time:.2f} seconds")
+            print(f"Processed chunk {chunk_counter}/{total_chunks} in {time.time() - initial_time:.2f} seconds")
 
     # Create a DataFrame and save it to a CSV file
     aggregated_df = pd.DataFrame(aggregated_data)

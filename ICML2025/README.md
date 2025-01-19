@@ -10,7 +10,7 @@ pip install .
 
 Expects the following files inside the `ICML2025/data` directory:
 * `bids100.csv`, with the following columns: `paper_id`, `reviewer_id`, `bid_str`
-* `scores_specter2_scincl`, with the following columns: `paper_id`, `reviewer_id`, followed by the affinity scores for each of the reviewer's papers with respect to the submission, then followed by the origins of said reviewer's papers.
+* `scores_with_origin`, with the following columns: `paper_id`, `reviewer_id`, followed by the affinity scores for each of the reviewer's papers with respect to the submission, then followed by the origins of said reviewer's papers.
 
 Make sure you have a Gurobi license, which is required for the matching step.
 
@@ -66,9 +66,19 @@ python -m matcher \
 	--max_papers_default 6 \
 	--num_reviewers 4 \
 	--num_alternates 1 \
-	--solver FairIR \
+	--solver Randomized \
+	--probability_limits 0.5
 ```
 
 This is also provided in the `ICML2025/matching.sh` script.
 
 
+---
+
+TODOs:
+* [ ] Compute a quantile over the scores
+* [ ] Make an initial matching
+* [ ] Filter suspicious bids
+* [ ] Implement Simon's suggestion (?)
+* [ ] Paper origin issue: 
+* [ ] Ask about what they want us to measure

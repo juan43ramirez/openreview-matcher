@@ -5,4 +5,5 @@ python -m matcher \
 	--max_papers_default 6 \
 	--num_reviewers 4 \
 	--num_alternates 1 \
-	--solver FairIR
+	--solver Randomized \
+	--probability_limits 0.5
