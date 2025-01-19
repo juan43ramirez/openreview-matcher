@@ -71,14 +71,3 @@ python -m matcher \
 ```
 
 This is also provided in the `ICML2025/matching.sh` script.
-
-
----
-
-TODOs:
-* [ ] Compute a quantile over the scores
-* [ ] Make an initial matching
-* [ ] Filter suspicious bids
-* [ ] Implement Simon's suggestion (?)
-* [ ] Paper origin issue: 
-* [ ] Ask about what they want us to measure
