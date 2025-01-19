@@ -32,8 +32,7 @@ if __name__ == "__main__":
     initial_time = time.time()
     print("Reading scores file in chunks")
 
-    csv_path = os.path.join(os.getcwd(), "ICML2025/scores_specter2_scincl.csv")
-    col_names = ["paper_id", "reviewer_id", "score"]
+    csv_path = os.path.join(os.getcwd(), "ICML2025/data/scores_specter2_scincl.csv")
 
     chunk_size = 10000  # Process 10,000 rows at a time
 
@@ -102,9 +101,9 @@ if __name__ == "__main__":
             print(f"Processed chunk {chunk_counter}/{total_chunks} in {time.time() - chunk_start_time:.2f} seconds")
 
     # Create a DataFrame and save it to a CSV file
-    aggregated_df = pd.DataFrame(aggregated_data, columns=col_names)
-    output_path = f"ICML2025/aggregated_scores_q_{QUANTILE}.csv"
-    aggregated_df.to_csv(output_path, index=False)
+    aggregated_df = pd.DataFrame(aggregated_data)
+    output_path = f"ICML2025/data/aggregated_scores_q_{QUANTILE}.csv"
+    aggregated_df.to_csv(output_path, index=False, header=False)
 
     print(f"Processing completed in {time.time() - initial_time:.2f} seconds")
     print(f"Aggregated results saved to {output_path}")
