@@ -7,7 +7,7 @@ import math
 
 WEIGHTS_PER_ORIGIN = {
     "OR": 1.5,
-    "dblp": 1.5,
+    "dblp": 1.0,
     "other": 1.0,
 }
 
