@@ -11,20 +11,48 @@ WEIGHTS_PER_ORIGIN = {
     "other": 1.0,
 }
 
-def weighted_quantile(data, weights, quantile):
-    # Sort data and weights by data
-    sorted_data, sorted_weights = zip(*sorted(zip(data, weights)))
-    sorted_data = np.array(sorted_data)
-    sorted_weights = np.array(sorted_weights)
+def weighted_quantile(values, weights, quantiles):
+    values = np.array(values).astype(float)
+    quantiles = np.array(quantiles).astype(float)
+    weights = np.array(weights).astype(float)
 
-    # Compute the cumulative sum of the weights
-    cumsum_weights = np.cumsum(sorted_weights).astype(float)
+    assert np.all(quantiles >= 0) and np.all(quantiles <= 1), \
+        'quantiles should be in [0, 1]'
 
-    # Normalize the cumulative sum of weights
-    cumsum_weights /= cumsum_weights[-1]
+    sorter = np.argsort(values)
+    values = values[sorter]
+    weights = weights[sorter]
 
-    # Find the index where the cumulative weight exceeds the desired quantile
-    return np.interp(quantile, cumsum_weights, sorted_data)
+    weighted_quantiles = np.cumsum(weights) - 0.5 * weights
+    weighted_quantiles /= np.sum(weights)
+
+    return np.interp(quantiles, weighted_quantiles, values)
+
+
+def process_chunk(chunk):
+    processed_data = []
+
+    for row in chunk:
+        paper_id, reviewer_id, *scores_raw = row
+        scores = []
+        weights = []
+
+        for value in scores_raw:
+            try:
+                scores.append(float(value))
+            except ValueError:
+                try:
+                    weights.append(WEIGHTS_PER_ORIGIN.get(value, 1.0))
+                except KeyError:
+                    # Exhausted the row
+                    break
+
+        if scores:
+            weighted_quantile_value = weighted_quantile(scores, weights, QUANTILE)
+            assert 0 <= weighted_quantile_value <= 1, f"Invalid affinity: {weighted_quantile_value}"
+            processed_data.append([paper_id, reviewer_id, weighted_quantile_value])
+
+    return processed_data
 
 
 if __name__ == "__main__":
@@ -60,48 +88,17 @@ if __name__ == "__main__":
             # Process the chunk when it reaches the specified size
             if len(current_chunk) == chunk_size:
 
-                # Process the current chunk
-                for row in current_chunk:
-                    paper_id, reviewer_id, *scores_raw = row
-                    scores = []
-                    weights = []
+                processed_data = process_chunk(current_chunk)
+                aggregated_data.extend(processed_data)
 
-                    for value in scores_raw:
-                        try:
-                            scores.append(float(value))
-                        except ValueError:
-                            try:
-                                weights.append(WEIGHTS_PER_ORIGIN.get(value, 1.0))
-                            except KeyError:
-                                # Exhausted the row
-                                break
-
-                    if scores:
-                        weighted_quantile_value = weighted_quantile(scores, weights, QUANTILE)
-                        aggregated_data.append([paper_id, reviewer_id, weighted_quantile_value])
-
-                # Reset the chunk
                 current_chunk = []
                 chunk_counter += 1
                 print(f"Processed chunk {chunk_counter}/{total_chunks} in {time.time() - initial_time:.2f} seconds")
 
         # Process the remaining rows in the last chunk
         if current_chunk:
-            for row in current_chunk:
-                paper_id, reviewer_id, *scores_raw = row
-                scores = []
-                weights = []
 
-                for value in scores_raw:
-                    try:
-                        scores.append(float(value))
-                        weights.append(1)  # Default weight
-                    except ValueError:
-                        continue
-
-                if scores:
-                    weighted_quantile_value = weighted_quantile(scores, weights, QUANTILE)
-                    aggregated_data.append([paper_id, reviewer_id, weighted_quantile_value])
+            processed_data = process_chunk(current_chunk)
 
             chunk_counter += 1
             print(f"Processed chunk {chunk_counter}/{total_chunks} in {time.time() - initial_time:.2f} seconds")

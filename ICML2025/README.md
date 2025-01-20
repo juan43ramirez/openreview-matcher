@@ -19,14 +19,12 @@ To aggregate the affinity scores for each reviewer, we compute a weighted quanti
 To compute this aggregation, run the following command:
 
 ```
-python ICML2025/aggregate_scores.py --quantile 0.75
+python ICML2025/scripts/aggregate_scores.py --quantile 0.75
 ```
 
 This will create a file `ICML2025/data/aggregated_scores_q_0.75.csv` with the following columns: `paper_id`, `reviewer_id`, `score`.
 
-## Suspicious bid filtering
-
-### Translate bids
+## Translate bids
 
 Translate the bids to numeric values:
 
@@ -40,12 +38,14 @@ Translate the bids to numeric values:
 To translate the bids, run the following command:
 
 ```
-python ICML2025/translate_bids.py
+python ICML2025/scripts/translate_bids.py
 ```
 
 This will create a file `ICML2025/data/numeric_bids.csv`.
 
-### Filter suspicious bids
+## Filter suspicious bids
+
+TODO
 
 First setup the environment:
 ```
@@ -84,7 +84,7 @@ export OPENREVIEW_PASSWORD=<password>
 Then run the following command:
 
 ```
-bash ICML2025/secure-paper-bidding.sh
+bash ICML2025/scripts/secure-paper-bidding.sh
 ```
 
 TODO: https://github.com/sjecmen/peer-review-collusion-detection/blob/master/telltail.py
@@ -109,7 +109,8 @@ python -m matcher \
 	--num_reviewers 4 \
 	--num_alternates 1 \
 	--solver Randomized \
-	--probability_limits 0.5
+	--probability_limits 0.5 \
+    --allow_zero_score_assignments
 ```
 
 This is also provided in the `ICML2025/matching.sh` script.
