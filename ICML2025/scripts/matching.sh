@@ -1,5 +1,5 @@
 python -m matcher \
-	--scores ICML2025/data/aggregated_scores_q_0.75.csv ICML2025/data/numeric_bids100.csv \
+	--scores ICML2025/data/aggregated_scores_q_0.75.csv ICML2025/data/numeric_bids.csv \
 	--weights 1 1 \
 	--min_papers_default 0 \
 	--max_papers_default 6 \

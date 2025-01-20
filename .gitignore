@@ -1,3 +1,6 @@
+# ICML 2025 specific files/directories
+ICML2025/secure-paper-bidding
+
 # openreview-matching specific files/directories
 results/
 saved_models/

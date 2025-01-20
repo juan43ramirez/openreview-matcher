@@ -12,9 +12,9 @@ TRANSLATE_MAP = {
 
 if __name__ == "__main__":
     # Load the data
-    data = pd.read_csv("ICML2025/data/bids100.csv")
+    data = pd.read_csv("ICML2025/data/bids.csv")
 
     data["bid"] = data["bid"].map(TRANSLATE_MAP)
 
     # Save the translated data
-    data.to_csv("ICML2025/data/numeric_bids100.csv", index=False, header=False)
+    data.to_csv("ICML2025/data/numeric_bids.csv", index=False, header=False)
