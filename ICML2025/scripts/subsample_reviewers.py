@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import os
+from collections import Counter
 
 # Gather JSON with assignments
 # Load into pandas
@@ -8,7 +9,7 @@ import os
 # Save this list
 # Modify bids and scores to only include these reviewers
 
-NUM_REVIEWERS = 82 # 82 * 5 = 410 reviews available, for 102 (papers) * 4 = 408 reviews required
+NUM_REVIEWERS = 81 # 81 * 5 = 405 reviews available, for 101 (papers) * 4 = 404 reviews required
 SEED = 0
 
 if __name__ == "__main__":
@@ -22,8 +23,14 @@ if __name__ == "__main__":
 
     matched_reviewers = list(set(matched_reviewers)) # unique reviewers
 
+    # Sample NUM_REVIEWERS reviewers, giving preference to reviewers who have been
+    # matched to multiple submissions
     np.random.seed(SEED)
-    sampled_reviewers = np.random.choice(matched_reviewers, NUM_REVIEWERS, replace=False)
+
+    counts = Counter(matched_reviewers)
+    elements, weights = zip(*counts.items())
+    sampled_reviewers = np.random.choice(elements, size=80, replace=False, p=np.array(weights) / sum(weights))
+
     assert len(sampled_reviewers) == NUM_REVIEWERS
 
     os.makedirs("ICML2025/data/subsampled_reviewers", exist_ok=True)
@@ -42,5 +49,5 @@ if __name__ == "__main__":
 
     bids = pd.read_csv("ICML2025/data/numeric_bids.csv", header=None)
     bids = bids[bids[1].isin(sampled_reviewers)]
-    bids.to_csv("ICML2025/data/subsampled_reviewers/numeric_bids.csv", index=False)
+    bids.to_csv("ICML2025/data/subsampled_reviewers/numeric_bids.csv", index=False, header=False)
 
