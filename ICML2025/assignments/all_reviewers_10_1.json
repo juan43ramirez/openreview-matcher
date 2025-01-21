@@ -1,66 +1,62 @@
 {
   "0bpM5H69Dj": [
     {
-      "aggregate_score": 0.8738771677017212,
-      "user": "~Feng_Zhao6"
+      "aggregate_score": 0.8732253909111023,
+      "user": "~Changqing_Zhang1"
     },
     {
-      "aggregate_score": 0.8782010674476624,
-      "user": "~Jinjin_Gu1"
+      "aggregate_score": 0.9999995231628418,
+      "user": "~Jiaqi_Wang1"
     },
     {
-      "aggregate_score": 0.873112142086029,
-      "user": "~Le_Lu3"
+      "aggregate_score": 0.8727856874465942,
+      "user": "~Jiayi_Ji1"
+    },
+    {
+      "aggregate_score": 0.8824270963668823,
+      "user": "~Liqiang_Jing1"
     },
     {
       "aggregate_score": 1.4955825805664062,
       "user": "~Manli_Shu1"
     },
     {
-      "aggregate_score": 1.5238674879074097,
-      "user": "~Thao_Minh_Le1"
+      "aggregate_score": 0.8721660375595093,
+      "user": "~Xiangliang_Zhang1"
     },
     {
-      "aggregate_score": 0.8885371685028076,
-      "user": "~Yousong_Zhu1"
+      "aggregate_score": 0.8853186964988708,
+      "user": "~Xiaojian_Ma1"
     },
     {
-      "aggregate_score": 0.9999996423721313,
-      "user": "~Yuhang_Cao3"
+      "aggregate_score": 1.770490288734436,
+      "user": "~Xu_Luo1"
     },
     {
       "aggregate_score": 1.7159960269927979,
       "user": "~Yuxin_Xiong1"
     },
     {
-      "aggregate_score": 1.8732253909111023,
-      "user": "~Zongbo_Han1"
-    },
-    {
-      "aggregate_score": 0.8882140517234802,
-      "user": "~kecheng_zheng1"
+      "aggregate_score": 1.5376474857330322,
+      "user": "~Zhiwu_Lu1"
     }
   ],
   "2dEH0u8w0b": [
     {
-      "aggregate_score": 0.8006110191345215,
-      "user": "~Chaitanya_Krishna_Joshi1"
+      "aggregate_score": 1.5211886167526245,
+      "user": "~Changwen_Zheng1"
     },
     {
       "aggregate_score": 0.8332840204238892,
       "user": "~Chenxiao_Yang1"
     },
     {
-      "aggregate_score": 1.6724289655685425,
-      "user": "~Fotis_Iliopoulos1"
-    },
-    {
       "aggregate_score": 0.8276398181915283,
       "user": "~Jiayan_Qiu1"
     },
     {
-      "aggregate_score": 1.6832226514816284,
-      "user": "~Kaiqi_Zhao2"
+      "aggregate_score": 1.491865634918213,
+      "user": "~Li-Yun_Wang1"
     },
     {
       "aggregate_score": 0.8193839192390442,
@@ -71,12 +67,16 @@
       "user": "~Qitian_Wu1"
     },
     {
+      "aggregate_score": 1.7912177443504333,
+      "user": "~Serguei_Barannikov1"
+    },
+    {
       "aggregate_score": 1.4269622564315796,
       "user": "~Teemu_Roos1"
     },
     {
-      "aggregate_score": 0.8236838579177856,
-      "user": "~Xin_Wang17"
+      "aggregate_score": 1.416551411151886,
+      "user": "~Zhengtao_Yu2"
     },
     {
       "aggregate_score": 0.8154463171958923,
@@ -93,24 +93,24 @@
       "user": "~Chen_Gong5"
     },
     {
-      "aggregate_score": 1.4960293173789978,
-      "user": "~Georgios_Arvanitidis1"
-    },
-    {
       "aggregate_score": 1.313539743423462,
       "user": "~Hoomaan_Maskan1"
     },
     {
-      "aggregate_score": 1.7674943208694458,
-      "user": "~Jianqing_Liang1"
+      "aggregate_score": 1.7979652881622314,
+      "user": "~Jie_Gui1"
     },
     {
-      "aggregate_score": 1.794484555721283,
-      "user": "~Longquan_Dai2"
+      "aggregate_score": 1.5363699197769165,
+      "user": "~Micha\u00ebl_Fanuel1"
     },
     {
-      "aggregate_score": 1.4708027243614197,
-      "user": "~Lucas_Drumetz1"
+      "aggregate_score": 1.4903841018676758,
+      "user": "~Peng_Zhou3"
+    },
+    {
+      "aggregate_score": 0.8314109444618225,
+      "user": "~Rong_Yin1"
     },
     {
       "aggregate_score": 0.8634173274040222,
@@ -131,10 +131,6 @@
       "user": "~Alessandro_Epasto3"
     },
     {
-      "aggregate_score": 0.8360044956207275,
-      "user": "~Bei_Jiang1"
-    },
-    {
       "aggregate_score": 1.5784083008766174,
       "user": "~Chenglin_Fan1"
     },
@@ -143,24 +139,28 @@
       "user": "~C\u00e9sar_Sabater1"
     },
     {
-      "aggregate_score": 1.829774796962738,
-      "user": "~Eliad_Tsfadia1"
+      "aggregate_score": 1.856829047203064,
+      "user": "~Jacob_Imola1"
     },
     {
-      "aggregate_score": 1.5395798683166504,
-      "user": "~Francesco_Pittaluga2"
+      "aggregate_score": 1.2991145849227905,
+      "user": "~Jiuchuan_Jiang1"
     },
     {
-      "aggregate_score": 0.8547372817993164,
-      "user": "~Hendrik_Fichtenberger1"
+      "aggregate_score": 0.8417688608169556,
+      "user": "~Judy_Hanwen_Shen1"
     },
     {
-      "aggregate_score": 1.5610570311546326,
-      "user": "~Jan_Ramon1"
+      "aggregate_score": 0.8789576888084412,
+      "user": "~Marek_Elias1"
     },
     {
-      "aggregate_score": 0.8434942960739136,
-      "user": "~Jiayuan_Ye1"
+      "aggregate_score": 0.8485846519470215,
+      "user": "~Pan_Peng1"
+    },
+    {
+      "aggregate_score": 0.8938165903091431,
+      "user": "~Peilin_Zhong1"
     },
     {
       "aggregate_score": 1.476484775543213,
@@ -181,20 +181,20 @@
       "user": "~Christopher_Iliffe_Sprague1"
     },
     {
-      "aggregate_score": 0.8485451936721802,
-      "user": "~Gleb_Vladimirovich_Ryzhakov1"
-    },
-    {
-      "aggregate_score": 1.552446722984314,
-      "user": "~Guillaume_Huguet1"
+      "aggregate_score": 1.4642420411109924,
+      "user": "~Jaehyeong_Jo1"
     },
     {
       "aggregate_score": 1.5524466037750244,
       "user": "~Kilian_FATRAS1"
     },
     {
-      "aggregate_score": 0.8371272087097168,
-      "user": "~Markus_Heinonen1"
+      "aggregate_score": 1.5827956199645996,
+      "user": "~Qunxi_Zhu1"
+    },
+    {
+      "aggregate_score": 1.5079508423805237,
+      "user": "~Sarthak_Mittal1"
     },
     {
       "aggregate_score": 1.7501063346862793,
@@ -215,12 +215,12 @@
       "user": "~Achille_Nazaret1"
     },
     {
-      "aggregate_score": 0.825302243232727,
-      "user": "~Changwen_Zheng1"
-    },
-    {
       "aggregate_score": 0.8361597657203674,
       "user": "~David_Arbour1"
+    },
+    {
+      "aggregate_score": 1.600151240825653,
+      "user": "~Hwee_Kuan_Lee1"
     },
     {
       "aggregate_score": 0.8573832511901855,
@@ -239,8 +239,8 @@
       "user": "~Sergio_Hernan_Garrido_Mejia1"
     },
     {
-      "aggregate_score": 0.8305758237838745,
-      "user": "~Xiang_Wang6"
+      "aggregate_score": 1.4082446694374084,
+      "user": "~Ya-Wei_Eileen_Lin1"
     },
     {
       "aggregate_score": 0.8305758237838745,
@@ -253,8 +253,8 @@
   ],
   "4uTJfGYA2t": [
     {
-      "aggregate_score": 0.8265259265899658,
-      "user": "~Chenyu_You1"
+      "aggregate_score": 1.7708327770233154,
+      "user": "~Baolin_Peng2"
     },
     {
       "aggregate_score": 1.562610149383545,
@@ -269,6 +269,10 @@
       "user": "~Genta_Indra_Winata1"
     },
     {
+      "aggregate_score": 0.8241094350814819,
+      "user": "~Judy_Hanwen_Shen1"
+    },
+    {
       "aggregate_score": 0.8541135191917419,
       "user": "~Katrin_Kirchhoff2"
     },
@@ -281,26 +285,18 @@
       "user": "~Kyuhong_Shim1"
     },
     {
-      "aggregate_score": 0.8296590447425842,
-      "user": "~Lingjing_Kong1"
+      "aggregate_score": 1.5857117176055908,
+      "user": "~Leda_Sari1"
     },
     {
-      "aggregate_score": 0.8381723165512085,
-      "user": "~Shinji_Watanabe1"
-    },
-    {
-      "aggregate_score": 1.5797898173332214,
-      "user": "~laurent_besacier1"
+      "aggregate_score": 1.589257001876831,
+      "user": "~Yilin_Shen1"
     }
   ],
   "5MVdDzjRbr": [
     {
-      "aggregate_score": 1.8368704319000244,
-      "user": "~Batu_Ozturkler1"
-    },
-    {
-      "aggregate_score": 0.8368704319000244,
-      "user": "~Beliz_Gunel1"
+      "aggregate_score": 0.8304682970046997,
+      "user": "~Alex_Fedorov1"
     },
     {
       "aggregate_score": 0.8453329801559448,
@@ -311,24 +307,28 @@
       "user": "~Jiaming_Liu3"
     },
     {
-      "aggregate_score": 1.8105271458625793,
-      "user": "~Ke_Wang8"
+      "aggregate_score": 0.8342573642730713,
+      "user": "~Matthieu_Terris1"
     },
     {
-      "aggregate_score": 0.8496785163879395,
-      "user": "~Kwang_Yi1"
-    },
-    {
-      "aggregate_score": 0.8241831660270691,
-      "user": "~Morteza_Mardani1"
+      "aggregate_score": 1.5386528968811035,
+      "user": "~Nalini_M_Singh1"
     },
     {
       "aggregate_score": 0.8266474008560181,
       "user": "~Philip_Schniter2"
     },
     {
+      "aggregate_score": 0.8376309871673584,
+      "user": "~Tianwei_Yin1"
+    },
+    {
       "aggregate_score": 0.8604719638824463,
       "user": "~Xiawu_Zheng1"
+    },
+    {
+      "aggregate_score": 0.8237066268920898,
+      "user": "~Zalan_Fabian1"
     },
     {
       "aggregate_score": 0.8266879916191101,
@@ -337,28 +337,32 @@
   ],
   "5etljbYMy9": [
     {
-      "aggregate_score": 1.75336354970932,
-      "user": "~Alex_Fedorov1"
+      "aggregate_score": 0.9986768364906311,
+      "user": "~Ali_Etemad1"
     },
     {
-      "aggregate_score": 1.4000391960144043,
-      "user": "~Jiaqi_Liu1"
+      "aggregate_score": 0.8944907188415527,
+      "user": "~Cheng_Deng1"
     },
     {
-      "aggregate_score": 1.5296692252159119,
-      "user": "~Lei_Huang1"
-    },
-    {
-      "aggregate_score": 1.4684646129608154,
-      "user": "~Lun_Huang1"
+      "aggregate_score": 1.7993466258049011,
+      "user": "~Jie_Cao2"
     },
     {
       "aggregate_score": 1.452133059501648,
       "user": "~Masataka_Sawayama1"
     },
     {
-      "aggregate_score": 1.8365639448165894,
-      "user": "~Seunghun_Lee3"
+      "aggregate_score": 1.509353220462799,
+      "user": "~Mingrui_Zhu2"
+    },
+    {
+      "aggregate_score": 0.8566516637802124,
+      "user": "~Sanghyuk_Chun1"
+    },
+    {
+      "aggregate_score": 1.5788686275482178,
+      "user": "~Shlok_Kumar_Mishra1"
     },
     {
       "aggregate_score": 1.5755624771118164,
@@ -369,26 +373,14 @@
       "user": "~Wenwen_Qiang1"
     },
     {
-      "aggregate_score": 0.8943681716918945,
-      "user": "~Yuxuan_Du2"
-    },
-    {
-      "aggregate_score": 0.8559383153915405,
-      "user": "~Zhaohan_Daniel_Guo1"
+      "aggregate_score": 1.553748369216919,
+      "user": "~Zedong_Wang1"
     }
   ],
   "7qGsldZXF8": [
     {
       "aggregate_score": 1.4648931622505188,
       "user": "~Andrew_Robert_Williams1"
-    },
-    {
-      "aggregate_score": 1.6223196983337402,
-      "user": "~Daniele_Zambon1"
-    },
-    {
-      "aggregate_score": 0.8495703935623169,
-      "user": "~Davide_Bacciu1"
     },
     {
       "aggregate_score": 0.8694371581077576,
@@ -407,34 +399,46 @@
       "user": "~Kai_Wu3"
     },
     {
-      "aggregate_score": 1.7606603503227234,
-      "user": "~Qianli_Ma3"
+      "aggregate_score": 1.5095405578613281,
+      "user": "~Lingyi_Yang1"
     },
     {
-      "aggregate_score": 0.8623400330543518,
-      "user": "~Shirui_Pan1"
+      "aggregate_score": 0.841367244720459,
+      "user": "~Lun_Du1"
+    },
+    {
+      "aggregate_score": 0.8616273403167725,
+      "user": "~Yanjie_Fu2"
     },
     {
       "aggregate_score": 0.8622618317604065,
-      "user": "~jianguo_Li1"
+      "user": "~Zhanxing_Zhu1"
+    },
+    {
+      "aggregate_score": 1.8354058265686035,
+      "user": "~Zijie_Huang1"
     }
   ],
   "8QJSTDII5d": [
     {
-      "aggregate_score": 0.8066728115081787,
-      "user": "~David_Palmer1"
+      "aggregate_score": 0.823070764541626,
+      "user": "~Evgeny_Burnaev1"
     },
     {
       "aggregate_score": 0.8131849765777588,
       "user": "~Ivan_Skorokhodov1"
     },
     {
+      "aggregate_score": 0.8352761268615723,
+      "user": "~Jie_Yang17"
+    },
+    {
       "aggregate_score": 0.9999997615814209,
       "user": "~Jin-Hwa_Kim1"
     },
     {
-      "aggregate_score": 1.4280638098716736,
-      "user": "~Lihe_Ding1"
+      "aggregate_score": 0.8041257858276367,
+      "user": "~Khai_Nguyen1"
     },
     {
       "aggregate_score": 0.8352761268615723,
@@ -445,20 +449,16 @@
       "user": "~Matan_Atzmon1"
     },
     {
-      "aggregate_score": 0.8552730083465576,
-      "user": "~Noam_Aigerman1"
-    },
-    {
-      "aggregate_score": 1.5051013827323914,
-      "user": "~Qingyang_Tan1"
-    },
-    {
-      "aggregate_score": 0.803209125995636,
-      "user": "~Yan-Pei_Cao1"
+      "aggregate_score": 0.8023113012313843,
+      "user": "~Niv_Haim1"
     },
     {
       "aggregate_score": 0.830601692199707,
       "user": "~Zhaoshuo_Li1"
+    },
+    {
+      "aggregate_score": 0.7992163896560669,
+      "user": "~Zhizhong_Han2"
     }
   ],
   "8a8aRminme": [
@@ -467,20 +467,12 @@
       "user": "~Andrey_Zhmoginov1"
     },
     {
-      "aggregate_score": 0.9426214694976807,
-      "user": "~Bobby_He1"
-    },
-    {
-      "aggregate_score": 1.3627146482467651,
-      "user": "~Chongyang_Zhao1"
-    },
-    {
       "aggregate_score": 1.5348128080368042,
       "user": "~Douglas_Orr1"
     },
     {
-      "aggregate_score": 0.8619428277015686,
-      "user": "~Hoang_Tran4"
+      "aggregate_score": 0.8506120443344116,
+      "user": "~Hai-Tao_Zheng2"
     },
     {
       "aggregate_score": 1.5446574687957764,
@@ -495,8 +487,16 @@
       "user": "~Qinzi_Zhang1"
     },
     {
-      "aggregate_score": 0.852735698223114,
-      "user": "~Ruoxi_Sun2"
+      "aggregate_score": 0.8619704246520996,
+      "user": "~Robin_Marc_Schmidt1"
+    },
+    {
+      "aggregate_score": 1.4598809480667114,
+      "user": "~TaeHo_Yoon1"
+    },
+    {
+      "aggregate_score": 1.7901307940483093,
+      "user": "~Yash_Savani1"
     },
     {
       "aggregate_score": 1.5115931034088135,
@@ -517,20 +517,20 @@
       "user": "~Jingwen_Fu1"
     },
     {
-      "aggregate_score": 0.834223210811615,
-      "user": "~Jonghyun_Choi1"
+      "aggregate_score": 0.8209367394447327,
+      "user": "~Micah_Goldblum1"
     },
     {
-      "aggregate_score": 1.746646761894226,
-      "user": "~Mohammed_Adnan1"
+      "aggregate_score": 1.8031145334243774,
+      "user": "~Rebekka_Burkholz1"
     },
     {
       "aggregate_score": 0.8231201171875,
       "user": "~Rui_Liu6"
     },
     {
-      "aggregate_score": 1.711429238319397,
-      "user": "~Taiga_Abe1"
+      "aggregate_score": 0.9982156753540039,
+      "user": "~Stefano_Sarao_Mannelli1"
     },
     {
       "aggregate_score": 1.473110854625702,
@@ -547,6 +547,14 @@
   ],
   "9PQnc6EWdL": [
     {
+      "aggregate_score": 0.8522293567657471,
+      "user": "~Bing_Su1"
+    },
+    {
+      "aggregate_score": 0.8522293567657471,
+      "user": "~Changwen_Zheng1"
+    },
+    {
       "aggregate_score": 0.8567628860473633,
       "user": "~Cuong_Cao_Nguyen1"
     },
@@ -555,12 +563,8 @@
       "user": "~Eric_Granger1"
     },
     {
-      "aggregate_score": 0.8516663908958435,
-      "user": "~Han_Yu1"
-    },
-    {
-      "aggregate_score": 1.8872824907302856,
-      "user": "~Jake_Snell1"
+      "aggregate_score": 1.7339977025985718,
+      "user": "~Han_Liu3"
     },
     {
       "aggregate_score": 0.8519179821014404,
@@ -571,8 +575,8 @@
       "user": "~Qilong_Wang3"
     },
     {
-      "aggregate_score": 0.8482214212417603,
-      "user": "~Saba_Ghaffari1"
+      "aggregate_score": 1.3719095587730408,
+      "user": "~Shuai_Li19"
     },
     {
       "aggregate_score": 0.8400963544845581,
@@ -580,17 +584,21 @@
     },
     {
       "aggregate_score": 0.844955563545227,
-      "user": "~Ze_Wang3"
-    },
-    {
-      "aggregate_score": 0.8302654027938843,
-      "user": "~Ziyun_Huang1"
+      "user": "~Zichen_Miao1"
     }
   ],
   "AEqim4X0NV": [
     {
+      "aggregate_score": 0.8577143549919128,
+      "user": "~Anna_Korba2"
+    },
+    {
       "aggregate_score": 0.8673886060714722,
       "user": "~Davin_Hill1"
+    },
+    {
+      "aggregate_score": 1.4004884362220764,
+      "user": "~Jungwoo_Lee1"
     },
     {
       "aggregate_score": 1.6003699898719788,
@@ -601,16 +609,12 @@
       "user": "~Kyungjae_Lee1"
     },
     {
+      "aggregate_score": 1.4256246089935303,
+      "user": "~Long_Chen11"
+    },
+    {
       "aggregate_score": 0.8614714741706848,
       "user": "~Maurizio_Filippone1"
-    },
-    {
-      "aggregate_score": 1.4861574172973633,
-      "user": "~Ruizhe_Zhang2"
-    },
-    {
-      "aggregate_score": 0.8459885120391846,
-      "user": "~Shreyas_Padhy1"
     },
     {
       "aggregate_score": 1.0,
@@ -621,42 +625,26 @@
       "user": "~Ying_Fan2"
     },
     {
-      "aggregate_score": 1.8147639036178589,
-      "user": "~Yixin_Tan1"
-    },
-    {
       "aggregate_score": 1.4273459911346436,
       "user": "~Yuning_Shen1"
     }
   ],
   "BJpmRDdA98": [
     {
-      "aggregate_score": 1.414869785308838,
-      "user": "~Alexander_Soen1"
-    },
-    {
-      "aggregate_score": 0.782135009765625,
-      "user": "~Arman_Zharmagambetov1"
-    },
-    {
-      "aggregate_score": 0.8106585741043091,
-      "user": "~Atsutoshi_Kumagai2"
-    },
-    {
       "aggregate_score": 0.7844409346580505,
       "user": "~David_Jensen1"
     },
     {
-      "aggregate_score": 1.777948021888733,
-      "user": "~Ferdinando_Cicalese1"
+      "aggregate_score": 0.7949649095535278,
+      "user": "~Eldan_Cohen1"
     },
     {
-      "aggregate_score": 0.7701467275619507,
-      "user": "~Kyle_Miller1"
+      "aggregate_score": 1.4911090731620789,
+      "user": "~Engelbert_Mephu_Nguifo2"
     },
     {
-      "aggregate_score": 1.7628928422927856,
-      "user": "~Liangxiao_Jiang1"
+      "aggregate_score": 0.7700669765472412,
+      "user": "~Johannes_F\u00fcrnkranz1"
     },
     {
       "aggregate_score": 1.0,
@@ -667,8 +655,20 @@
       "user": "~Neha_Gupta1"
     },
     {
-      "aggregate_score": 1.4524034261703491,
-      "user": "~Parikshit_Gopalan1"
+      "aggregate_score": 0.8178167343139648,
+      "user": "~Rodrigo_C._Barros1"
+    },
+    {
+      "aggregate_score": 1.4876657724380493,
+      "user": "~Satoshi_Hara1"
+    },
+    {
+      "aggregate_score": 0.8106585741043091,
+      "user": "~Sekitoshi_Kanai1"
+    },
+    {
+      "aggregate_score": 0.7820936441421509,
+      "user": "~Wei_Gao7"
     }
   ],
   "BYtGbNaFlf": [
@@ -677,12 +677,12 @@
       "user": "~Ahmad_Kazmi1"
     },
     {
-      "aggregate_score": 1.5941734313964844,
-      "user": "~Andrew_Robert_Williams1"
-    },
-    {
       "aggregate_score": 0.8441734313964844,
       "user": "~Arian_Khorasani1"
+    },
+    {
+      "aggregate_score": 1.8441734313964844,
+      "user": "~Arjun_Ashok1"
     },
     {
       "aggregate_score": 1.4157873392105103,
@@ -693,14 +693,6 @@
       "user": "~Chenghao_Liu1"
     },
     {
-      "aggregate_score": 1.8713736534118652,
-      "user": "~Gerald_Woo1"
-    },
-    {
-      "aggregate_score": 0.8713736534118652,
-      "user": "~Juncheng_Liu2"
-    },
-    {
       "aggregate_score": 1.3717342615127563,
       "user": "~Kyung-Ah_Sohn1"
     },
@@ -709,11 +701,23 @@
       "user": "~Marin_Bilo\u01611"
     },
     {
-      "aggregate_score": 1.8309613466262817,
-      "user": "~Xiyuan_Zhang2"
+      "aggregate_score": 1.839120090007782,
+      "user": "~Rajat_Sen1"
+    },
+    {
+      "aggregate_score": 1.8441734313964844,
+      "user": "~Sahil_Garg1"
+    },
+    {
+      "aggregate_score": 0.8309613466262817,
+      "user": "~Sebastian_Pineda_Arango1"
     }
   ],
   "BlpQAi3idU": [
+    {
+      "aggregate_score": 0.787887454032898,
+      "user": "~Amirkeivan_Mohtashami1"
+    },
     {
       "aggregate_score": 0.7867852449417114,
       "user": "~An_Yang1"
@@ -723,24 +727,24 @@
       "user": "~Bo_Zhao6"
     },
     {
+      "aggregate_score": 0.794169008731842,
+      "user": "~Chuan-Ju_Wang2"
+    },
+    {
+      "aggregate_score": 0.792521595954895,
+      "user": "~Decebal_Constantin_Mocanu1"
+    },
+    {
       "aggregate_score": 0.7959165573120117,
       "user": "~Francisco_Eiras1"
     },
     {
-      "aggregate_score": 0.8159369230270386,
-      "user": "~Hong_Liu9"
+      "aggregate_score": 0.8118009567260742,
+      "user": "~Jianyi_Yang1"
     },
     {
-      "aggregate_score": 0.8224259614944458,
-      "user": "~Jung-Eun_Kim1"
-    },
-    {
-      "aggregate_score": 0.8117608428001404,
-      "user": "~Leo_Sampaio_Ferraz_Ribeiro1"
-    },
-    {
-      "aggregate_score": 0.8238280415534973,
-      "user": "~Martin_Mundt1"
+      "aggregate_score": 0.7959899306297302,
+      "user": "~Kaiqi_Zhao2"
     },
     {
       "aggregate_score": 0.7976906299591064,
@@ -749,70 +753,66 @@
     {
       "aggregate_score": 0.8049861192703247,
       "user": "~Mehrtash_T._Harandi1"
-    },
-    {
-      "aggregate_score": 0.7956027388572693,
-      "user": "~Zhimeng_Jiang1"
     }
   ],
   "Bq2THeNXRr": [
     {
-      "aggregate_score": 1.8366311192512512,
-      "user": "~Abhishek_Panigrahi1"
+      "aggregate_score": 1.775224506855011,
+      "user": "~Akhilan_Boopathy1"
     },
     {
       "aggregate_score": 1.3834189772605896,
       "user": "~Antoine_Gourru1"
     },
     {
-      "aggregate_score": 1.7241746187210083,
-      "user": "~Bonaventure_F._P._Dossou1"
+      "aggregate_score": 1.6708964109420776,
+      "user": "~Chunhui_Zhang1"
     },
     {
       "aggregate_score": 1.7635461688041687,
       "user": "~Fu-Ming_Guo2"
     },
     {
-      "aggregate_score": 1.7432509660720825,
-      "user": "~Jiarui_Jin1"
+      "aggregate_score": 1.6717572212219238,
+      "user": "~Lu_Yu1"
     },
     {
-      "aggregate_score": 1.7776183485984802,
-      "user": "~Jieyu_Zhang1"
+      "aggregate_score": 1.754616618156433,
+      "user": "~Qianli_Ma3"
     },
     {
-      "aggregate_score": 1.493957281112671,
-      "user": "~Shuai_Zheng1"
-    },
-    {
-      "aggregate_score": 1.5983505249023438,
-      "user": "~Xiance_Si2"
+      "aggregate_score": 1.4556819200515747,
+      "user": "~SHUAI_Zhang5"
     },
     {
       "aggregate_score": 1.5125688314437866,
       "user": "~Xiao_Zhang7"
     },
     {
-      "aggregate_score": 0.9963176250457764,
-      "user": "~Zihao_Wang23"
+      "aggregate_score": 1.5441976189613342,
+      "user": "~Zhe_Zhao3"
+    },
+    {
+      "aggregate_score": 1.5539473295211792,
+      "user": "~Zining_Zhu1"
     }
   ],
   "Brndr519OT": [
+    {
+      "aggregate_score": 0.8901732563972473,
+      "user": "~Aleksandar_Bojchevski1"
+    },
     {
       "aggregate_score": 0.8430195450782776,
       "user": "~Binchi_Zhang1"
     },
     {
+      "aggregate_score": 1.8511854410171509,
+      "user": "~Binghui_Wang2"
+    },
+    {
       "aggregate_score": 1.6021836996078491,
       "user": "~Chenhui_Deng1"
-    },
-    {
-      "aggregate_score": 0.8711931705474854,
-      "user": "~Chunhui_Zhang1"
-    },
-    {
-      "aggregate_score": 0.8711931705474854,
-      "user": "~Chuxu_Zhang2"
     },
     {
       "aggregate_score": 1.5080581903457642,
@@ -823,50 +823,46 @@
       "user": "~Heng_Chang2"
     },
     {
-      "aggregate_score": 0.8760215044021606,
-      "user": "~Junhong_Lin1"
+      "aggregate_score": 0.8681212067604065,
+      "user": "~Johannes_F._Lutzeyer1"
     },
     {
-      "aggregate_score": 1.836089313030243,
-      "user": "~Wee_Peng_Tay1"
+      "aggregate_score": 0.9995489120483398,
+      "user": "~Xiaorui_Liu1"
     },
     {
       "aggregate_score": 0.8521836996078491,
       "user": "~Xiuyu_Li1"
     },
     {
-      "aggregate_score": 1.586039960384369,
-      "user": "~Zhao_Kai2"
+      "aggregate_score": 0.8537238240242004,
+      "user": "~Yuhong_Guo1"
     }
   ],
   "CXZqGJonmt": [
     {
-      "aggregate_score": 1.5682377815246582,
-      "user": "~Adams_Wai-Kin_Kong1"
+      "aggregate_score": 0.885756254196167,
+      "user": "~Dongfang_Liu1"
     },
     {
-      "aggregate_score": 0.8644670844078064,
-      "user": "~Binghui_Wang2"
-    },
-    {
-      "aggregate_score": 1.4325979948043823,
-      "user": "~Fuqiang_Liu2"
-    },
-    {
-      "aggregate_score": 1.3948543071746826,
-      "user": "~Jialin_Song3"
+      "aggregate_score": 1.5355781316757202,
+      "user": "~Huanrui_Yang1"
     },
     {
       "aggregate_score": 1.8095954060554504,
       "user": "~Jinlai_Zhang1"
     },
     {
-      "aggregate_score": 0.8857564330101013,
-      "user": "~Shiwei_Feng1"
+      "aggregate_score": 1.5929815173149109,
+      "user": "~Naman_Deep_Singh1"
     },
     {
-      "aggregate_score": 1.8314949870109558,
-      "user": "~Wenqiang_Zhang1"
+      "aggregate_score": 1.5070147514343262,
+      "user": "~Pengwen_Dai1"
+    },
+    {
+      "aggregate_score": 1.5558178424835205,
+      "user": "~Ryan_Feng1"
     },
     {
       "aggregate_score": 1.8079871535301208,
@@ -875,6 +871,10 @@
     {
       "aggregate_score": 1.6977412700653076,
       "user": "~Xiyuan_Li1"
+    },
+    {
+      "aggregate_score": 1.5842493176460266,
+      "user": "~Yaohua_Liu1"
     },
     {
       "aggregate_score": 1.5888534784317017,
@@ -887,36 +887,36 @@
       "user": "~Aidong_Zhang2"
     },
     {
-      "aggregate_score": 1.0,
-      "user": "~Daniele_Malitesta1"
+      "aggregate_score": 1.767507553100586,
+      "user": "~Chaochao_Chen3"
     },
     {
-      "aggregate_score": 1.6659641861915588,
-      "user": "~Jie_Xu15"
+      "aggregate_score": 1.4087414741516113,
+      "user": "~Dan_dan_Guo1"
     },
     {
-      "aggregate_score": 0.8538413047790527,
-      "user": "~Jieming_Bian1"
+      "aggregate_score": 0.8598322868347168,
+      "user": "~Liyue_Shen1"
     },
     {
-      "aggregate_score": 0.9142787456512451,
-      "user": "~Qiying_Yu1"
+      "aggregate_score": 0.8435090184211731,
+      "user": "~Mingzhu_Xu1"
     },
     {
-      "aggregate_score": 0.8831888437271118,
-      "user": "~Tuo_Zhang2"
+      "aggregate_score": 0.8784284591674805,
+      "user": "~Payam_M._Barnaghi1"
     },
     {
-      "aggregate_score": 1.4081708192825317,
-      "user": "~Xu_Chen2"
+      "aggregate_score": 0.915428638458252,
+      "user": "~Yang_Liu59"
     },
     {
       "aggregate_score": 1.6327531337738037,
       "user": "~Yixuan_Chen1"
     },
     {
-      "aggregate_score": 1.5788142085075378,
-      "user": "~Zhuangdi_Zhu1"
+      "aggregate_score": 1.5606374144554138,
+      "user": "~Zhenghan_Chen1"
     },
     {
       "aggregate_score": 1.7142283916473389,
@@ -925,16 +925,28 @@
   ],
   "EOoe5Wtwdi": [
     {
+      "aggregate_score": 1.6040986776351929,
+      "user": "~Disha_Makhija1"
+    },
+    {
       "aggregate_score": 0.9962702989578247,
       "user": "~Gunhee_Kim1"
     },
     {
-      "aggregate_score": 1.585211992263794,
-      "user": "~Jiayu_Zhou1"
+      "aggregate_score": 1.5577561855316162,
+      "user": "~Henger_Li1"
+    },
+    {
+      "aggregate_score": 1.8717585802078247,
+      "user": "~Jiawei_Shao1"
     },
     {
       "aggregate_score": 1.8262965679168701,
       "user": "~Marco_Canini1"
+    },
+    {
+      "aggregate_score": 1.5547412037849426,
+      "user": "~Othmane_MARFOQ1"
     },
     {
       "aggregate_score": 1.883461356163025,
@@ -945,46 +957,18 @@
       "user": "~Suhyun_Kim1"
     },
     {
-      "aggregate_score": 1.5661649703979492,
-      "user": "~Xi_Chen32"
+      "aggregate_score": 1.595569908618927,
+      "user": "~Wenxuan_Bao1"
     },
     {
-      "aggregate_score": 1.8922616839408875,
-      "user": "~Xiaoying_Tang2"
-    },
-    {
-      "aggregate_score": 0.8938976526260376,
-      "user": "~Yonggang_Zhang1"
-    },
-    {
-      "aggregate_score": 1.6349658966064453,
-      "user": "~Yongxin_Guo1"
-    },
-    {
-      "aggregate_score": 0.8938976526260376,
-      "user": "~Yu_Zheng10"
+      "aggregate_score": 1.8907446265220642,
+      "user": "~Zhenheng_TANG1"
     }
   ],
   "EgGwL9g8no": [
     {
       "aggregate_score": 1.7646749019622803,
       "user": "~Aras_Selvi1"
-    },
-    {
-      "aggregate_score": 0.8307805061340332,
-      "user": "~Bo_Li29"
-    },
-    {
-      "aggregate_score": 0.8384723663330078,
-      "user": "~Fusheng_Liu1"
-    },
-    {
-      "aggregate_score": 1.570936679840088,
-      "user": "~Giulia_Denevi1"
-    },
-    {
-      "aggregate_score": 1.582370638847351,
-      "user": "~Hansi_Yang1"
     },
     {
       "aggregate_score": 0.8617982864379883,
@@ -1003,8 +987,24 @@
       "user": "~Ronald_Moore1"
     },
     {
+      "aggregate_score": 1.5305635929107666,
+      "user": "~Santiago_Mazuelas1"
+    },
+    {
+      "aggregate_score": 0.8472354412078857,
+      "user": "~Songtao_Lu1"
+    },
+    {
+      "aggregate_score": 0.8441861867904663,
+      "user": "~Vincent_Roulet1"
+    },
+    {
       "aggregate_score": 1.7867110967636108,
       "user": "~Weisen_Jiang1"
+    },
+    {
+      "aggregate_score": 0.8520623445510864,
+      "user": "~Yunjuan_Wang1"
     }
   ],
   "F4X1CMTv8f": [
@@ -1017,24 +1017,20 @@
       "user": "~Chengshuai_Shi1"
     },
     {
-      "aggregate_score": 1.5703800916671753,
-      "user": "~Cong_Shen1"
+      "aggregate_score": 1.7242246866226196,
+      "user": "~Haozhu_Wang1"
     },
     {
       "aggregate_score": 1.3901069164276123,
       "user": "~Jaeho_Lee3"
     },
     {
-      "aggregate_score": 1.4815579652786255,
-      "user": "~Jiangmeng_Li1"
-    },
-    {
       "aggregate_score": 1.4127227067947388,
       "user": "~Namhoon_Lee1"
     },
     {
-      "aggregate_score": 1.8346211910247803,
-      "user": "~Omar_Khattab1"
+      "aggregate_score": 1.7859461307525635,
+      "user": "~Runxue_Bao2"
     },
     {
       "aggregate_score": 1.504530906677246,
@@ -1045,8 +1041,12 @@
       "user": "~Wentao_Guo1"
     },
     {
-      "aggregate_score": 1.3966032266616821,
-      "user": "~Xingtong_Yu1"
+      "aggregate_score": 1.8507318496704102,
+      "user": "~Xingchen_Wan1"
+    },
+    {
+      "aggregate_score": 1.803229808807373,
+      "user": "~Yonggang_Zhang1"
     }
   ],
   "G8zDeKOp0R": [
@@ -1055,50 +1055,58 @@
       "user": "~Arnav_Mohanty_Das1"
     },
     {
-      "aggregate_score": 1.4882872700691223,
-      "user": "~Dong_Hoon_Lee1"
-    },
-    {
-      "aggregate_score": 1.4351991415023804,
-      "user": "~Fan_Yang14"
+      "aggregate_score": 0.8469424247741699,
+      "user": "~Ganesh_Ramachandra_Kini1"
     },
     {
       "aggregate_score": 1.7916215658187866,
       "user": "~Gantavya_Bhatt1"
     },
     {
-      "aggregate_score": 0.8147678375244141,
-      "user": "~Min_Jae_Song1"
+      "aggregate_score": 1.4232769012451172,
+      "user": "~Guangmo_Tong1"
+    },
+    {
+      "aggregate_score": 1.2820416688919067,
+      "user": "~Heng_Dong1"
     },
     {
       "aggregate_score": 0.8107647895812988,
       "user": "~Radu_Tudor_Ionescu1"
     },
     {
-      "aggregate_score": 0.8164876699447632,
-      "user": "~Raviteja_Vemulapalli1"
-    },
-    {
-      "aggregate_score": 0.9999997615814209,
-      "user": "~Suraj_Nandkishor_Kothawade2"
-    },
-    {
-      "aggregate_score": 0.8469424247741699,
-      "user": "~Vala_Vakilian2"
+      "aggregate_score": 1.6749751567840576,
+      "user": "~Runzhong_Wang1"
     },
     {
       "aggregate_score": 0.8185383081436157,
       "user": "~Vishnu_Suresh_Lokhande1"
+    },
+    {
+      "aggregate_score": 0.8169399499893188,
+      "user": "~Xiu-Shen_Wei1"
+    },
+    {
+      "aggregate_score": 1.6478163599967957,
+      "user": "~Yimeng_Min1"
     }
   ],
   "Ij6VpQX9P3": [
+    {
+      "aggregate_score": 1.5765932202339172,
+      "user": "~Akbir_Khan1"
+    },
+    {
+      "aggregate_score": 1.8039007782936096,
+      "user": "~Andrew_Silva1"
+    },
     {
       "aggregate_score": 1.844343900680542,
       "user": "~Edward_Hughes1"
     },
     {
-      "aggregate_score": 1.5249452590942383,
-      "user": "~Heng_Dong1"
+      "aggregate_score": 1.8560923337936401,
+      "user": "~Hao_Zhu1"
     },
     {
       "aggregate_score": 1.8532755374908447,
@@ -1123,14 +1131,6 @@
     {
       "aggregate_score": 1.5019800066947937,
       "user": "~Tim_Ruben_Davidson1"
-    },
-    {
-      "aggregate_score": 1.8887978792190552,
-      "user": "~Wenhao_Li2"
-    },
-    {
-      "aggregate_score": 1.5700469613075256,
-      "user": "~Xihuai_Wang1"
     }
   ],
   "IwjYn2qZWc": [
@@ -1143,12 +1143,12 @@
       "user": "~Hang_Gao9"
     },
     {
-      "aggregate_score": 0.802257776260376,
-      "user": "~Haojin_Yang1"
-    },
-    {
       "aggregate_score": 0.7970923185348511,
       "user": "~Jingwei_Xu3"
+    },
+    {
+      "aggregate_score": 0.7946414947509766,
+      "user": "~Jonghyun_Choi1"
     },
     {
       "aggregate_score": 0.7983043193817139,
@@ -1177,120 +1177,120 @@
   ],
   "Jjp4YgnCOV": [
     {
-      "aggregate_score": 0.8851442337036133,
-      "user": "~Bozhen_Hu1"
+      "aggregate_score": 0.8770396709442139,
+      "user": "~Danqing_Wang1"
     },
     {
-      "aggregate_score": 0.8721743822097778,
-      "user": "~Huiknight_Li1"
+      "aggregate_score": 1.8764082193374634,
+      "user": "~Dino_Oglic1"
     },
     {
-      "aggregate_score": 0.8849735856056213,
-      "user": "~Jinkyoo_Park1"
+      "aggregate_score": 0.9308233261108398,
+      "user": "~Jinhua_Zhu1"
     },
     {
-      "aggregate_score": 0.8851442337036133,
-      "user": "~Jun_Xia1"
+      "aggregate_score": 1.5662271976470947,
+      "user": "~Karolis_Martinkus1"
     },
     {
-      "aggregate_score": 0.8849735856056213,
-      "user": "~Minsu_Kim2"
+      "aggregate_score": 0.9308233261108398,
+      "user": "~Kun_He1"
     },
     {
-      "aggregate_score": 0.8737494349479675,
-      "user": "~Shitong_Luo1"
+      "aggregate_score": 1.5941553115844727,
+      "user": "~Michael_Widrich2"
     },
     {
       "aggregate_score": 0.8760195374488831,
       "user": "~Wenbing_Huang1"
     },
     {
-      "aggregate_score": 1.8816678524017334,
-      "user": "~Wengong_Jin1"
-    },
-    {
       "aggregate_score": 1.876019537448883,
       "user": "~Xiangzhe_Kong1"
     },
     {
-      "aggregate_score": 1.4145325422286987,
-      "user": "~Yuning_Shen1"
+      "aggregate_score": 1.883601427078247,
+      "user": "~Yining_Huang1"
+    },
+    {
+      "aggregate_score": 1.7134063243865967,
+      "user": "~Ziqiao_Meng1"
     }
   ],
   "JnA9IveEwg": [
     {
-      "aggregate_score": 0.8803883194923401,
-      "user": "~Ming_Jin3"
+      "aggregate_score": 1.542686104774475,
+      "user": "~Andrei_Manolache1"
+    },
+    {
+      "aggregate_score": 1.4890652298927307,
+      "user": "~Christos_Tsirigotis1"
+    },
+    {
+      "aggregate_score": 0.9999994039535522,
+      "user": "~Chuxu_Zhang2"
+    },
+    {
+      "aggregate_score": 0.9999994039535522,
+      "user": "~Mingxuan_Ju1"
     },
     {
       "aggregate_score": 0.8889105319976807,
       "user": "~Neil_Shah2"
     },
     {
-      "aggregate_score": 1.5927646160125732,
-      "user": "~Shimin_Di1"
+      "aggregate_score": 1.8243635296821594,
+      "user": "~Nicholas_Monath1"
+    },
+    {
+      "aggregate_score": 0.8930346369743347,
+      "user": "~Shirui_Pan1"
     },
     {
       "aggregate_score": 1.8623313307762146,
       "user": "~Suhang_Wang1"
     },
     {
-      "aggregate_score": 0.8889105319976807,
-      "user": "~Tong_Zhao3"
+      "aggregate_score": 1.781292974948883,
+      "user": "~Yifei_Zhang6"
     },
     {
-      "aggregate_score": 1.8535220623016357,
-      "user": "~Xiangyu_Zhao1"
-    },
-    {
-      "aggregate_score": 1.5867506265640259,
-      "user": "~Yuning_You1"
-    },
-    {
-      "aggregate_score": 0.8852473497390747,
-      "user": "~Zhangyang_Gao1"
-    },
-    {
-      "aggregate_score": 1.8520536422729492,
-      "user": "~Zhen_Zhang14"
-    },
-    {
-      "aggregate_score": 1.754946768283844,
-      "user": "~Zijie_Huang1"
+      "aggregate_score": 1.5965816974639893,
+      "user": "~Ziyu_Guan1"
     }
   ],
   "JuR4EnrK6l": [
     {
-      "aggregate_score": 1.8771355152130127,
-      "user": "~Garrett_Thomas1"
-    },
-    {
-      "aggregate_score": 1.8341869115829468,
-      "user": "~Haoqi_Yuan1"
+      "aggregate_score": 1.8605008125305176,
+      "user": "~Ikechukwu_Uchendu1"
     },
     {
       "aggregate_score": 1.8200349807739258,
       "user": "~Marcel_Hussing1"
     },
     {
-      "aggregate_score": 1.707277238368988,
-      "user": "~Minhae_Kwon1"
-    },
-    {
       "aggregate_score": 1.637618601322174,
       "user": "~Rui_Yang8"
+    },
+    {
+      "aggregate_score": 1.8765003085136414,
+      "user": "~Sen_Lin1"
     },
     {
       "aggregate_score": 1.9235106706619263,
       "user": "~Siyuan_Guo2"
     },
     {
-      "aggregate_score": 1.5891994833946228,
-      "user": "~Sungyeob_Han1"
+      "aggregate_score": 1.5813043713569641,
+      "user": "~Whiyoung_Jung1"
     },
     {
       "aggregate_score": 1.8903436064720154,
       "user": "~Xianyuan_Zhan1"
+    },
+    {
+      "aggregate_score": 1.876115083694458,
+      "user": "~Xiong-Hui_Chen1"
     },
     {
       "aggregate_score": 1.6391984820365906,
@@ -1311,32 +1311,32 @@
       "user": "~Cheng-Yu_Hsieh1"
     },
     {
-      "aggregate_score": 1.4584784507751465,
-      "user": "~Danqing_Wang1"
+      "aggregate_score": 1.7311482429504395,
+      "user": "~Chengchao_Shen2"
+    },
+    {
+      "aggregate_score": 0.9737926721572876,
+      "user": "~Hunter_Lang1"
+    },
+    {
+      "aggregate_score": 0.8432689905166626,
+      "user": "~Jieyu_Zhang1"
+    },
+    {
+      "aggregate_score": 1.5415873527526855,
+      "user": "~Martin_Pawelczyk1"
     },
     {
       "aggregate_score": 1.50422602891922,
       "user": "~Masaaki_Nishino1"
     },
     {
-      "aggregate_score": 0.83823561668396,
-      "user": "~Pablo_Moreno-Mu\u00f1oz1"
-    },
-    {
       "aggregate_score": 1.5133291482925415,
       "user": "~Rattana_Pukdee1"
     },
     {
-      "aggregate_score": 1.7003902196884155,
-      "user": "~Shanda_Li1"
-    },
-    {
-      "aggregate_score": 1.4997612237930298,
-      "user": "~Yu-Jie_Zhang1"
-    },
-    {
-      "aggregate_score": 1.7048779726028442,
-      "user": "~Yue_Sun1"
+      "aggregate_score": 0.8429123163223267,
+      "user": "~Suyash_Gupta2"
     },
     {
       "aggregate_score": 1.812018632888794,
@@ -1345,8 +1345,12 @@
   ],
   "LxpcRDlNl7": [
     {
-      "aggregate_score": 1.5881139039993286,
-      "user": "~Diego_Klabjan1"
+      "aggregate_score": 1.809267818927765,
+      "user": "~Chen_Chen20"
+    },
+    {
+      "aggregate_score": 1.844900131225586,
+      "user": "~Dezhong_Yao1"
     },
     {
       "aggregate_score": 0.8915247321128845,
@@ -1361,35 +1365,27 @@
       "user": "~Lichao_Sun1"
     },
     {
-      "aggregate_score": 1.6410478949546814,
-      "user": "~Othmane_MARFOQ1"
+      "aggregate_score": 1.589389681816101,
+      "user": "~Meirui_JIANG1"
     },
     {
       "aggregate_score": 1.8708980083465576,
       "user": "~Siheng_Chen2"
     },
     {
-      "aggregate_score": 1.6039157509803772,
-      "user": "~Wenxuan_Bao1"
+      "aggregate_score": 1.6239042282104492,
+      "user": "~Tao_Lin1"
     },
     {
       "aggregate_score": 1.768754243850708,
       "user": "~Yuchen_Liu8"
     },
     {
-      "aggregate_score": 1.8620752692222595,
-      "user": "~Zhenheng_TANG1"
-    },
-    {
-      "aggregate_score": 1.879334807395935,
-      "user": "~tao_shen3"
+      "aggregate_score": 1.4860467910766602,
+      "user": "~Yunlong_Mao1"
     }
   ],
   "LzLDGNgyCB": [
-    {
-      "aggregate_score": 1.6222118139266968,
-      "user": "~Andrea_Cini1"
-    },
     {
       "aggregate_score": 1.4625805616378784,
       "user": "~Anika_Tabassum1"
@@ -1399,12 +1395,8 @@
       "user": "~Aristidis_Likas1"
     },
     {
-      "aggregate_score": 0.8830647468566895,
-      "user": "~Defu_Cao1"
-    },
-    {
-      "aggregate_score": 1.4454054236412048,
-      "user": "~Guillaume_Habault1"
+      "aggregate_score": 1.4870516061782837,
+      "user": "~Pedro_Eduardo_Mercado_Lopez1"
     },
     {
       "aggregate_score": 0.8850713968276978,
@@ -1415,34 +1407,38 @@
       "user": "~Vaggos_Chatziafratis1"
     },
     {
-      "aggregate_score": 0.871967077255249,
-      "user": "~Yanjie_Fu2"
+      "aggregate_score": 0.8747239112854004,
+      "user": "~Weijian_Li2"
+    },
+    {
+      "aggregate_score": 1.8264721035957336,
+      "user": "~Yang_Wang32"
+    },
+    {
+      "aggregate_score": 1.4906724095344543,
+      "user": "~Yue_Ning1"
+    },
+    {
+      "aggregate_score": 1.5831776857376099,
+      "user": "~Yunhao_Zhang1"
     },
     {
       "aggregate_score": 0.8853986263275146,
       "user": "~Yuxuan_Liang1"
-    },
-    {
-      "aggregate_score": 0.8747239112854004,
-      "user": "~Zhi_Zhang1"
     }
   ],
   "N6whB3Ayrz": [
     {
-      "aggregate_score": 0.8146637678146362,
-      "user": "~Alexandre_ARAUJO1"
+      "aggregate_score": 0.8684879541397095,
+      "user": "~Georgios_Arvanitidis1"
     },
     {
-      "aggregate_score": 1.5229007005691528,
-      "user": "~Qunxi_Zhu1"
+      "aggregate_score": 0.8154157400131226,
+      "user": "~Peng_Li2"
     },
     {
       "aggregate_score": 0.8082043528556824,
       "user": "~Shiyun_Xu1"
-    },
-    {
-      "aggregate_score": 0.8102821111679077,
-      "user": "~Takaharu_Yaguchi1"
     },
     {
       "aggregate_score": 0.8102821111679077,
@@ -1453,16 +1449,20 @@
       "user": "~Tsun-Hsuan_Wang2"
     },
     {
+      "aggregate_score": 1.5835474729537964,
+      "user": "~WANG_ZHANG1"
+    },
+    {
       "aggregate_score": 0.8091732263565063,
       "user": "~Xingyou_Song1"
     },
     {
-      "aggregate_score": 0.8152543902397156,
-      "user": "~Xuechen_Zhang2"
+      "aggregate_score": 0.8081101179122925,
+      "user": "~Yuan_Yin1"
     },
     {
-      "aggregate_score": 0.8096631765365601,
-      "user": "~Yadi_Cao1"
+      "aggregate_score": 0.8082043528556824,
+      "user": "~Zhiqi_Bu1"
     },
     {
       "aggregate_score": 0.8019684553146362,
@@ -1470,6 +1470,10 @@
     }
   ],
   "NV0q2jdwo0": [
+    {
+      "aggregate_score": 1.6160928606987,
+      "user": "~Byeongho_Heo1"
+    },
     {
       "aggregate_score": 1.8104517459869385,
       "user": "~Haotong_Qin1"
@@ -1483,6 +1487,10 @@
       "user": "~Jianyuan_Guo1"
     },
     {
+      "aggregate_score": 0.8948134779930115,
+      "user": "~Lujun_Li1"
+    },
+    {
       "aggregate_score": 1.615943968296051,
       "user": "~Namuk_Park1"
     },
@@ -1491,24 +1499,16 @@
       "user": "~WEILI_SHI1"
     },
     {
-      "aggregate_score": 1.5717917680740356,
-      "user": "~Xijun_Wang3"
-    },
-    {
-      "aggregate_score": 1.790736973285675,
-      "user": "~Yanyu_Li1"
-    },
-    {
       "aggregate_score": 1.7899131774902344,
       "user": "~Youngwan_Lee1"
     },
     {
-      "aggregate_score": 1.5077484846115112,
-      "user": "~Zedong_Wang1"
+      "aggregate_score": 0.8918749094009399,
+      "user": "~Yujun_Shi1"
     },
     {
-      "aggregate_score": 1.6418747901916504,
-      "user": "~Zihang_Jiang1"
+      "aggregate_score": 1.8499595522880554,
+      "user": "~Zhentao_Tan1"
     }
   ],
   "NsHxeSCtgr": [
@@ -1517,47 +1517,43 @@
       "user": "~Benjamin_Piwowarski1"
     },
     {
-      "aggregate_score": 1.5246813893318176,
-      "user": "~Fei_Wang12"
-    },
-    {
       "aggregate_score": 1.5539304614067078,
       "user": "~Ivan_Vuli\u01071"
     },
     {
-      "aggregate_score": 1.5566225051879883,
-      "user": "~Momchil_Peychev1"
+      "aggregate_score": 0.8616065979003906,
+      "user": "~Jonghyun_Choi1"
     },
     {
-      "aggregate_score": 1.5461832284927368,
-      "user": "~Rahul_Madhavan1"
+      "aggregate_score": 1.808632731437683,
+      "user": "~Lu_Cheng2"
     },
     {
-      "aggregate_score": 0.8505041599273682,
-      "user": "~Ricardo_Henao1"
+      "aggregate_score": 0.9999994039535522,
+      "user": "~Tianci_Liu1"
     },
     {
       "aggregate_score": 1.5642282962799072,
       "user": "~Tianqi_Zhao3"
     },
     {
-      "aggregate_score": 0.8587024211883545,
-      "user": "~Valeriia_Cherepanova1"
-    },
-    {
-      "aggregate_score": 1.808632731437683,
-      "user": "~Yangfeng_Ji1"
+      "aggregate_score": 0.8412430286407471,
+      "user": "~Xiaoyu_Liu3"
     },
     {
       "aggregate_score": 0.8412430286407471,
       "user": "~Zeyu_Tang1"
+    },
+    {
+      "aggregate_score": 1.4869695901870728,
+      "user": "~Zhiliang_Tian2"
+    },
+    {
+      "aggregate_score": 1.5725526809692383,
+      "user": "~sylvain_lamprier1"
     }
   ],
   "OEODuPlbdT": [
-    {
-      "aggregate_score": 1.835519552230835,
-      "user": "~Changlong_Wu1"
-    },
     {
       "aggregate_score": 0.846055269241333,
       "user": "~Chao-Kai_Chiang1"
@@ -1567,28 +1563,32 @@
       "user": "~Georgy_Noarov1"
     },
     {
+      "aggregate_score": 0.8473985195159912,
+      "user": "~Gergely_Neu1"
+    },
+    {
       "aggregate_score": 0.8325163125991821,
       "user": "~Guanghui_Wang3"
     },
     {
-      "aggregate_score": 1.5377050638198853,
-      "user": "~Ioannis_Anagnostides1"
+      "aggregate_score": 1.559427797794342,
+      "user": "~Mengxiao_Zhang2"
     },
     {
-      "aggregate_score": 0.8221745491027832,
-      "user": "~Martino_Bernasconi1"
-    },
-    {
-      "aggregate_score": 0.8219031095504761,
-      "user": "~Mohsen_Heidari1"
-    },
-    {
-      "aggregate_score": 0.8215100169181824,
-      "user": "~Shinji_Ito1"
+      "aggregate_score": 0.8471873998641968,
+      "user": "~Shiyin_Lu1"
     },
     {
       "aggregate_score": 0.8471873998641968,
       "user": "~Wei_Jiang8"
+    },
+    {
+      "aggregate_score": 1.802686333656311,
+      "user": "~Yu-Jie_Zhang1"
+    },
+    {
+      "aggregate_score": 0.8402209877967834,
+      "user": "~Zakaria_Mhammedi1"
     },
     {
       "aggregate_score": 1.5282566547393799,
@@ -1596,10 +1596,6 @@
     }
   ],
   "PdNXuBb4bf": [
-    {
-      "aggregate_score": 1.726072609424591,
-      "user": "~Chao_Wang14"
-    },
     {
       "aggregate_score": 1.4503958225250244,
       "user": "~Dai_Li1"
@@ -1609,46 +1605,54 @@
       "user": "~Dugang_Liu1"
     },
     {
-      "aggregate_score": 1.6887163519859314,
-      "user": "~Junyu_Gao1"
+      "aggregate_score": 1.5144447088241577,
+      "user": "~Hao_Liao1"
     },
     {
-      "aggregate_score": 1.5344057083129883,
-      "user": "~Lequn_Wang1"
-    },
-    {
-      "aggregate_score": 1.648585855960846,
-      "user": "~Mingxuan_Ju1"
+      "aggregate_score": 1.5564228296279907,
+      "user": "~Jiarui_Jin1"
     },
     {
       "aggregate_score": 1.4110708832740784,
       "user": "~Nicholas_Vincent2"
     },
     {
+      "aggregate_score": 1.5323628187179565,
+      "user": "~Peng_Wu5"
+    },
+    {
       "aggregate_score": 0.8886419534683228,
       "user": "~Tristan_Sylvain2"
     },
     {
-      "aggregate_score": 1.5683999061584473,
-      "user": "~Xiangyang_Mou1"
+      "aggregate_score": 1.400305151939392,
+      "user": "~Willem_Waegeman1"
     },
     {
-      "aggregate_score": 1.49350506067276,
-      "user": "~Yupeng_Hou1"
+      "aggregate_score": 1.6654322147369385,
+      "user": "~Yue_Sun1"
+    },
+    {
+      "aggregate_score": 1.4925485849380493,
+      "user": "~Zhongzhou_Liu1"
     }
   ],
   "Pjunw0i20t": [
+    {
+      "aggregate_score": 1.0,
+      "user": "~Apaar_Sadhwani1"
+    },
+    {
+      "aggregate_score": 1.7578617334365845,
+      "user": "~Ben_Armstrong2"
+    },
     {
       "aggregate_score": 1.440846562385559,
       "user": "~Boli_Fang1"
     },
     {
-      "aggregate_score": 1.4199713468551636,
-      "user": "~Chara_Podimata1"
-    },
-    {
-      "aggregate_score": 1.4520293474197388,
-      "user": "~Kaiqu_Liang1"
+      "aggregate_score": 1.7608847618103027,
+      "user": "~Canyu_Chen1"
     },
     {
       "aggregate_score": 1.3831979036331177,
@@ -1659,6 +1663,10 @@
       "user": "~Maryam_Hashemzadeh1"
     },
     {
+      "aggregate_score": 1.7085376977920532,
+      "user": "~Rylan_Schaeffer2"
+    },
+    {
       "aggregate_score": 0.8233764171600342,
       "user": "~Shumin_Deng1"
     },
@@ -1667,46 +1675,42 @@
       "user": "~Suho_Shin1"
     },
     {
-      "aggregate_score": 1.7424618005752563,
-      "user": "~Yang_Li40"
-    },
-    {
-      "aggregate_score": 1.2641363143920898,
-      "user": "~Zhentao_Tan1"
-    },
-    {
-      "aggregate_score": 1.2474656701087952,
-      "user": "~Zhongang_Cai1"
+      "aggregate_score": 1.2731274366378784,
+      "user": "~Tarun_Kumar1"
     }
   ],
   "QZ1DVzr6N9": [
     {
-      "aggregate_score": 0.7949564456939697,
-      "user": "~Arianna_Rampini1"
+      "aggregate_score": 0.7997767925262451,
+      "user": "~Baris_Coskunuzer1"
     },
     {
-      "aggregate_score": 0.8221250772476196,
-      "user": "~Henry_Kvinge1"
-    },
-    {
-      "aggregate_score": 1.7561900615692139,
-      "user": "~Ilya_Trofimov1"
-    },
-    {
-      "aggregate_score": 0.7949564456939697,
-      "user": "~Luca_Cosmo2"
+      "aggregate_score": 1.4533907175064087,
+      "user": "~Florian_Graf2"
     },
     {
       "aggregate_score": 0.9905374646186829,
       "user": "~Mathieu_Carri\u00e8re1"
     },
     {
-      "aggregate_score": 1.7561900615692139,
-      "user": "~Serguei_Barannikov1"
+      "aggregate_score": 0.7835677266120911,
+      "user": "~Michael_T_Schaub1"
+    },
+    {
+      "aggregate_score": 0.7949564456939697,
+      "user": "~Riccardo_Marin1"
     },
     {
       "aggregate_score": 0.7915480136871338,
       "user": "~Simone_Scardapane1"
+    },
+    {
+      "aggregate_score": 0.7927576303482056,
+      "user": "~Th\u00e9o_Lacombe1"
+    },
+    {
+      "aggregate_score": 0.8096511960029602,
+      "user": "~Vitaliy_Kurlin1"
     },
     {
       "aggregate_score": 0.8038175106048584,
@@ -1715,10 +1719,6 @@
     {
       "aggregate_score": 0.7997767925262451,
       "user": "~Yuzhou_Chen1"
-    },
-    {
-      "aggregate_score": 1.5179868936538696,
-      "user": "~Zhengchao_Wan1"
     }
   ],
   "Ri9Hgkvlys": [
@@ -1727,20 +1727,28 @@
       "user": "~Ahmad_Kazmi1"
     },
     {
-      "aggregate_score": 1.7248724699020386,
-      "user": "~Arjun_Ashok1"
+      "aggregate_score": 0.7538663744926453,
+      "user": "~Baoyu_Jing1"
+    },
+    {
+      "aggregate_score": 0.7530165910720825,
+      "user": "~Chen_Xu12"
+    },
+    {
+      "aggregate_score": 1.3764207363128662,
+      "user": "~Clara_Carlier1"
+    },
+    {
+      "aggregate_score": 0.7697449922561646,
+      "user": "~Dongjin_Song2"
+    },
+    {
+      "aggregate_score": 0.7634180784225464,
+      "user": "~Gerald_Woo1"
     },
     {
       "aggregate_score": 0.8272062540054321,
       "user": "~Hongzhi_Wang2"
-    },
-    {
-      "aggregate_score": 0.7949469089508057,
-      "user": "~JAEHOON_LEE5"
-    },
-    {
-      "aggregate_score": 0.7621670961380005,
-      "user": "~Jingbo_Zhou1"
     },
     {
       "aggregate_score": 0.7893886566162109,
@@ -1748,19 +1756,11 @@
     },
     {
       "aggregate_score": 0.7949469089508057,
-      "user": "~Sanghyun_Hong1"
+      "user": "~Kookjin_Lee1"
     },
     {
-      "aggregate_score": 0.7932701110839844,
-      "user": "~Shaokun_Zhang2"
-    },
-    {
-      "aggregate_score": 0.7866867780685425,
-      "user": "~Wendong_Zheng3"
-    },
-    {
-      "aggregate_score": 0.7697449922561646,
-      "user": "~Yang_Jiao4"
+      "aggregate_score": 1.4713901281356812,
+      "user": "~Shinichi_Shirakawa1"
     }
   ],
   "RvLwXMnKIV": [
@@ -1769,40 +1769,40 @@
       "user": "~Firas_Laakom1"
     },
     {
+      "aggregate_score": 0.8241844177246094,
+      "user": "~Francesco_Faccio1"
+    },
+    {
+      "aggregate_score": 1.5470861196517944,
+      "user": "~Fuwen_Tan1"
+    },
+    {
+      "aggregate_score": 1.4568883180618286,
+      "user": "~Guangyi_Liu1"
+    },
+    {
       "aggregate_score": 1.7380748987197876,
       "user": "~Jiajun_Fan1"
     },
     {
-      "aggregate_score": 0.8241844177246094,
-      "user": "~Jiaxin_Shi1"
-    },
-    {
-      "aggregate_score": 0.8161922693252563,
-      "user": "~Jindong_Jiang1"
+      "aggregate_score": 1.8075810670852661,
+      "user": "~Jialong_Wu1"
     },
     {
       "aggregate_score": 1.7794842720031738,
       "user": "~Junshan_Zhang1"
     },
     {
-      "aggregate_score": 1.6748265027999878,
-      "user": "~Maxime_Bouton1"
-    },
-    {
-      "aggregate_score": 1.4274181723594666,
-      "user": "~Sean_Bin_Yang1"
-    },
-    {
-      "aggregate_score": 1.7745133638381958,
-      "user": "~Wenwen_Qiang1"
-    },
-    {
       "aggregate_score": 0.8241844177246094,
-      "user": "~Xidong_Feng1"
+      "user": "~Mengyue_Yang1"
     },
     {
-      "aggregate_score": 0.8141010999679565,
-      "user": "~Yannis_Avrithis2"
+      "aggregate_score": 0.8530591130256653,
+      "user": "~Ondrej_Biza1"
+    },
+    {
+      "aggregate_score": 1.7140849828720093,
+      "user": "~Sivaramakrishnan_Swaminathan1"
     }
   ],
   "SJFcCQ7MzR": [
@@ -1811,46 +1811,46 @@
       "user": "~Aditya_Sinha1"
     },
     {
+      "aggregate_score": 1.83470618724823,
+      "user": "~Ajitesh_Srivastava1"
+    },
+    {
       "aggregate_score": 1.8480993509292603,
       "user": "~Carl_Yang1"
+    },
+    {
+      "aggregate_score": 1.8741468787193298,
+      "user": "~Guojie_Song1"
     },
     {
       "aggregate_score": 1.7947543859481812,
       "user": "~Haoyi_Zhou1"
     },
     {
-      "aggregate_score": 1.7500004768371582,
-      "user": "~Jiahao_Ding1"
+      "aggregate_score": 1.8802441358566284,
+      "user": "~Haoyu_Han1"
     },
     {
-      "aggregate_score": 1.8295888900756836,
-      "user": "~Jiaqi_Han2"
+      "aggregate_score": 1.8288249969482422,
+      "user": "~Jianan_Zhao2"
     },
     {
-      "aggregate_score": 1.8540669679641724,
-      "user": "~Meng_Liu3"
+      "aggregate_score": 1.862282395362854,
+      "user": "~Jun_Wu3"
     },
     {
-      "aggregate_score": 1.8598071336746216,
-      "user": "~Qing_Wang14"
+      "aggregate_score": 1.8599608540534973,
+      "user": "~Wee_Peng_Tay1"
     },
     {
-      "aggregate_score": 1.8344801664352417,
-      "user": "~Yang_Wang32"
-    },
-    {
-      "aggregate_score": 1.8501249551773071,
-      "user": "~Yukuo_Cen1"
-    },
-    {
-      "aggregate_score": 1.8026245832443237,
-      "user": "~Ziyu_Guan1"
+      "aggregate_score": 1.8134959936141968,
+      "user": "~Zhen_Zhang14"
     }
   ],
   "T0zR4mdSce": [
     {
-      "aggregate_score": 1.0,
-      "user": "~Hao_Wu39"
+      "aggregate_score": 1.7089955806732178,
+      "user": "~Leo_K\u00e4rkk\u00e4inen1"
     },
     {
       "aggregate_score": 1.5695480704307556,
@@ -1869,16 +1869,16 @@
       "user": "~Moshe_Eliasof1"
     },
     {
-      "aggregate_score": 1.9117671251296997,
-      "user": "~Pu_Ren1"
+      "aggregate_score": 1.4929288625717163,
+      "user": "~Qingyang_Tan1"
     },
     {
-      "aggregate_score": 1.7902305126190186,
-      "user": "~Shanyan_Guan1"
+      "aggregate_score": 1.5176775455474854,
+      "user": "~Takaharu_Yaguchi1"
     },
     {
-      "aggregate_score": 1.7704551219940186,
-      "user": "~Steffen_Schotth\u00f6fer1"
+      "aggregate_score": 1.5657857656478882,
+      "user": "~Tobias_Pfaff1"
     },
     {
       "aggregate_score": 1.4639999866485596,
@@ -1895,40 +1895,40 @@
       "user": "~Albert_No1"
     },
     {
-      "aggregate_score": 1.5966053009033203,
-      "user": "~Ao_Liu2"
+      "aggregate_score": 1.8652386665344238,
+      "user": "~Arun_Ganesh1"
     },
     {
       "aggregate_score": 0.8743000030517578,
       "user": "~Chendi_Wang2"
     },
     {
-      "aggregate_score": 1.7310214638710022,
-      "user": "~Haoxiang_Wang2"
+      "aggregate_score": 0.8636404871940613,
+      "user": "~Jiayu_Zhou1"
     },
     {
-      "aggregate_score": 1.8580693006515503,
-      "user": "~Jacob_Imola1"
+      "aggregate_score": 0.8757611513137817,
+      "user": "~Jiayuan_Ye1"
     },
     {
       "aggregate_score": 0.8636404871940613,
       "user": "~Junyuan_Hong1"
     },
     {
-      "aggregate_score": 0.8623946905136108,
-      "user": "~Lukas_Wutschitz1"
+      "aggregate_score": 0.8652386665344238,
+      "user": "~Milad_Nasr2"
     },
     {
-      "aggregate_score": 1.561651587486267,
-      "user": "~Moshe_Shenfeld1"
+      "aggregate_score": 1.8339418768882751,
+      "user": "~Pritish_Kamath2"
     },
     {
       "aggregate_score": 1.8298284411430359,
       "user": "~Rongzhe_Wei1"
     },
     {
-      "aggregate_score": 0.8875182867050171,
-      "user": "~Shahab_Asoodeh1"
+      "aggregate_score": 1.8595269918441772,
+      "user": "~Yi_Liu13"
     }
   ],
   "VfWrXJtLSL": [
@@ -1945,24 +1945,24 @@
       "user": "~Da_Yu1"
     },
     {
-      "aggregate_score": 0.8908954858779907,
-      "user": "~Hilal_Asi1"
-    },
-    {
       "aggregate_score": 1.582688570022583,
       "user": "~Jacob_Imola1"
     },
     {
-      "aggregate_score": 0.8769294023513794,
-      "user": "~Jinsung_Yoon1"
+      "aggregate_score": 0.868291974067688,
+      "user": "~Junyuan_Hong1"
     },
     {
       "aggregate_score": 0.8691510558128357,
       "user": "~Mani_Malek_Esmaeili1"
     },
     {
-      "aggregate_score": 1.8904519081115723,
-      "user": "~Pritish_Kamath2"
+      "aggregate_score": 1.5476576685905457,
+      "user": "~Uthaipon_Tantipongpipat1"
+    },
+    {
+      "aggregate_score": 0.8621832132339478,
+      "user": "~Yong_Liu7"
     },
     {
       "aggregate_score": 0.8606935143470764,
@@ -1975,6 +1975,10 @@
   ],
   "Vti7576Bve": [
     {
+      "aggregate_score": 1.7995120882987976,
+      "user": "~Aravind_Reddy1"
+    },
+    {
       "aggregate_score": 0.8120418787002563,
       "user": "~Ashkan_Norouzi-Fard2"
     },
@@ -1985,6 +1989,10 @@
     {
       "aggregate_score": 0.7880721092224121,
       "user": "~Davin_Choo1"
+    },
+    {
+      "aggregate_score": 1.4301555156707764,
+      "user": "~Deokjae_Lee1"
     },
     {
       "aggregate_score": 0.7848345041275024,
@@ -1999,20 +2007,12 @@
       "user": "~Kaixun_Hua1"
     },
     {
-      "aggregate_score": 0.7907695770263672,
-      "user": "~Parichit_Sharma1"
-    },
-    {
-      "aggregate_score": 0.7952842712402344,
-      "user": "~Rodrigo_C._Barros1"
+      "aggregate_score": 0.7964872121810913,
+      "user": "~Liren_Shan1"
     },
     {
       "aggregate_score": 1.7287683486938477,
       "user": "~Sebastian_Mair1"
-    },
-    {
-      "aggregate_score": 0.795100212097168,
-      "user": "~Xiangliang_Zhang1"
     }
   ],
   "W5fefNsmUi": [
@@ -2021,40 +2021,40 @@
       "user": "~Abdul_Fatir_Ansari2"
     },
     {
-      "aggregate_score": 1.5747450590133667,
-      "user": "~Adrian_G._Bors1"
-    },
-    {
-      "aggregate_score": 1.5994631052017212,
-      "user": "~Alvin_Heng1"
-    },
-    {
-      "aggregate_score": 0.8637012243270874,
-      "user": "~Antonio_Carta1"
-    },
-    {
-      "aggregate_score": 0.86320960521698,
-      "user": "~Arka_Sadhu1"
+      "aggregate_score": 1.4456905722618103,
+      "user": "~Ashwini_Pokle1"
     },
     {
       "aggregate_score": 1.7512938976287842,
       "user": "~Byeonghu_Na1"
     },
     {
-      "aggregate_score": 0.8617539405822754,
-      "user": "~Dayou_Yu1"
-    },
-    {
       "aggregate_score": 0.8640377521514893,
       "user": "~Divyam_Madaan1"
+    },
+    {
+      "aggregate_score": 1.5906637907028198,
+      "user": "~Dong_Gong1"
     },
     {
       "aggregate_score": 0.9990390539169312,
       "user": "~Kamil_Deja1"
     },
     {
-      "aggregate_score": 0.8834112882614136,
-      "user": "~Mohammad_Rostami1"
+      "aggregate_score": 1.0,
+      "user": "~Ning_Lam1"
+    },
+    {
+      "aggregate_score": 1.4191502332687378,
+      "user": "~Runmin_Cong1"
+    },
+    {
+      "aggregate_score": 1.486968755722046,
+      "user": "~Ryan_Faulkner2"
+    },
+    {
+      "aggregate_score": 0.86320960521698,
+      "user": "~Xisen_Jin3"
     }
   ],
   "WxFJSyoj4m": [
@@ -2063,82 +2063,82 @@
       "user": "~Andres_R_Masegosa1"
     },
     {
-      "aggregate_score": 0.7879782915115356,
-      "user": "~Arto_Klami1"
-    },
-    {
-      "aggregate_score": 0.7824064493179321,
-      "user": "~Gabriele_Sicuro1"
-    },
-    {
       "aggregate_score": 0.783638060092926,
       "user": "~Guojun_Zhang1"
     },
     {
-      "aggregate_score": 0.784952700138092,
-      "user": "~Huseyin_Atahan_Inan1"
-    },
-    {
-      "aggregate_score": 0.7821235060691833,
-      "user": "~Jason_Pacheco1"
+      "aggregate_score": 0.7831776738166809,
+      "user": "~Hannes_Nickisch1"
     },
     {
       "aggregate_score": 0.7960964441299438,
       "user": "~Julian_Straub1"
     },
     {
+      "aggregate_score": 0.7877082228660583,
+      "user": "~Murat_Dundar1"
+    },
+    {
       "aggregate_score": 1.5180734395980835,
       "user": "~Russell_Tsuchida1"
     },
     {
-      "aggregate_score": 0.8025586009025574,
-      "user": "~Shengxi_Li1"
+      "aggregate_score": 0.7831858396530151,
+      "user": "~Saeid_Naderiparizi1"
     },
     {
       "aggregate_score": 0.7879941463470459,
       "user": "~Soheil_Kolouri1"
+    },
+    {
+      "aggregate_score": 0.7900769710540771,
+      "user": "~Vincent_Tan1"
+    },
+    {
+      "aggregate_score": 0.7860256433486938,
+      "user": "~Zhaoqiang_Liu1"
     }
   ],
   "XXWktpaL1o": [
+    {
+      "aggregate_score": 0.8468822240829468,
+      "user": "~Austin_Tripp1"
+    },
+    {
+      "aggregate_score": 0.8440554141998291,
+      "user": "~Denis_Tarasov1"
+    },
+    {
+      "aggregate_score": 0.8355433940887451,
+      "user": "~Haitao_Lin2"
+    },
     {
       "aggregate_score": 1.3996796607971191,
       "user": "~Haowei_Lin1"
     },
     {
-      "aggregate_score": 1.8195044994354248,
-      "user": "~Kenneth_Chiu2"
+      "aggregate_score": 1.7834762334823608,
+      "user": "~Jun_Xia1"
     },
     {
       "aggregate_score": 0.8791144490242004,
       "user": "~Marwin_Segler1"
     },
     {
-      "aggregate_score": 1.682702660560608,
-      "user": "~Nils_Morten_Kriege1"
+      "aggregate_score": 0.8216494917869568,
+      "user": "~Minsu_Kim2"
+    },
+    {
+      "aggregate_score": 0.8547889590263367,
+      "user": "~SHUANGJIA_ZHENG1"
     },
     {
       "aggregate_score": 0.848341703414917,
       "user": "~Santiago_Miret1"
     },
     {
-      "aggregate_score": 0.8528897762298584,
-      "user": "~Seul_Lee1"
-    },
-    {
-      "aggregate_score": 0.9163014888763428,
-      "user": "~Yang_Zhao11"
-    },
-    {
       "aggregate_score": 0.8543782234191895,
       "user": "~Yao_Ma3"
-    },
-    {
-      "aggregate_score": 0.823217511177063,
-      "user": "~Yuanqi_Du1"
-    },
-    {
-      "aggregate_score": 1.5481475591659546,
-      "user": "~Yutong_Xie3"
     }
   ],
   "Y4VgJfbjfl": [
@@ -2147,36 +2147,36 @@
       "user": "~Fadi_Hamad1"
     },
     {
-      "aggregate_score": 0.8450453281402588,
-      "user": "~Graham_Cormode1"
-    },
-    {
-      "aggregate_score": 0.8295146226882935,
-      "user": "~Hengrui_Zhang1"
+      "aggregate_score": 0.8204982280731201,
+      "user": "~Jinsung_Yoon1"
     },
     {
       "aggregate_score": 0.8806887269020081,
       "user": "~Kai_Wang8"
     },
     {
-      "aggregate_score": 0.8295146226882935,
-      "user": "~Minkai_Xu1"
+      "aggregate_score": 1.3430755138397217,
+      "user": "~Li_Jing1"
     },
     {
       "aggregate_score": 1.8173920512199402,
       "user": "~Noseong_Park1"
     },
     {
-      "aggregate_score": 0.890450119972229,
-      "user": "~Patrick_Shafto1"
-    },
-    {
       "aggregate_score": 1.697096586227417,
       "user": "~Qiyao_Wei1"
     },
     {
-      "aggregate_score": 0.8448306322097778,
-      "user": "~Vamsi_K._Potluru1"
+      "aggregate_score": 1.423406720161438,
+      "user": "~Shun_Zheng1"
+    },
+    {
+      "aggregate_score": 1.4746192693710327,
+      "user": "~Xiangjian_Jiang1"
+    },
+    {
+      "aggregate_score": 1.6515575647354126,
+      "user": "~Yang_Li36"
     },
     {
       "aggregate_score": 0.8490155935287476,
@@ -2185,28 +2185,24 @@
   ],
   "YlJy1FcM9E": [
     {
+      "aggregate_score": 1.7960335612297058,
+      "user": "~Alex_Lambert1"
+    },
+    {
+      "aggregate_score": 0.8437338471412659,
+      "user": "~Kaifeng_Lyu2"
+    },
+    {
       "aggregate_score": 0.8453794717788696,
-      "user": "~Bingcong_Li1"
+      "user": "~Liang_Zhang6"
     },
     {
-      "aggregate_score": 0.8539794683456421,
-      "user": "~Blake_Woodworth1"
-    },
-    {
-      "aggregate_score": 0.8766219615936279,
-      "user": "~Johan_Bjorck2"
-    },
-    {
-      "aggregate_score": 1.5805081129074097,
-      "user": "~Paris_Giampouras1"
+      "aggregate_score": 1.5885815620422363,
+      "user": "~Mohammadreza_Soltani1"
     },
     {
       "aggregate_score": 1.7295780181884766,
       "user": "~Parth_Kashyap_Thaker1"
-    },
-    {
-      "aggregate_score": 0.8467690944671631,
-      "user": "~Peng_Wang23"
     },
     {
       "aggregate_score": 0.8632539510726929,
@@ -2221,26 +2217,18 @@
       "user": "~Tian_Ye2"
     },
     {
-      "aggregate_score": 1.798492670059204,
-      "user": "~Ziye_Ma1"
+      "aggregate_score": 0.8632540106773376,
+      "user": "~Vamsi_K._Potluru1"
+    },
+    {
+      "aggregate_score": 0.8618083596229553,
+      "user": "~Zhenghao_Xu1"
     }
   ],
   "YmZil5wbKj": [
     {
-      "aggregate_score": 1.571855902671814,
-      "user": "~Ali_Hossein_gharari_foomani1"
-    },
-    {
-      "aggregate_score": 1.9013350009918213,
-      "user": "~Changhee_Lee1"
-    },
-    {
       "aggregate_score": 1.349551796913147,
       "user": "~Feng_Gao1"
-    },
-    {
-      "aggregate_score": 1.413235604763031,
-      "user": "~Fredrik_K._Gustafsson1"
     },
     {
       "aggregate_score": 1.7964366674423218,
@@ -2255,6 +2243,10 @@
       "user": "~Jaegul_Choo1"
     },
     {
+      "aggregate_score": 1.4536848068237305,
+      "user": "~Jake_Snell1"
+    },
+    {
       "aggregate_score": 0.8518661260604858,
       "user": "~Kan_Ren1"
     },
@@ -2265,6 +2257,14 @@
     {
       "aggregate_score": 1.5945234894752502,
       "user": "~Vincent_Jeanselme1"
+    },
+    {
+      "aggregate_score": 1.5584189295768738,
+      "user": "~Yulun_Wu1"
+    },
+    {
+      "aggregate_score": 1.5799427032470703,
+      "user": "~Zhongwei_Qiu1"
     }
   ],
   "Yqj3DzIC79": [
@@ -2273,46 +2273,58 @@
       "user": "~Atsushi_Suzuki1"
     },
     {
-      "aggregate_score": 1.5923258662223816,
-      "user": "~Bao_Wang1"
+      "aggregate_score": 1.8113486766815186,
+      "user": "~Behrooz_Tahmasebi1"
     },
     {
-      "aggregate_score": 1.8641990423202515,
-      "user": "~Bernardo_Cuenca_Grau1"
+      "aggregate_score": 1.6019867658615112,
+      "user": "~Bobak_Kiani1"
+    },
+    {
+      "aggregate_score": 1.851027011871338,
+      "user": "~Chaitanya_Krishna_Joshi1"
+    },
+    {
+      "aggregate_score": 1.8247089385986328,
+      "user": "~Gaurav_Rattan1"
     },
     {
       "aggregate_score": 1.8305057287216187,
       "user": "~Gholamali_Aminian1"
     },
     {
+      "aggregate_score": 1.583219051361084,
+      "user": "~Hannah_Lawrence1"
+    },
+    {
       "aggregate_score": 1.8026795983314514,
       "user": "~Ilyes_Batatia1"
     },
     {
-      "aggregate_score": 1.8616793751716614,
-      "user": "~Nadav_E_Dym1"
+      "aggregate_score": 1.6115233898162842,
+      "user": "~Qing_Wang14"
     },
     {
-      "aggregate_score": 1.841097354888916,
-      "user": "~Ningyuan_Teresa_Huang1"
-    },
-    {
-      "aggregate_score": 1.570899784564972,
-      "user": "~Shubhendu_Trivedi1"
-    },
-    {
-      "aggregate_score": 1.6640164852142334,
-      "user": "~Shudong_Huang1"
-    },
-    {
-      "aggregate_score": 1.7598240375518799,
-      "user": "~Ziang_Chen1"
+      "aggregate_score": 1.8165643811225891,
+      "user": "~Wee_Peng_Tay1"
     }
   ],
   "ZHvsVebYZv": [
     {
+      "aggregate_score": 0.8027284145355225,
+      "user": "~Bin_Gu1"
+    },
+    {
+      "aggregate_score": 1.777249813079834,
+      "user": "~Biswadeep_Chakraborty1"
+    },
+    {
       "aggregate_score": 0.8022111654281616,
       "user": "~Bo_Li27"
+    },
+    {
+      "aggregate_score": 1.4860845804214478,
+      "user": "~Dilip_Arumugam1"
     },
     {
       "aggregate_score": 0.815941572189331,
@@ -2323,10 +2335,6 @@
       "user": "~Malu_Zhang1"
     },
     {
-      "aggregate_score": 0.815941572189331,
-      "user": "~Sen_Song1"
-    },
-    {
       "aggregate_score": 1.5178293585777283,
       "user": "~Shao-Qun_Zhang1"
     },
@@ -2335,16 +2343,8 @@
       "user": "~Sirui_Xie1"
     },
     {
-      "aggregate_score": 0.8069608211517334,
-      "user": "~Tsu-Jui_Fu2"
-    },
-    {
       "aggregate_score": 0.8022111654281616,
       "user": "~Xin_Jin8"
-    },
-    {
-      "aggregate_score": 0.8043768405914307,
-      "user": "~Yuhang_Li1"
     },
     {
       "aggregate_score": 0.8003890514373779,
@@ -2357,8 +2357,12 @@
       "user": "~AJAY_KUMAR_JAISWAL1"
     },
     {
-      "aggregate_score": 0.854053258895874,
-      "user": "~Aojun_Zhou3"
+      "aggregate_score": 0.8655577898025513,
+      "user": "~Denis_Kuznedelev1"
+    },
+    {
+      "aggregate_score": 0.8724955320358276,
+      "user": "~Elias_Frantar1"
     },
     {
       "aggregate_score": 1.7488007545471191,
@@ -2367,10 +2371,6 @@
     {
       "aggregate_score": 1.8114083409309387,
       "user": "~Ling_Li7"
-    },
-    {
-      "aggregate_score": 0.8583598136901855,
-      "user": "~Mingbao_Lin1"
     },
     {
       "aggregate_score": 0.8550005555152893,
@@ -2385,76 +2385,84 @@
       "user": "~Ruqi_Zhang1"
     },
     {
-      "aggregate_score": 0.8561527729034424,
-      "user": "~Tianjin_Huang1"
-    },
-    {
       "aggregate_score": 0.8511378765106201,
       "user": "~Xiaoyong_Yuan1"
+    },
+    {
+      "aggregate_score": 1.8476145267486572,
+      "user": "~Yuxin_Zhang3"
     }
   ],
   "Zdv0KOtLRG": [
-    {
-      "aggregate_score": 1.4814897179603577,
-      "user": "~Asif_Khan3"
-    },
     {
       "aggregate_score": 1.797285795211792,
       "user": "~Bowen_Liu1"
     },
     {
-      "aggregate_score": 1.6757498979568481,
-      "user": "~Chaokun_Wang1"
+      "aggregate_score": 1.8398647904396057,
+      "user": "~Fabrizio_Costa1"
     },
     {
-      "aggregate_score": 1.8161344528198242,
-      "user": "~Hiroshi_Kajino1"
+      "aggregate_score": 1.7842942476272583,
+      "user": "~Gabriele_Scalia1"
     },
     {
-      "aggregate_score": 1.5636790990829468,
-      "user": "~Marco_Podda1"
+      "aggregate_score": 1.8775641322135925,
+      "user": "~Ichigaku_Takigawa1"
     },
     {
-      "aggregate_score": 1.7665127515792847,
-      "user": "~Mohammed_Haroon_Dupty1"
+      "aggregate_score": 1.7351285815238953,
+      "user": "~Kenneth_Chiu2"
     },
     {
-      "aggregate_score": 1.9143754839897156,
-      "user": "~Pengyu_Hong1"
+      "aggregate_score": 1.780003845691681,
+      "user": "~QingqingLong1"
     },
     {
-      "aggregate_score": 1.8562034964561462,
-      "user": "~Veronika_Thost1"
+      "aggregate_score": 1.885579228401184,
+      "user": "~Shuo_Zhang5"
     },
     {
       "aggregate_score": 1.618629276752472,
       "user": "~Yanyan_Lan2"
     },
     {
-      "aggregate_score": 1.5480461120605469,
-      "user": "~Yiheng_Zhu3"
+      "aggregate_score": 1.9245927333831787,
+      "user": "~ZHAONING_YU1"
+    },
+    {
+      "aggregate_score": 1.5500611066818237,
+      "user": "~Zuobai_Zhang1"
     }
   ],
   "Zos5wsaB5r": [
     {
-      "aggregate_score": 1.4939770698547363,
-      "user": "~Dhanajit_Brahma1"
+      "aggregate_score": 1.5350091457366943,
+      "user": "~Arjun_Gupta1"
     },
     {
-      "aggregate_score": 1.4984993934631348,
-      "user": "~Shuaicheng_Niu1"
+      "aggregate_score": 1.5838993787765503,
+      "user": "~Gi-Cheon_Kang1"
+    },
+    {
+      "aggregate_score": 0.999999463558197,
+      "user": "~Junyu_Gao1"
+    },
+    {
+      "aggregate_score": 1.5053845643997192,
+      "user": "~Karan_Sikka1"
+    },
+    {
+      "aggregate_score": 1.6928510069847107,
+      "user": "~Miao_Zhang4"
+    },
+    {
+      "aggregate_score": 1.525016188621521,
+      "user": "~Peihao_Chen1"
     },
     {
       "aggregate_score": 0.8203153610229492,
       "user": "~Si_Liu5"
-    },
-    {
-      "aggregate_score": 1.452745258808136,
-      "user": "~Sriram_Yenamandra1"
-    },
-    {
-      "aggregate_score": 1.5045908093452454,
-      "user": "~Wanrong_Zhu1"
     },
     {
       "aggregate_score": 0.8463976383209229,
@@ -2462,61 +2470,53 @@
     },
     {
       "aggregate_score": 1.4846588373184204,
-      "user": "~Xi_Peng2"
+      "user": "~Yang_Mouxing1"
     },
     {
-      "aggregate_score": 1.6073832511901855,
-      "user": "~Xiwen_Liang1"
-    },
-    {
-      "aggregate_score": 1.5800867080688477,
-      "user": "~Zhenghan_Chen1"
-    },
-    {
-      "aggregate_score": 0.84037184715271,
-      "user": "~Zi-Yi_Dou1"
+      "aggregate_score": 1.575523853302002,
+      "user": "~Zheng_Yu2"
     }
   ],
   "a3XFF0PGLU": [
-    {
-      "aggregate_score": 1.6405311822891235,
-      "user": "~Di_Huang5"
-    },
     {
       "aggregate_score": 1.8542370796203613,
       "user": "~Eiji_Uchibe2"
     },
     {
-      "aggregate_score": 1.8192731738090515,
-      "user": "~Hanze_Dong1"
+      "aggregate_score": 1.8622370958328247,
+      "user": "~Jacopo_Castellini1"
     },
     {
-      "aggregate_score": 1.8356866240501404,
-      "user": "~Iou-Jen_Liu1"
+      "aggregate_score": 1.8966227769851685,
+      "user": "~Justin_Fu1"
     },
     {
-      "aggregate_score": 1.8520535230636597,
-      "user": "~Mudit_Verma2"
+      "aggregate_score": 1.7382177114486694,
+      "user": "~Mickel_Liu1"
     },
     {
       "aggregate_score": 1.8157963752746582,
       "user": "~Pietro_Mazzaglia1"
     },
     {
-      "aggregate_score": 1.8435959219932556,
-      "user": "~Tongzhou_Mu1"
-    },
-    {
       "aggregate_score": 1.8356106877326965,
       "user": "~Wan_Ju_Kang3"
     },
     {
-      "aggregate_score": 1.8225674629211426,
-      "user": "~Zhepeng_Cen1"
+      "aggregate_score": 1.7917959690093994,
+      "user": "~Xinghua_Qu1"
     },
     {
-      "aggregate_score": 1.8396718502044678,
-      "user": "~Zihan_Zhou1"
+      "aggregate_score": 1.884205937385559,
+      "user": "~Yang_Li40"
+    },
+    {
+      "aggregate_score": 1.8508530259132385,
+      "user": "~Yudi_Zhang3"
+    },
+    {
+      "aggregate_score": 1.8225674629211426,
+      "user": "~Zhepeng_Cen1"
     }
   ],
   "aIkL3ckE1a": [
@@ -2526,35 +2526,35 @@
     },
     {
       "aggregate_score": 0.823101818561554,
-      "user": "~Difan_Zou1"
-    },
-    {
-      "aggregate_score": 0.823101818561554,
       "user": "~Jingfeng_Wu1"
     },
     {
-      "aggregate_score": 0.8296393156051636,
-      "user": "~Mathew_Monfort1"
+      "aggregate_score": 1.560927152633667,
+      "user": "~Kartik_Ahuja1"
+    },
+    {
+      "aggregate_score": 0.8220296502113342,
+      "user": "~Martin_Mundt1"
+    },
+    {
+      "aggregate_score": 0.8223071098327637,
+      "user": "~Shangqi_Guo2"
     },
     {
       "aggregate_score": 0.8201549053192139,
       "user": "~Stephen_Robert_Pfohl1"
     },
     {
-      "aggregate_score": 0.8132851719856262,
-      "user": "~Taro_Makino1"
+      "aggregate_score": 0.8217307925224304,
+      "user": "~Xinyi_Wang2"
     },
     {
-      "aggregate_score": 0.822055459022522,
-      "user": "~Xiaochuang_Han1"
+      "aggregate_score": 0.8229720592498779,
+      "user": "~Yangjun_Ruan1"
     },
     {
-      "aggregate_score": 0.8137634992599487,
-      "user": "~Xiaoyu_Liu3"
-    },
-    {
-      "aggregate_score": 0.8118818998336792,
-      "user": "~Yonghan_Jung1"
+      "aggregate_score": 1.5401002764701843,
+      "user": "~Yoav_Itzhak_Wald1"
     },
     {
       "aggregate_score": 0.823101818561554,
@@ -2563,47 +2563,51 @@
   ],
   "aJdLj9lDqF": [
     {
-      "aggregate_score": 1.5984147191047668,
-      "user": "~Amelie_Royer1"
-    },
-    {
       "aggregate_score": 1.7988166809082031,
       "user": "~Bart\u0142omiej_Twardowski1"
     },
     {
-      "aggregate_score": 1.6784598231315613,
-      "user": "~Jose_Rozanec1"
+      "aggregate_score": 1.7719800472259521,
+      "user": "~Cenk_Baykal1"
+    },
+    {
+      "aggregate_score": 1.8418796062469482,
+      "user": "~Kaiqi_Zhao2"
     },
     {
       "aggregate_score": 1.6027265787124634,
       "user": "~Lan_Du1"
     },
     {
-      "aggregate_score": 1.599149227142334,
-      "user": "~Li-Yun_Wang1"
+      "aggregate_score": 1.7972850799560547,
+      "user": "~Ricardo_Henao1"
     },
     {
-      "aggregate_score": 1.6161625981330872,
-      "user": "~Nandan_Kumar_Jha1"
+      "aggregate_score": 1.7143478393554688,
+      "user": "~Veeranjaneyulu_Sadhanala1"
     },
     {
       "aggregate_score": 1.617432415485382,
       "user": "~Xiang_Deng1"
     },
     {
-      "aggregate_score": 1.6237324476242065,
-      "user": "~Yan_Yan10"
+      "aggregate_score": 1.7435334920883179,
+      "user": "~Yan_Sun6"
     },
     {
-      "aggregate_score": 1.786209225654602,
-      "user": "~Yuqiao_Wen1"
+      "aggregate_score": 1.7745018005371094,
+      "user": "~Yani_Ioannou1"
     },
     {
-      "aggregate_score": 1.5915724039077759,
-      "user": "~Zhiqiang_Shen1"
+      "aggregate_score": 1.6214736104011536,
+      "user": "~Yuzhang_Shang1"
     }
   ],
   "aUNMJUDaxp": [
+    {
+      "aggregate_score": 0.9131647348403931,
+      "user": "~Amrit_Bedi1"
+    },
     {
       "aggregate_score": 0.8804186582565308,
       "user": "~Anish_Acharya1"
@@ -2617,20 +2621,12 @@
       "user": "~Evan_Z_Wang1"
     },
     {
-      "aggregate_score": 1.624043583869934,
-      "user": "~Haibo_Yang1"
+      "aggregate_score": 1.6217230558395386,
+      "user": "~Minhae_Kwon1"
     },
     {
-      "aggregate_score": 0.8898472189903259,
-      "user": "~Jinghui_Chen1"
-    },
-    {
-      "aggregate_score": 1.884209394454956,
-      "user": "~Mingyue_Ji1"
-    },
-    {
-      "aggregate_score": 1.5547806024551392,
-      "user": "~Othmane_MARFOQ1"
+      "aggregate_score": 0.8875417709350586,
+      "user": "~Prashant_Khanduri1"
     },
     {
       "aggregate_score": 0.8804186582565308,
@@ -2641,11 +2637,27 @@
       "user": "~Shiqiang_Wang1"
     },
     {
-      "aggregate_score": 1.8074612021446228,
-      "user": "~Zhipeng_Tu1"
+      "aggregate_score": 0.8803344964981079,
+      "user": "~Song_Guo5"
+    },
+    {
+      "aggregate_score": 1.6033146381378174,
+      "user": "~Sulaiman_A_Alghunaim1"
     }
   ],
   "asJTE8EBjg": [
+    {
+      "aggregate_score": 0.8054437637329102,
+      "user": "~Alane_Suhr1"
+    },
+    {
+      "aggregate_score": 0.8041503429412842,
+      "user": "~Allen_Nie1"
+    },
+    {
+      "aggregate_score": 0.8298632502555847,
+      "user": "~Aman_Madaan1"
+    },
     {
       "aggregate_score": 1.5398945808410645,
       "user": "~Dan_Gutfreund1"
@@ -2655,12 +2667,12 @@
       "user": "~Graham_Neubig1"
     },
     {
-      "aggregate_score": 1.8013025522232056,
-      "user": "~Hao_Zhu1"
-    },
-    {
       "aggregate_score": 0.8333224058151245,
       "user": "~Hung_Thai_Le1"
+    },
+    {
+      "aggregate_score": 0.8085765838623047,
+      "user": "~Mirco_Musolesi1"
     },
     {
       "aggregate_score": 1.5036368370056152,
@@ -2673,48 +2685,36 @@
     {
       "aggregate_score": 0.8100776672363281,
       "user": "~Stephen_Casper1"
-    },
-    {
-      "aggregate_score": 0.8253680467605591,
-      "user": "~Yizhou_Wang3"
-    },
-    {
-      "aggregate_score": 0.8041503429412842,
-      "user": "~Yuhui_Zhang3"
-    },
-    {
-      "aggregate_score": 0.8793442249298096,
-      "user": "~Yulong_Chen2"
     }
   ],
   "dplgaRn4Ae": [
+    {
+      "aggregate_score": 0.8424211740493774,
+      "user": "~Chen-Yu_Wei1"
+    },
     {
       "aggregate_score": 0.8709816932678223,
       "user": "~Chlo\u00e9_Rouyer1"
     },
     {
-      "aggregate_score": 0.8503268957138062,
-      "user": "~Chung-Wei_Lee1"
+      "aggregate_score": 0.8503093719482422,
+      "user": "~Haobo_Fu2"
     },
     {
-      "aggregate_score": 0.8583123683929443,
-      "user": "~Gergely_Neu1"
+      "aggregate_score": 0.8503268957138062,
+      "user": "~Ioannis_Anagnostides1"
     },
     {
       "aggregate_score": 0.8520505428314209,
       "user": "~Junpei_Komiyama1"
     },
     {
-      "aggregate_score": 0.8504961133003235,
-      "user": "~Mengmeng_Li2"
+      "aggregate_score": 1.8183155059814453,
+      "user": "~Miao_Lu3"
     },
     {
-      "aggregate_score": 1.5898253917694092,
-      "user": "~Mengxiao_Zhang2"
-    },
-    {
-      "aggregate_score": 1.8198777437210083,
-      "user": "~Tadashi_Kozuno1"
+      "aggregate_score": 0.9999993443489075,
+      "user": "~Shinji_Ito1"
     },
     {
       "aggregate_score": 0.9999993443489075,
@@ -2735,58 +2735,58 @@
       "user": "~Ahmet_Alacaoglu2"
     },
     {
+      "aggregate_score": 1.615949034690857,
+      "user": "~Aysegul_Bumin1"
+    },
+    {
       "aggregate_score": 1.4819714426994324,
       "user": "~Hong-Ming_Chiu1"
     },
     {
-      "aggregate_score": 1.6298973560333252,
-      "user": "~Junchi_YANG1"
+      "aggregate_score": 1.8715031743049622,
+      "user": "~Junyu_Zhang1"
     },
     {
-      "aggregate_score": 1.6058791875839233,
-      "user": "~Linglingzhi_Zhu1"
+      "aggregate_score": 1.8058598041534424,
+      "user": "~Puqian_Wang1"
     },
     {
-      "aggregate_score": 0.8819850087165833,
-      "user": "~Luo_Luo1"
-    },
-    {
-      "aggregate_score": 1.5894798636436462,
-      "user": "~Reza_Babanezhad_Harikandeh1"
-    },
-    {
-      "aggregate_score": 0.8811236023902893,
-      "user": "~Shaojie_Li2"
+      "aggregate_score": 1.5707767009735107,
+      "user": "~Sayantan_Choudhury1"
     },
     {
       "aggregate_score": 1.6343532800674438,
       "user": "~Siqi_Zhang2"
     },
     {
-      "aggregate_score": 0.8843532800674438,
-      "user": "~Yifan_Hu2"
+      "aggregate_score": 1.8405163288116455,
+      "user": "~Xiaoyu_Wang4"
     },
     {
-      "aggregate_score": 0.8957753777503967,
-      "user": "~Zhenhuan_Yang1"
+      "aggregate_score": 1.83950537443161,
+      "user": "~Xinwen_Zhang3"
+    },
+    {
+      "aggregate_score": 1.5345677137374878,
+      "user": "~Yihan_Zhang2"
     }
   ],
   "fqDXYn0j4B": [
     {
-      "aggregate_score": 0.8459310531616211,
-      "user": "~Cheng_Deng1"
-    },
-    {
-      "aggregate_score": 0.8110983371734619,
-      "user": "~Fanhua_Shang2"
-    },
-    {
-      "aggregate_score": 0.8213735818862915,
-      "user": "~Feng_Yin1"
+      "aggregate_score": 0.8521770238876343,
+      "user": "~Alexander_Lin1"
     },
     {
       "aggregate_score": 0.8110983371734619,
       "user": "~Hongying_Liu2"
+    },
+    {
+      "aggregate_score": 0.8140336871147156,
+      "user": "~Jacky_Yibo_Zhang1"
+    },
+    {
+      "aggregate_score": 0.8484953045845032,
+      "user": "~Jie_Xu15"
     },
     {
       "aggregate_score": 0.8106235861778259,
@@ -2797,16 +2797,16 @@
       "user": "~Marco_Felipe_Duarte1"
     },
     {
-      "aggregate_score": 0.8437792658805847,
-      "user": "~Sotirios_Chatzis1"
-    },
-    {
       "aggregate_score": 0.8225563168525696,
       "user": "~Sulin_Liu1"
     },
     {
-      "aggregate_score": 1.5459870100021362,
-      "user": "~Yan_Sun6"
+      "aggregate_score": 0.8304407596588135,
+      "user": "~Wei_Deng1"
+    },
+    {
+      "aggregate_score": 0.8130839467048645,
+      "user": "~Xuelong_Li2"
     },
     {
       "aggregate_score": 1.6055903434753418,
@@ -2815,20 +2815,20 @@
   ],
   "fqyQaBMK3T": [
     {
-      "aggregate_score": 1.8767862915992737,
-      "user": "~Guanzhi_Wang1"
+      "aggregate_score": 1.8181209564208984,
+      "user": "~Andrew_Szot1"
     },
     {
-      "aggregate_score": 1.8154830932617188,
-      "user": "~Huihan_Liu1"
+      "aggregate_score": 1.8767862915992737,
+      "user": "~Guanzhi_Wang1"
     },
     {
       "aggregate_score": 1.8435894846916199,
       "user": "~Mengdi_Xu3"
     },
     {
-      "aggregate_score": 1.7919084429740906,
-      "user": "~Ondrej_Biza1"
+      "aggregate_score": 1.7912696599960327,
+      "user": "~Ran_Song2"
     },
     {
       "aggregate_score": 1.7904495000839233,
@@ -2839,72 +2839,80 @@
       "user": "~Shuo_Cheng1"
     },
     {
-      "aggregate_score": 1.8425679802894592,
-      "user": "~Sumedh_Anand_Sontakke1"
+      "aggregate_score": 1.8472083806991577,
+      "user": "~Tingnan_Zhang1"
     },
     {
-      "aggregate_score": 1.853572130203247,
-      "user": "~Suraj_Nair1"
+      "aggregate_score": 1.8087906241416931,
+      "user": "~Tongzhou_Mu1"
     },
     {
-      "aggregate_score": 1.817667007446289,
-      "user": "~Wenlong_Huang1"
+      "aggregate_score": 1.8755539655685425,
+      "user": "~Yunfan_Jiang1"
     },
     {
-      "aggregate_score": 1.8027583360671997,
-      "user": "~Zihan_Ding1"
+      "aggregate_score": 1.8180429339408875,
+      "user": "~Yuyang_Li1"
     }
   ],
   "g8AigOTNXL": [
-    {
-      "aggregate_score": 0.9999994039535522,
-      "user": "~Chandramouli_Shama_Sastry1"
-    },
-    {
-      "aggregate_score": 1.5365461707115173,
-      "user": "~Christian_J_Steinmetz1"
-    },
     {
       "aggregate_score": 0.85625821352005,
       "user": "~Garrison_Cottrell2"
     },
     {
-      "aggregate_score": 1.622981071472168,
-      "user": "~Jingwei_Zhao2"
+      "aggregate_score": 1.8021971583366394,
+      "user": "~Kun_Su1"
     },
     {
-      "aggregate_score": 0.8420782685279846,
-      "user": "~Joshua_P_Gardner1"
+      "aggregate_score": 0.8437108993530273,
+      "user": "~Pablo_Samuel_Castro1"
     },
     {
-      "aggregate_score": 0.8556880950927734,
-      "user": "~Ke_Chen16"
+      "aggregate_score": 0.8766320943832397,
+      "user": "~Shinji_Watanabe1"
+    },
+    {
+      "aggregate_score": 1.3348076343536377,
+      "user": "~Shuangrui_Ding1"
     },
     {
       "aggregate_score": 0.9999994039535522,
-      "user": "~Qinsheng_Zhang1"
+      "user": "~Siddharth_Gururani1"
+    },
+    {
+      "aggregate_score": 0.8783853054046631,
+      "user": "~Wei_Ye2"
     },
     {
       "aggregate_score": 0.8594048619270325,
       "user": "~Xingjian_Shi1"
     },
     {
-      "aggregate_score": 1.7965856790542603,
-      "user": "~Xiulong_Liu1"
-    },
-    {
       "aggregate_score": 0.8613713979721069,
       "user": "~Yossi_Adi1"
+    },
+    {
+      "aggregate_score": 0.8655922412872314,
+      "user": "~Ziyu_Wang10"
     }
   ],
   "iOEReiiTit": [
     {
-      "aggregate_score": 0.8448057770729065,
-      "user": "~Aleksandar_Bojchevski1"
+      "aggregate_score": 0.8522179126739502,
+      "user": "~Adel_Bibi1"
     },
     {
-      "aggregate_score": 0.8169339299201965,
-      "user": "~Chengzhi_Mao2"
+      "aggregate_score": 0.8121761083602905,
+      "user": "~Ahmed_Abdelkader_Abdelrazek1"
+    },
+    {
+      "aggregate_score": 0.8995634317398071,
+      "user": "~Alexandre_ARAUJO1"
+    },
+    {
+      "aggregate_score": 0.8331234455108643,
+      "user": "~Francesco_Croce1"
     },
     {
       "aggregate_score": 1.6478400826454163,
@@ -2923,26 +2931,26 @@
       "user": "~Maksym_Yatsura1"
     },
     {
-      "aggregate_score": 0.8331234455108643,
-      "user": "~Naman_Deep_Singh1"
+      "aggregate_score": 1.8395118713378906,
+      "user": "~Vaclav_Voracek1"
     },
     {
       "aggregate_score": 0.829936146736145,
       "user": "~Xingjun_Ma1"
-    },
-    {
-      "aggregate_score": 0.8469011783599854,
-      "user": "~Yang_He8"
-    },
-    {
-      "aggregate_score": 0.8218570947647095,
-      "user": "~Yuzhi_Guo1"
     }
   ],
   "irTixNT1JS": [
     {
-      "aggregate_score": 1.4763810634613037,
-      "user": "~Ayan_Majumdar1"
+      "aggregate_score": 1.6123276948928833,
+      "user": "~Antoine_Gourru1"
+    },
+    {
+      "aggregate_score": 0.9037159085273743,
+      "user": "~Brian_Hu_Zhang1"
+    },
+    {
+      "aggregate_score": 1.6171702146530151,
+      "user": "~Elliot_Creager1"
     },
     {
       "aggregate_score": 1.5019383430480957,
@@ -2953,28 +2961,20 @@
       "user": "~Gwangsu_Kim1"
     },
     {
-      "aggregate_score": 1.7308995723724365,
-      "user": "~Han_Liu3"
+      "aggregate_score": 1.7403582334518433,
+      "user": "~Jihun_Hamm1"
     },
     {
-      "aggregate_score": 1.510923683643341,
-      "user": "~Jayaram_Raghuram1"
-    },
-    {
-      "aggregate_score": 1.5274810791015625,
-      "user": "~Judy_Hanwen_Shen1"
+      "aggregate_score": 1.7919742465019226,
+      "user": "~Jingfeng_Zhang1"
     },
     {
       "aggregate_score": 1.4600235223770142,
       "user": "~Lilly_Kumari1"
     },
     {
-      "aggregate_score": 1.4690297842025757,
-      "user": "~Sanjay_Chawla2"
-    },
-    {
-      "aggregate_score": 1.5280075073242188,
-      "user": "~Xiao_Zhang2"
+      "aggregate_score": 1.840438723564148,
+      "user": "~Momchil_Peychev1"
     },
     {
       "aggregate_score": 0.8919903039932251,
@@ -2983,36 +2983,32 @@
   ],
   "jWHU4b7Yk6": [
     {
-      "aggregate_score": 1.4467204809188843,
-      "user": "~Changsheng_Lu1"
-    },
-    {
       "aggregate_score": 1.5668516159057617,
       "user": "~Emanuele_Bugliarello1"
     },
     {
-      "aggregate_score": 1.4990383386611938,
-      "user": "~Jiangbo_Yuan1"
+      "aggregate_score": 0.8934977054595947,
+      "user": "~Johan_Bjorck2"
     },
     {
-      "aggregate_score": 1.8505678176879883,
-      "user": "~Li_Jing1"
-    },
-    {
-      "aggregate_score": 1.570766568183899,
-      "user": "~Min_Cao2"
+      "aggregate_score": 0.8934977054595947,
+      "user": "~Li_Dong1"
     },
     {
       "aggregate_score": 1.5984843969345093,
       "user": "~Petra_Poklukar1"
     },
     {
-      "aggregate_score": 0.8985244035720825,
-      "user": "~Tao_Dai3"
+      "aggregate_score": 1.4966672658920288,
+      "user": "~Shan_You3"
     },
     {
-      "aggregate_score": 1.535840630531311,
-      "user": "~Xin_Lu1"
+      "aggregate_score": 1.5323253870010376,
+      "user": "~Xi_Peng2"
+    },
+    {
+      "aggregate_score": 1.5026726722717285,
+      "user": "~Yu-Guan_Hsieh1"
     },
     {
       "aggregate_score": 0.8952817916870117,
@@ -3021,6 +3017,10 @@
     {
       "aggregate_score": 1.611547589302063,
       "user": "~Zhendong_Mao1"
+    },
+    {
+      "aggregate_score": 1.56017005443573,
+      "user": "~Zhuoyi_Lin3"
     }
   ],
   "kQwSbv0BR4": [
@@ -3033,16 +3033,20 @@
       "user": "~Chaoran_Cheng2"
     },
     {
+      "aggregate_score": 1.795656681060791,
+      "user": "~Gavin_Kerrigan1"
+    },
+    {
+      "aggregate_score": 1.5101170539855957,
+      "user": "~Jae_Hyun_Lim1"
+    },
+    {
       "aggregate_score": 1.7703877091407776,
       "user": "~Jiying_Zhang1"
     },
     {
-      "aggregate_score": 1.881210446357727,
-      "user": "~Joey_Bose1"
-    },
-    {
-      "aggregate_score": 1.7600507736206055,
-      "user": "~Karolis_Martinkus1"
+      "aggregate_score": 1.7915396690368652,
+      "user": "~Meng_Liu3"
     },
     {
       "aggregate_score": 1.545597791671753,
@@ -3053,16 +3057,12 @@
       "user": "~Thanh_Lam_Hoang1"
     },
     {
-      "aggregate_score": 1.7902954816818237,
-      "user": "~Xuxi_Chen1"
+      "aggregate_score": 1.8279316425323486,
+      "user": "~Vladimir_Gligorijevic2"
     },
     {
-      "aggregate_score": 1.7324615716934204,
-      "user": "~Yangtian_Zhang1"
-    },
-    {
-      "aggregate_score": 1.5469586849212646,
-      "user": "~Zuobai_Zhang1"
+      "aggregate_score": 1.587473750114441,
+      "user": "~Zaixiang_Zheng2"
     }
   ],
   "kVKi74vtuJ": [
@@ -3071,8 +3071,12 @@
       "user": "~Aaqib_Saeed1"
     },
     {
-      "aggregate_score": 1.718698501586914,
-      "user": "~Dan_dan_Guo1"
+      "aggregate_score": 1.470113456249237,
+      "user": "~Bilal_Alsallakh1"
+    },
+    {
+      "aggregate_score": 1.8666748404502869,
+      "user": "~Chandramouli_Shama_Sastry1"
     },
     {
       "aggregate_score": 1.8663753271102905,
@@ -3083,28 +3087,24 @@
       "user": "~Jin_Peng_Zhou1"
     },
     {
-      "aggregate_score": 1.9001681208610535,
-      "user": "~Jingyang_Zhang2"
-    },
-    {
-      "aggregate_score": 1.5841106176376343,
-      "user": "~Joao_Monteiro1"
+      "aggregate_score": 1.883907973766327,
+      "user": "~Maximilian_Mueller1"
     },
     {
       "aggregate_score": 1.6817371845245361,
       "user": "~Mostafa_ElAraby1"
     },
     {
-      "aggregate_score": 1.618906855583191,
-      "user": "~Prashnna_Kumar_Gyawali1"
+      "aggregate_score": 1.6690165996551514,
+      "user": "~Qinyu_Zhao1"
     },
     {
-      "aggregate_score": 1.8045586347579956,
-      "user": "~Sahil_Garg1"
+      "aggregate_score": 1.893342673778534,
+      "user": "~Qizhou_Wang1"
     },
     {
-      "aggregate_score": 1.553684115409851,
-      "user": "~Yani_Ioannou1"
+      "aggregate_score": 1.6738111972808838,
+      "user": "~Yiren_Jian1"
     }
   ],
   "ke2vbQ7e8O": [
@@ -3113,16 +3113,20 @@
       "user": "~Chao_Zhang15"
     },
     {
+      "aggregate_score": 0.8551265001296997,
+      "user": "~Fengbei_Liu1"
+    },
+    {
       "aggregate_score": 1.7600516080856323,
       "user": "~Haobo_Wang1"
     },
     {
-      "aggregate_score": 0.8545688390731812,
-      "user": "~Kaixiong_Zhou1"
-    },
-    {
       "aggregate_score": 1.5047962069511414,
       "user": "~Koji_Maruhashi1"
+    },
+    {
+      "aggregate_score": 0.8690240979194641,
+      "user": "~Shikun_Li1"
     },
     {
       "aggregate_score": 0.866510272026062,
@@ -3141,22 +3145,14 @@
       "user": "~Xiong_Zhou3"
     },
     {
-      "aggregate_score": 0.866510272026062,
-      "user": "~Yibing_Zhan1"
-    },
-    {
-      "aggregate_score": 0.9745622873306274,
-      "user": "~Yu_Yao3"
+      "aggregate_score": 0.8695217370986938,
+      "user": "~Yuxuan_Du2"
     }
   ],
   "kyWZXZ5ZHd": [
     {
       "aggregate_score": 1.6511609554290771,
       "user": "~Cem_Sazara1"
-    },
-    {
-      "aggregate_score": 0.8545666933059692,
-      "user": "~Chenlin_Meng1"
     },
     {
       "aggregate_score": 1.449264645576477,
@@ -3171,31 +3167,31 @@
       "user": "~Jaakko_Suutala1"
     },
     {
-      "aggregate_score": 0.8530162572860718,
-      "user": "~Marco_K\u00f6rner2"
+      "aggregate_score": 1.7882081270217896,
+      "user": "~Jing_Wu5"
     },
     {
-      "aggregate_score": 1.8260618448257446,
-      "user": "~Michail_Tarasiou1"
+      "aggregate_score": 1.6656461358070374,
+      "user": "~Magda_Gregorova2"
+    },
+    {
+      "aggregate_score": 0.8530162572860718,
+      "user": "~Marco_K\u00f6rner2"
     },
     {
       "aggregate_score": 1.5984392166137695,
       "user": "~Roee_Litman1"
     },
     {
-      "aggregate_score": 0.8350833654403687,
-      "user": "~SHUAI_Zhang5"
-    },
-    {
       "aggregate_score": 0.8587868213653564,
       "user": "~Yuankai_Huo2"
+    },
+    {
+      "aggregate_score": 1.5408480763435364,
+      "user": "~Zhuo_Zheng1"
     }
   ],
   "lhESknBxTF": [
-    {
-      "aggregate_score": 1.620092511177063,
-      "user": "~Effat_Farhana1"
-    },
     {
       "aggregate_score": 1.688725769519806,
       "user": "~Geeticka_Chauhan1"
@@ -3205,32 +3201,36 @@
       "user": "~Guangneng_Hu1"
     },
     {
+      "aggregate_score": 1.7557729482650757,
+      "user": "~Hui_Liu3"
+    },
+    {
       "aggregate_score": 1.7556691765785217,
       "user": "~Jingjing_Wang4"
+    },
+    {
+      "aggregate_score": 1.7502227425575256,
+      "user": "~Kun_Zhang5"
     },
     {
       "aggregate_score": 1.7000853419303894,
       "user": "~Qingyun_Wang1"
     },
     {
-      "aggregate_score": 1.5225427150726318,
-      "user": "~Shivika_Prasanna1"
-    },
-    {
-      "aggregate_score": 1.6044336557388306,
-      "user": "~Taeuk_Kim1"
-    },
-    {
       "aggregate_score": 1.6942344307899475,
       "user": "~Xiance_Si2"
+    },
+    {
+      "aggregate_score": 1.7865804433822632,
+      "user": "~Yangfeng_Ji1"
     },
     {
       "aggregate_score": 1.520710289478302,
       "user": "~Yue_Chen3"
     },
     {
-      "aggregate_score": 1.7715528011322021,
-      "user": "~Yue_Yu2"
+      "aggregate_score": 1.7609283328056335,
+      "user": "~Yuqiao_Wen1"
     }
   ],
   "loeSleu8sj": [
@@ -3239,16 +3239,16 @@
       "user": "~Ainhize_Barrainkua1"
     },
     {
-      "aggregate_score": 1.77909517288208,
-      "user": "~Judy_Hanwen_Shen1"
+      "aggregate_score": 1.8457460403442383,
+      "user": "~Bei_Jiang1"
     },
     {
-      "aggregate_score": 1.8665961027145386,
-      "user": "~Lu_Cheng2"
+      "aggregate_score": 1.8783170580863953,
+      "user": "~Jiayu_Zhou1"
     },
     {
-      "aggregate_score": 1.651227355003357,
-      "user": "~Maarten_Buyl1"
+      "aggregate_score": 1.6238842010498047,
+      "user": "~Ruicheng_Xian1"
     },
     {
       "aggregate_score": 1.7252183556556702,
@@ -3267,19 +3267,15 @@
       "user": "~Steven_Euijong_Whang1"
     },
     {
-      "aggregate_score": 1.8559603691101074,
-      "user": "~Wenbin_Zhang1"
-    },
-    {
       "aggregate_score": 1.791721224784851,
       "user": "~Xinyi_Xu4"
+    },
+    {
+      "aggregate_score": 1.741562008857727,
+      "user": "~Yuzheng_Hu1"
     }
   ],
   "nDaOLBpM4F": [
-    {
-      "aggregate_score": 0.8187640309333801,
-      "user": "~Bill_Yuchen_Lin1"
-    },
     {
       "aggregate_score": 0.7957658767700195,
       "user": "~Brandon_Amos1"
@@ -3289,28 +3285,32 @@
       "user": "~Christopher_Solinas1"
     },
     {
-      "aggregate_score": 0.8237537741661072,
-      "user": "~Haobo_Fu2"
+      "aggregate_score": 0.8164185285568237,
+      "user": "~Hengyuan_Hu1"
     },
     {
-      "aggregate_score": 0.9470123052597046,
-      "user": "~Johannes_F\u00fcrnkranz1"
+      "aggregate_score": 0.8333484530448914,
+      "user": "~Huiknight_Li1"
     },
     {
-      "aggregate_score": 0.8248007893562317,
-      "user": "~Junliang_Xing1"
+      "aggregate_score": 0.8187640309333801,
+      "user": "~Jiaxian_Guo2"
     },
     {
       "aggregate_score": 0.8216269016265869,
       "user": "~Kai_Li2"
     },
     {
-      "aggregate_score": 0.8021578788757324,
-      "user": "~Li_Zhao1"
+      "aggregate_score": 0.8014575242996216,
+      "user": "~Pierre_MENARD1"
     },
     {
-      "aggregate_score": 1.6673516035079956,
-      "user": "~Tianyu_Zhang6"
+      "aggregate_score": 0.8014575242996216,
+      "user": "~Tadashi_Kozuno1"
+    },
+    {
+      "aggregate_score": 0.8187640309333801,
+      "user": "~Yusuke_Iwasawa1"
     },
     {
       "aggregate_score": 0.819261908531189,
@@ -3331,8 +3331,8 @@
       "user": "~Chulhee_Yun1"
     },
     {
-      "aggregate_score": 1.7963590621948242,
-      "user": "~Fanghui_Liu1"
+      "aggregate_score": 1.7558655142784119,
+      "user": "~Ding-Xuan_Zhou2"
     },
     {
       "aggregate_score": 1.565309762954712,
@@ -3351,8 +3351,8 @@
       "user": "~Shouvanik_Chakrabarti1"
     },
     {
-      "aggregate_score": 1.6280730962753296,
-      "user": "~Vaclav_Voracek1"
+      "aggregate_score": 1.8607157468795776,
+      "user": "~Yuling_Jiao1"
     },
     {
       "aggregate_score": 1.5790051221847534,
@@ -3365,16 +3365,12 @@
       "user": "~Brian_Chen3"
     },
     {
-      "aggregate_score": 1.7545992136001587,
-      "user": "~Chen-Lin_Zhang1"
+      "aggregate_score": 1.8293477296829224,
+      "user": "~Hongtao_Xie2"
     },
     {
-      "aggregate_score": 1.8149027824401855,
-      "user": "~Fuzhao_Xue1"
-    },
-    {
-      "aggregate_score": 1.805424451828003,
-      "user": "~Jianwen_Jiang2"
+      "aggregate_score": 1.805989146232605,
+      "user": "~Jinwoo_Choi1"
     },
     {
       "aggregate_score": 1.7814356684684753,
@@ -3385,16 +3381,20 @@
       "user": "~Kunchang_Li1"
     },
     {
-      "aggregate_score": 1.7874159812927246,
-      "user": "~Li_Jing1"
+      "aggregate_score": 1.889871597290039,
+      "user": "~Rui_Qian2"
     },
     {
       "aggregate_score": 1.853722333908081,
       "user": "~Subarna_Tripathi2"
     },
     {
-      "aggregate_score": 1.7805800437927246,
-      "user": "~Xianhang_Li1"
+      "aggregate_score": 1.8825222253799438,
+      "user": "~Ye_Liu8"
+    },
+    {
+      "aggregate_score": 1.871829092502594,
+      "user": "~Yuchong_Sun1"
     },
     {
       "aggregate_score": 1.7583907842636108,
@@ -3407,36 +3407,36 @@
       "user": "~Berk_Tinaz1"
     },
     {
-      "aggregate_score": 1.892134189605713,
-      "user": "~Guan-Horng_Liu1"
+      "aggregate_score": 1.6024155020713806,
+      "user": "~Fredrik_K._Gustafsson1"
     },
     {
-      "aggregate_score": 1.697683334350586,
-      "user": "~Jie_Gui1"
-    },
-    {
-      "aggregate_score": 1.6236215829849243,
-      "user": "~Jiezhang_Cao1"
+      "aggregate_score": 1.6081374883651733,
+      "user": "~Jie_Huang4"
     },
     {
       "aggregate_score": 1.7138863801956177,
       "user": "~Liyan_Xie2"
     },
     {
-      "aggregate_score": 1.8647404909133911,
-      "user": "~Mauricio_Delbracio1"
+      "aggregate_score": 1.7243001461029053,
+      "user": "~Longquan_Dai2"
     },
     {
       "aggregate_score": 1.67537260055542,
       "user": "~Mingyuan_Bai1"
     },
     {
-      "aggregate_score": 1.7538937330245972,
-      "user": "~Ozgur_Kara1"
+      "aggregate_score": 1.6133872270584106,
+      "user": "~Morteza_Mardani1"
     },
     {
       "aggregate_score": 1.755156695842743,
       "user": "~Renjie_Wan1"
+    },
+    {
+      "aggregate_score": 1.6648573875427246,
+      "user": "~Xiaoxuan_Liang2"
     },
     {
       "aggregate_score": 1.5441104173660278,
@@ -3449,16 +3449,12 @@
       "user": "~Afroditi_Papadaki1"
     },
     {
-      "aggregate_score": 1.782666802406311,
-      "user": "~Antoine_Gourru1"
-    },
-    {
-      "aggregate_score": 1.502606749534607,
-      "user": "~Aparna_R_Joshi1"
-    },
-    {
       "aggregate_score": 1.6751804947853088,
       "user": "~Aras_Selvi1"
+    },
+    {
+      "aggregate_score": 1.5131685137748718,
+      "user": "~Ayan_Majumdar1"
     },
     {
       "aggregate_score": 1.597807228565216,
@@ -3469,10 +3465,6 @@
       "user": "~Debabrota_Basu1"
     },
     {
-      "aggregate_score": 1.7561604380607605,
-      "user": "~Haoran_Zhang4"
-    },
-    {
       "aggregate_score": 1.576895833015442,
       "user": "~Hyungrok_Do1"
     },
@@ -3481,8 +3473,16 @@
       "user": "~Shreyas_Jayant_Havaldar1"
     },
     {
+      "aggregate_score": 1.5899860858917236,
+      "user": "~Sinan_Kalkan1"
+    },
+    {
       "aggregate_score": 1.5385162234306335,
       "user": "~Stephen_Robert_Pfohl1"
+    },
+    {
+      "aggregate_score": 1.8242506980895996,
+      "user": "~Wenbin_Zhang1"
     }
   ],
   "pp3v2ch5Sd": [
@@ -3491,28 +3491,32 @@
       "user": "~Aldo_Pacchiano1"
     },
     {
-      "aggregate_score": 1.8764241933822632,
-      "user": "~Andrew_Szot1"
+      "aggregate_score": 1.8639137744903564,
+      "user": "~Annie_Xie1"
     },
     {
-      "aggregate_score": 1.817136526107788,
-      "user": "~Edward_Hughes1"
+      "aggregate_score": 1.8214219212532043,
+      "user": "~Dennis_J._N._J._Soemers1"
+    },
+    {
+      "aggregate_score": 1.795310139656067,
+      "user": "~Iou-Jen_Liu1"
     },
     {
       "aggregate_score": 1.8592416048049927,
       "user": "~Jack_Parker-Holder1"
     },
     {
-      "aggregate_score": 1.8271554708480835,
-      "user": "~Jialong_Wu1"
+      "aggregate_score": 1.8639137744903564,
+      "user": "~Jonathan_Lee4"
     },
     {
       "aggregate_score": 1.7960511445999146,
       "user": "~Ondrej_Biza1"
     },
     {
-      "aggregate_score": 1.8615386486053467,
-      "user": "~Ville_Hautamaki1"
+      "aggregate_score": 1.8018164038658142,
+      "user": "~Peide_Huang1"
     },
     {
       "aggregate_score": 1.8324114084243774,
@@ -3521,28 +3525,20 @@
     {
       "aggregate_score": 1.7605239748954773,
       "user": "~Yuan_Zhang8"
-    },
-    {
-      "aggregate_score": 1.814623475074768,
-      "user": "~Yunfan_Jiang1"
     }
   ],
   "s0UDX7Kswl": [
+    {
+      "aggregate_score": 1.7742666602134705,
+      "user": "~Alice_Bizeul1"
+    },
     {
       "aggregate_score": 0.8313528299331665,
       "user": "~Carlo_Alberto_Barbano1"
     },
     {
-      "aggregate_score": 1.7776128649711609,
-      "user": "~Chang_D._Yoo1"
-    },
-    {
-      "aggregate_score": 1.5247472524642944,
-      "user": "~Georgios_Leontidis1"
-    },
-    {
-      "aggregate_score": 1.7455133199691772,
-      "user": "~Haigen_Hu1"
+      "aggregate_score": 1.498211145401001,
+      "user": "~Huizhuo_Yuan1"
     },
     {
       "aggregate_score": 1.7376863956451416,
@@ -3553,76 +3549,72 @@
       "user": "~Kyung-Ah_Sohn1"
     },
     {
-      "aggregate_score": 1.4719625115394592,
-      "user": "~Michael_Widrich2"
+      "aggregate_score": 1.3725597858428955,
+      "user": "~Pu_Ren1"
     },
     {
-      "aggregate_score": 0.8463016748428345,
-      "user": "~Weiran_Huang1"
+      "aggregate_score": 1.3675960898399353,
+      "user": "~Sean_Bin_Yang1"
+    },
+    {
+      "aggregate_score": 1.4371523261070251,
+      "user": "~Weiyan_Xie1"
     },
     {
       "aggregate_score": 1.4846803545951843,
       "user": "~Yang_Shu1"
     },
     {
-      "aggregate_score": 1.7353829145431519,
-      "user": "~Zhe_Huang2"
+      "aggregate_score": 1.75536048412323,
+      "user": "~Yingheng_Wang1"
     }
   ],
   "sBRJXfjIYK": [
     {
-      "aggregate_score": 1.401405155658722,
-      "user": "~Constantine_Dovrolis1"
+      "aggregate_score": 1.497656226158142,
+      "user": "~Alexander_Gao1"
     },
     {
-      "aggregate_score": 1.6933123469352722,
-      "user": "~Dmitrii_Marin2"
+      "aggregate_score": 1.791499376296997,
+      "user": "~Arianna_Rampini1"
     },
     {
-      "aggregate_score": 1.6684417724609375,
-      "user": "~Hwee_Kuan_Lee1"
+      "aggregate_score": 0.843442440032959,
+      "user": "~Chinmay_Hegde1"
     },
     {
       "aggregate_score": 1.5329780578613281,
       "user": "~Igor_Krawczuk1"
     },
     {
-      "aggregate_score": 1.5608617067337036,
-      "user": "~Luca_Morreale1"
+      "aggregate_score": 1.4946175813674927,
+      "user": "~Jaeho_Lee3"
     },
     {
-      "aggregate_score": 1.7335587739944458,
-      "user": "~Riccardo_Marin1"
+      "aggregate_score": 1.4761634469032288,
+      "user": "~Qianli_Ma2"
     },
     {
       "aggregate_score": 1.7974048852920532,
       "user": "~Shaifali_Parashar1"
     },
     {
-      "aggregate_score": 1.6479032039642334,
-      "user": "~Ya-Wei_Eileen_Lin1"
+      "aggregate_score": 0.8606244325637817,
+      "user": "~Trung_Le2"
+    },
+    {
+      "aggregate_score": 1.7272591590881348,
+      "user": "~Xiang_Chen8"
     },
     {
       "aggregate_score": 1.4449803829193115,
       "user": "~Yidi_Shao1"
-    },
-    {
-      "aggregate_score": 1.539655327796936,
-      "user": "~Ze_Cheng2"
     }
   ],
   "t5t3M7EMv5": [
     {
-      "aggregate_score": 1.558479368686676,
-      "user": "~Gyuhak_Kim1"
-    },
-    {
-      "aggregate_score": 1.793269157409668,
-      "user": "~Issei_Sato2"
-    },
-    {
-      "aggregate_score": 1.779370903968811,
-      "user": "~Kaiqi_Zhao2"
+      "aggregate_score": 1.7651290893554688,
+      "user": "~Andrew_Bai2"
     },
     {
       "aggregate_score": 1.835732102394104,
@@ -3645,8 +3637,16 @@
       "user": "~Samyadeep_Basu1"
     },
     {
-      "aggregate_score": 1.752918004989624,
-      "user": "~Yiren_Jian1"
+      "aggregate_score": 1.5776774883270264,
+      "user": "~Sihui_Luo1"
+    },
+    {
+      "aggregate_score": 1.5322445631027222,
+      "user": "~Vijay_Sadashivaiah1"
+    },
+    {
+      "aggregate_score": 1.7947580814361572,
+      "user": "~Xiaojun_Shan1"
     },
     {
       "aggregate_score": 1.823028326034546,
@@ -3659,8 +3659,8 @@
       "user": "~Aleksandar_Bojchevski1"
     },
     {
-      "aggregate_score": 0.8165279626846313,
-      "user": "~Bin_Gu1"
+      "aggregate_score": 0.8545145392417908,
+      "user": "~Bao_Wang1"
     },
     {
       "aggregate_score": 0.8140924572944641,
@@ -3671,12 +3671,12 @@
       "user": "~Guoji_Fu1"
     },
     {
-      "aggregate_score": 0.8125316500663757,
-      "user": "~Huayi_Tang1"
-    },
-    {
       "aggregate_score": 0.813073992729187,
       "user": "~Jiliang_Tang1"
+    },
+    {
+      "aggregate_score": 0.8411164879798889,
+      "user": "~Mohammed_Haroon_Dupty1"
     },
     {
       "aggregate_score": 1.8451083302497864,
@@ -3691,8 +3691,8 @@
       "user": "~Tianshu_Yu2"
     },
     {
-      "aggregate_score": 1.8399738073349,
-      "user": "~Wee_Peng_Tay1"
+      "aggregate_score": 0.8399738073348999,
+      "user": "~Zhao_Kai2"
     }
   ],
   "tdomF3PW6A": [
@@ -3701,40 +3701,40 @@
       "user": "~Anshuman_Suri1"
     },
     {
-      "aggregate_score": 1.598846197128296,
-      "user": "~Bargav_Jayaraman1"
-    },
-    {
-      "aggregate_score": 1.5869989395141602,
-      "user": "~Binghui_Wang2"
-    },
-    {
-      "aggregate_score": 1.5405519008636475,
-      "user": "~Dihong_Jiang1"
-    },
-    {
-      "aggregate_score": 1.556316316127777,
-      "user": "~Dimitar_Iliev_Dimitrov2"
+      "aggregate_score": 0.9092621803283691,
+      "user": "~Dingfan_Chen1"
     },
     {
       "aggregate_score": 1.521828293800354,
       "user": "~Gavin_R_Brown1"
     },
     {
-      "aggregate_score": 0.9999994039535522,
-      "user": "~Hongxin_Wei1"
+      "aggregate_score": 0.882549524307251,
+      "user": "~Gjergji_Kasneci2"
     },
     {
-      "aggregate_score": 0.9999994039535522,
-      "user": "~Lei_Feng1"
+      "aggregate_score": 0.8805544376373291,
+      "user": "~Jung-Eun_Kim1"
     },
     {
-      "aggregate_score": 1.632549524307251,
-      "user": "~Martin_Pawelczyk1"
+      "aggregate_score": 0.9092621803283691,
+      "user": "~Ning_Yu2"
     },
     {
-      "aggregate_score": 1.809407114982605,
-      "user": "~Yi_Liu13"
+      "aggregate_score": 0.8966506123542786,
+      "user": "~Sanghyun_Hong1"
+    },
+    {
+      "aggregate_score": 0.882549524307251,
+      "user": "~Tobias_Leemann1"
+    },
+    {
+      "aggregate_score": 1.8226113319396973,
+      "user": "~Xin_Yang3"
+    },
+    {
+      "aggregate_score": 0.8787761330604553,
+      "user": "~Xinyu_Tang1"
     }
   ],
   "u3iXuPfOVb": [
@@ -3743,28 +3743,24 @@
       "user": "~Anirban_Dasgupta1"
     },
     {
-      "aggregate_score": 1.6714493036270142,
-      "user": "~Aristidis_Likas1"
-    },
-    {
       "aggregate_score": 1.870416522026062,
       "user": "~Heiko_R\u00f6glin1"
     },
     {
-      "aggregate_score": 1.5687849521636963,
-      "user": "~Lingxiao_Huang2"
+      "aggregate_score": 1.827437400817871,
+      "user": "~Jakub_Lacki1"
     },
     {
-      "aggregate_score": 1.8784094452857971,
-      "user": "~Liren_Shan1"
-    },
-    {
-      "aggregate_score": 1.7599681615829468,
-      "user": "~Pan_Peng1"
+      "aggregate_score": 1.6325674057006836,
+      "user": "~Michael_Shekelyan1"
     },
     {
       "aggregate_score": 1.5044138431549072,
       "user": "~Peter_Macgregor1"
+    },
+    {
+      "aggregate_score": 1.5853208303451538,
+      "user": "~Qiang_Huang3"
     },
     {
       "aggregate_score": 1.6161975860595703,
@@ -3775,8 +3771,12 @@
       "user": "~Sebastian_Mair1"
     },
     {
-      "aggregate_score": 1.4952589273452759,
-      "user": "~Steinar_Laenen1"
+      "aggregate_score": 1.7934027910232544,
+      "user": "~Zixiu_Wang1"
+    },
+    {
+      "aggregate_score": 1.602336049079895,
+      "user": "~Ziyun_Huang1"
     }
   ],
   "uijg2dSEd7": [
@@ -3785,36 +3785,36 @@
       "user": "~Andreas_Grammenos1"
     },
     {
-      "aggregate_score": 0.8820560574531555,
-      "user": "~Bryan_Lim1"
+      "aggregate_score": 1.5698604583740234,
+      "user": "~Andrew_Robert_Williams1"
     },
     {
-      "aggregate_score": 1.4781378507614136,
-      "user": "~Clara_Carlier1"
+      "aggregate_score": 0.8820560574531555,
+      "user": "~Bryan_Lim1"
     },
     {
       "aggregate_score": 1.5606778860092163,
       "user": "~Hwanjo_Yu1"
     },
     {
-      "aggregate_score": 1.5305772423744202,
-      "user": "~Ilker_Bayram1"
-    },
-    {
-      "aggregate_score": 1.8638555407524109,
-      "user": "~Liang_Sun2"
-    },
-    {
       "aggregate_score": 0.9003450870513916,
       "user": "~Lu_Yin1"
     },
     {
-      "aggregate_score": 1.5713450908660889,
-      "user": "~Xu_Wang16"
+      "aggregate_score": 1.559337079524994,
+      "user": "~Nicolas_Baskiotis2"
     },
     {
-      "aggregate_score": 0.8804609179496765,
-      "user": "~Yu-Bin_Yang3"
+      "aggregate_score": 1.334113359451294,
+      "user": "~Parikshit_Gopalan1"
+    },
+    {
+      "aggregate_score": 0.8854202032089233,
+      "user": "~Qiuxia_LAI1"
+    },
+    {
+      "aggregate_score": 1.5713450908660889,
+      "user": "~Xu_Wang16"
     },
     {
       "aggregate_score": 1.6455300450325012,
@@ -3823,8 +3823,8 @@
   ],
   "vBJZ93tvoE": [
     {
-      "aggregate_score": 0.7772316932678223,
-      "user": "~Andrea_Passerini2"
+      "aggregate_score": 0.7797911763191223,
+      "user": "~Chaitanya_Krishna_Joshi1"
     },
     {
       "aggregate_score": 0.8044693470001221,
@@ -3835,42 +3835,54 @@
       "user": "~Christopher_Morris1"
     },
     {
-      "aggregate_score": 0.7867269515991211,
-      "user": "~Giannis_Nikolentzos1"
-    },
-    {
-      "aggregate_score": 0.7867269515991211,
-      "user": "~Johannes_F._Lutzeyer1"
-    },
-    {
-      "aggregate_score": 0.8057128190994263,
-      "user": "~Kexin_Huang1"
-    },
-    {
-      "aggregate_score": 0.9999994039535522,
-      "user": "~Marco_Bagatella1"
+      "aggregate_score": 0.7740499973297119,
+      "user": "~Ivan_Dokmanic1"
     },
     {
       "aggregate_score": 0.7867269515991211,
       "user": "~Michail_Chatzianastasis1"
     },
     {
-      "aggregate_score": 0.7852146625518799,
-      "user": "~Qiang_Zhang6"
+      "aggregate_score": 0.7809760570526123,
+      "user": "~Mikhail_Galkin1"
     },
     {
-      "aggregate_score": 0.7859516739845276,
-      "user": "~Tom_Tirer1"
+      "aggregate_score": 0.7977204918861389,
+      "user": "~Ming_Li15"
+    },
+    {
+      "aggregate_score": 1.7737953662872314,
+      "user": "~Nataliya_Sokolovska2"
+    },
+    {
+      "aggregate_score": 1.6879563331604004,
+      "user": "~Ritambhara_Singh1"
+    },
+    {
+      "aggregate_score": 1.607682466506958,
+      "user": "~Yuning_Shen1"
     }
   ],
   "vPu2sqMO2d": [
     {
-      "aggregate_score": 1.5600662231445312,
-      "user": "~Abdul_Fatir_Ansari2"
+      "aggregate_score": 1.0,
+      "user": "~Ahmad_Kazmi1"
     },
     {
-      "aggregate_score": 1.484014868736267,
-      "user": "~Moritz_Wolter1"
+      "aggregate_score": 1.5830822587013245,
+      "user": "~Andrew_Robert_Williams1"
+    },
+    {
+      "aggregate_score": 1.7346280813217163,
+      "user": "~Badri_Narayana_Patro1"
+    },
+    {
+      "aggregate_score": 0.8944635987281799,
+      "user": "~Defu_Lian1"
+    },
+    {
+      "aggregate_score": 0.8944635987281799,
+      "user": "~Pengyang_Wang1"
     },
     {
       "aggregate_score": 1.5781391263008118,
@@ -3885,30 +3897,30 @@
       "user": "~Wenshuo_Guo1"
     },
     {
-      "aggregate_score": 1.5501235723495483,
-      "user": "~Xu_Wang16"
-    },
-    {
-      "aggregate_score": 1.5623705387115479,
-      "user": "~Yang_Wang32"
-    },
-    {
       "aggregate_score": 1.3232203722000122,
       "user": "~Youcheng_Huang2"
     },
     {
-      "aggregate_score": 1.3876398205757141,
-      "user": "~Yuhua_Qian1"
-    },
-    {
-      "aggregate_score": 1.5527337789535522,
-      "user": "~Yunhao_Zhang1"
+      "aggregate_score": 1.573426067829132,
+      "user": "~Ziciu_Can1"
     }
   ],
   "wQfzSN2muq": [
     {
+      "aggregate_score": 1.8328171968460083,
+      "user": "~Avrajit_Ghosh1"
+    },
+    {
       "aggregate_score": 0.8844895958900452,
       "user": "~Can_Qin1"
+    },
+    {
+      "aggregate_score": 0.9853269457817078,
+      "user": "~Chulhee_Yun1"
+    },
+    {
+      "aggregate_score": 1.6295822858810425,
+      "user": "~Eshaan_Nichani1"
     },
     {
       "aggregate_score": 1.5684024095535278,
@@ -3923,20 +3935,8 @@
       "user": "~Junghyun_Lee1"
     },
     {
-      "aggregate_score": 0.8827316761016846,
-      "user": "~Tianhao_Wang1"
-    },
-    {
-      "aggregate_score": 0.8881676197052002,
-      "user": "~Vineeth_Balasubramanian1"
-    },
-    {
       "aggregate_score": 0.8881676197052002,
       "user": "~Vishwak_Srinivasan1"
-    },
-    {
-      "aggregate_score": 0.8844895958900452,
-      "user": "~Yi_Xu9"
     },
     {
       "aggregate_score": 0.8844895958900452,
@@ -3957,10 +3957,6 @@
       "user": "~Cesar_F_Caiafa1"
     },
     {
-      "aggregate_score": 0.7710105180740356,
-      "user": "~Da_Yan1"
-    },
-    {
       "aggregate_score": 0.7702561616897583,
       "user": "~EungGu_Yun1"
     },
@@ -3969,20 +3965,24 @@
       "user": "~Felipe_Orihuela-Espina2"
     },
     {
-      "aggregate_score": 0.7899959087371826,
-      "user": "~Ran_Xu4"
+      "aggregate_score": 1.3889550566673279,
+      "user": "~Gilbert_Lim1"
     },
     {
-      "aggregate_score": 1.6387939453125,
-      "user": "~Rongchang_Zhao1"
-    },
-    {
-      "aggregate_score": 1.4805031418800354,
-      "user": "~Tiago_Azevedo1"
+      "aggregate_score": 0.805141806602478,
+      "user": "~Haixing_Dai1"
     },
     {
       "aggregate_score": 0.778099536895752,
-      "user": "~Wenrui_Dai1"
+      "user": "~Hongkai_Xiong1"
+    },
+    {
+      "aggregate_score": 1.3796695470809937,
+      "user": "~Maria_A_Zuluaga1"
+    },
+    {
+      "aggregate_score": 0.7767682075500488,
+      "user": "~Xiangchen_Song1"
     },
     {
       "aggregate_score": 1.8233604431152344,
@@ -3995,16 +3995,8 @@
       "user": "~Adam_Craig_Pocock1"
     },
     {
-      "aggregate_score": 1.5269578695297241,
-      "user": "~Aghiles_Salah1"
-    },
-    {
-      "aggregate_score": 1.7613365650177002,
-      "user": "~John_Kirchenbauer1"
-    },
-    {
-      "aggregate_score": 1.5204564332962036,
-      "user": "~Nikolaos_Pappas1"
+      "aggregate_score": 1.7981250286102295,
+      "user": "~Michael_Boratko1"
     },
     {
       "aggregate_score": 1.5187917947769165,
@@ -4023,96 +4015,104 @@
       "user": "~Rakshith_Sharma_Srinivasa1"
     },
     {
-      "aggregate_score": 1.5404170751571655,
-      "user": "~Silvio_Amir_Moreira1"
+      "aggregate_score": 1.795693039894104,
+      "user": "~Shi_Yu2"
+    },
+    {
+      "aggregate_score": 1.7769727110862732,
+      "user": "~Srinivasan_H._Sengamedu1"
     },
     {
       "aggregate_score": 1.4813555479049683,
       "user": "~Xiaoqing_Zheng2"
+    },
+    {
+      "aggregate_score": 1.5926883220672607,
+      "user": "~Yin-Wen_Chang1"
     }
   ],
   "xPypr0kufs": [
     {
-      "aggregate_score": 1.6087653636932373,
-      "user": "~Dongsoo_Lee1"
+      "aggregate_score": 1.7950137257575989,
+      "user": "~Byeongwook_Kim1"
     },
     {
-      "aggregate_score": 1.8246562480926514,
-      "user": "~Elias_Frantar1"
+      "aggregate_score": 1.6020827293395996,
+      "user": "~Chi-Chun_Liu1"
     },
     {
       "aggregate_score": 1.6024884581565857,
       "user": "~Guangyu_Sun1"
     },
     {
-      "aggregate_score": 1.8033308386802673,
-      "user": "~Haoran_You1"
-    },
-    {
-      "aggregate_score": 1.7920218706130981,
-      "user": "~Huanrui_Yang1"
+      "aggregate_score": 1.825360655784607,
+      "user": "~Haojin_Yang1"
     },
     {
       "aggregate_score": 1.5746405720710754,
       "user": "~Minjia_Zhang1"
     },
     {
-      "aggregate_score": 1.6124964952468872,
-      "user": "~Puyuan_Liu1"
+      "aggregate_score": 1.7658169865608215,
+      "user": "~Qihua_Zhou1"
     },
     {
-      "aggregate_score": 1.8157624006271362,
-      "user": "~Yuzhang_Shang1"
+      "aggregate_score": 1.5653120279312134,
+      "user": "~Shangyu_Chen1"
     },
     {
-      "aggregate_score": 1.799493670463562,
-      "user": "~Zhenglun_Kong1"
+      "aggregate_score": 1.866424798965454,
+      "user": "~Xijie_Huang1"
     },
     {
-      "aggregate_score": 1.6039618253707886,
-      "user": "~Zhenhua_Liu2"
+      "aggregate_score": 1.5691391229629517,
+      "user": "~Yanyu_Li1"
+    },
+    {
+      "aggregate_score": 1.7827476859092712,
+      "user": "~Zhijian_Liu1"
     }
   ],
   "xaR1kD6BYY": [
+    {
+      "aggregate_score": 1.7669689655303955,
+      "user": "~Chen_Gong5"
+    },
     {
       "aggregate_score": 1.8513039350509644,
       "user": "~Chuliang_Weng1"
     },
     {
-      "aggregate_score": 1.5405620336532593,
-      "user": "~Chunjiang_Zhu1"
+      "aggregate_score": 1.6191240549087524,
+      "user": "~Muhammed_Fatih_Balin1"
     },
     {
-      "aggregate_score": 0.905398964881897,
-      "user": "~Jingling_Li1"
+      "aggregate_score": 1.8319168090820312,
+      "user": "~Peng_Jiang4"
     },
     {
-      "aggregate_score": 1.83440762758255,
-      "user": "~Lu_Yu1"
+      "aggregate_score": 1.7744172811508179,
+      "user": "~Qi_Chen8"
     },
     {
-      "aggregate_score": 1.8828532695770264,
-      "user": "~Meng_Liu3"
+      "aggregate_score": 1.6108100414276123,
+      "user": "~Xiaoling_Luo2"
     },
     {
-      "aggregate_score": 1.8694097995758057,
-      "user": "~Ming_Li15"
+      "aggregate_score": 1.7074893712997437,
+      "user": "~Xiaozhao_Fang1"
     },
     {
-      "aggregate_score": 0.9003475904464722,
-      "user": "~Pengcheng_Yin1"
+      "aggregate_score": 1.8688466548919678,
+      "user": "~Yue_Wu14"
     },
     {
-      "aggregate_score": 0.9003475904464722,
-      "user": "~Xiang_Li24"
+      "aggregate_score": 1.8249804377555847,
+      "user": "~Yujie_Mo1"
     },
     {
-      "aggregate_score": 0.9000365734100342,
-      "user": "~Zhang_wen_tao1"
-    },
-    {
-      "aggregate_score": 1.5434534549713135,
-      "user": "~zhao_kang1"
+      "aggregate_score": 1.4203004837036133,
+      "user": "~Zhenhua_Liu2"
     }
   ],
   "zLARft1nZR": [
@@ -4121,24 +4121,24 @@
       "user": "~Alex_Fedorov1"
     },
     {
-      "aggregate_score": 0.8444996476173401,
-      "user": "~Changwen_Zheng1"
-    },
-    {
-      "aggregate_score": 1.4473729133605957,
-      "user": "~Jiangwen_Sun1"
-    },
-    {
-      "aggregate_score": 1.5008957982063293,
-      "user": "~Lequan_Yu1"
+      "aggregate_score": 1.7712081670761108,
+      "user": "~Defu_Cao1"
     },
     {
       "aggregate_score": 1.7488772869110107,
       "user": "~Niharika_Shimona_Dsouza1"
     },
     {
-      "aggregate_score": 1.8013129234313965,
-      "user": "~Ritambhara_Singh1"
+      "aggregate_score": 0.8607897758483887,
+      "user": "~Ning_Xu5"
+    },
+    {
+      "aggregate_score": 0.9932814836502075,
+      "user": "~Taro_Makino1"
+    },
+    {
+      "aggregate_score": 0.8444996476173401,
+      "user": "~Wenwen_Qiang1"
     },
     {
       "aggregate_score": 1.4380803108215332,
@@ -4160,11 +4160,7 @@
   "zxdgD9W0P7": [
     {
       "aggregate_score": 0.75,
-      "user": "~Ding-Xuan_Zhou2"
-    },
-    {
-      "aggregate_score": 0.75,
-      "user": "~Jun_Fan2"
+      "user": "~Batu_Ozturkler1"
     },
     {
       "aggregate_score": 0.75,
@@ -4172,7 +4168,11 @@
     },
     {
       "aggregate_score": 1.0,
-      "user": "~Yuling_Jiao1"
+      "user": "~Steffen_Schotth\u00f6fer1"
+    },
+    {
+      "aggregate_score": 0.0,
+      "user": "~xiang_guo1"
     },
     {
       "aggregate_score": 0.0,
@@ -4184,15 +4184,15 @@
     },
     {
       "aggregate_score": 0.0,
-      "user": "~zhengming_Chen1"
+      "user": "~zhiqiang_xu1"
     },
     {
       "aggregate_score": 0.0,
-      "user": "~zicheng_zhang1"
+      "user": "~\u00c1bel_S\u00e1godi1"
     },
     {
       "aggregate_score": 0.0,
-      "user": "~\u00c9tienne_Marcotte1"
+      "user": "~\u0141ukasz_Dudziak1"
     },
     {
       "aggregate_score": 0.0,
@@ -4201,12 +4201,24 @@
   ],
   "zxdgDq9W0P7": [
     {
+      "aggregate_score": 0.8389756679534912,
+      "user": "~Alessandro_Favero1"
+    },
+    {
       "aggregate_score": 0.8269162178039551,
       "user": "~Bruno_Loureiro1"
     },
     {
-      "aggregate_score": 0.8183485865592957,
-      "user": "~Florian_Graf2"
+      "aggregate_score": 0.8403428196907043,
+      "user": "~Dan_Qiao1"
+    },
+    {
+      "aggregate_score": 0.8180335760116577,
+      "user": "~Emmanouil-Vasileios_Vlatakis-Gkaragkounis1"
+    },
+    {
+      "aggregate_score": 0.828031063079834,
+      "user": "~Fanghui_Liu1"
     },
     {
       "aggregate_score": 0.828031063079834,
@@ -4221,24 +4233,12 @@
       "user": "~Kenta_Oono1"
     },
     {
-      "aggregate_score": 0.8349241614341736,
-      "user": "~Weizhong_Zhang1"
-    },
-    {
-      "aggregate_score": 0.8308980464935303,
-      "user": "~Yingzhen_Yang1"
-    },
-    {
       "aggregate_score": 0.828031063079834,
       "user": "~Zhenyu_Zhu1"
     },
     {
       "aggregate_score": 0.9992761611938477,
       "user": "~Zixuan_Zhang5"
-    },
-    {
-      "aggregate_score": 0.8349241614341736,
-      "user": "~Zonghao_Chen1"
     }
   ]
 }

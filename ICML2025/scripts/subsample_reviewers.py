@@ -29,7 +29,7 @@ if __name__ == "__main__":
 
     counts = Counter(matched_reviewers)
     elements, weights = zip(*counts.items())
-    sampled_reviewers = np.random.choice(elements, size=80, replace=False, p=np.array(weights) / sum(weights))
+    sampled_reviewers = np.random.choice(elements, size=NUM_REVIEWERS, replace=False, p=np.array(weights) / sum(weights))
 
     assert len(sampled_reviewers) == NUM_REVIEWERS
 
