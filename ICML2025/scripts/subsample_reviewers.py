@@ -3,12 +3,6 @@ import numpy as np
 import os
 from collections import Counter
 
-# Gather JSON with assignments
-# Load into pandas
-# Subsample 80 unique reviewers at random
-# Save this list
-# Modify bids and scores to only include these reviewers
-
 NUM_REVIEWERS = 81 # 81 * 5 = 405 reviews available, for 101 (papers) * 4 = 404 reviews required
 SEED = 0
 

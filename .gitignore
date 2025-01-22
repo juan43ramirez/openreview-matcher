@@ -1,5 +1,10 @@
 # ICML 2025 specific files/directories
 ICML2025/secure-paper-bidding
+ICML2025/data
+ICML2025/assignments
+
+assignments.json
+alternates.json
 
 # openreview-matching specific files/directories
 results/
