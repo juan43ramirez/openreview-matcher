@@ -31,67 +31,110 @@ export Q=0.5 # Upper bound on the marginal probability of each reviewer-paper pa
 
 # Aggregate affinity scores using the 0.75 quantile
 python -m affinity \
-	--input ICML2025/data/scores_with_origin.csv \
-	--output ICML2025/data/aggregated_scores.csv
-	--quantile 0.75 \
+	--input $DATA_FOLDER/scores_with_origin.csv \
+	--output $DATA_FOLDER/aggregated_scores.csv \
+	--quantile $QUANTILE \
+	--reweight $UPWEIGHT_OR_PAPERS
 
 # Filter out suspicious bids. TODO: implement and document
 bash ICML2025/scripts/secure-paper-bidding.sh
 
 # ---------------------------------------------------------------------------------
-# Initial Matching of 2 reviewers per paper. The 3th reviewer is assigned later
+# Initial Matching of 2 reviewers per paper. The 3rd and 4th reviewers are assigned later
 # ---------------------------------------------------------------------------------
 
 # This matching requires two sources of constraints, which need to be aggregated for the matcher:
-# * ICML2025/data/conflict_constraints.csv: [paper_id, reviewer_id, constraint]
-# * ICML2025/data/first_time_reviewer_constraints.csv: [paper_id, reviewer_id, constraint]
+# * $DATA_FOLDER/conflict_constraints.csv: [paper_id, reviewer_id, constraint]
+# * $DATA_FOLDER/first_time_reviewer_constraints.csv: [paper_id, reviewer_id, constraint]
 
 # For constraint files, the possible values for the constraint attribute are:
 # * -1: conflict
 # * 0: no effect
 # * 1: forced assignment
 
-# Aggregate constraints. TODO: implement
+# Aggregate constraints.
 python ICML2025/scripts/join_conflicts.py \
-	--file1 ICML2025/data/conflict_constraints.csv \
-	--file2 ICML2025/data/first_time_reviewer_constraints.csv \
-	--output ICML2025/data/constraints_for_first_matching.csv
+	--file1 $DATA_FOLDER/conflict_constraints.csv \
+	--file2 $DATA_FOLDER/first_time_reviewer_constraints.csv \
+	--output $DATA_FOLDER/constraints_for_first_matching.csv
 
 # Initial matching. This expects the following files:
-# * ICML2025/data/aggregated_scores.csv [paper_id, reviewer_id, score]
-# * ICML2025/data/numeric_bids.csv: [paper_id, reviewer_id, numeric_bid]
+# * $DATA_FOLDER/aggregated_scores.csv [paper_id, reviewer_id, score]
+# * $DATA_FOLDER/numeric_bids.csv: [paper_id, reviewer_id, numeric_bid]
 
 python -m matcher \
-	--scores ICML2025/data/aggregated_scores.csv ICML2025/data/numeric_bids.csv \
+	--scores $DATA_FOLDER/aggregated_scores.csv $DATA_FOLDER/numeric_bids.csv \
 	--weights 1 1 \
 	--constraints ICML2025/data/constraints_for_first_matching.csv \
+	--min_papers_default 0 \
+	--max_papers_default 6 \
+	--num_reviewers 2 \
+	--num_alternates 1 \
+	--solver Randomized \
+	--probability_limits $Q
+
+mv assignments.json $DATA_FOLDER/assignments/first_matching.json
+
+# ---------------------------------------------------------------------------------
+# Second matching. Assign a third reviewer to each paper
+# ---------------------------------------------------------------------------------
+
+# Compute constraints based on the initial matching to ensure the first 2 reviewers
+# assigned to a paper remain the same.
+python ICML2025/scripts/extract_matching_constraints.py \
+	--assignments $DATA_FOLDER/assignments/first_matching.json \
+	--output $DATA_FOLDER/first_matching_constraint.csv
+
+# Compute the constraints for the second matching.
+python ICML2025/scripts/join_conflicts.py \
+	--file1 $DATA_FOLDER/conflict_constraints.csv \
+	--file2 $DATA_FOLDER/first_matching_constraint.csv \
+	--output $DATA_FOLDER/constraints_for_second_matching.csv
+
+# Run the matching with the new constraints.
+python -m matcher \
+	--scores $DATA_FOLDER/aggregated_scores.csv $DATA_FOLDER/numeric_bids.csv \
+	--weights 1 1 \
+	--constraints $DATA_FOLDER/constraints_for_second_matching.csv \
 	--min_papers_default 0 \
 	--max_papers_default 6 \
 	--num_reviewers 3 \
 	--num_alternates 1 \
 	--solver Randomized \
-	--probability_limits 0.5
+	--probability_limits $Q
+
+mv assignments.json $DATA_FOLDER/assignments/second_matching.json
 
 # ---------------------------------------------------------------------------------
-# Second matching
+# Third matching. Assign a fourth reviewer to each paper
 # ---------------------------------------------------------------------------------
 
-# Compute constraints based on the initial matching to ensure the first three reviewers
+# Compute constraints based on the second matching to ensure the first 3 reviewers
 # assigned to a paper remain the same.
-echo TODO
+python ICML2025/scripts/extract_matching_constraints.py \
+	--assignments $DATA_FOLDER/assignments/second_matching.json \
+	--output $DATA_FOLDER/second_matching_constraint.csv
 
 # Compute geographical constraints based on the initial matching to ensure that
 # reviewers
 echo TODO
 
+# Compute the constraints for the third matching.
+python ICML2025/scripts/join_conflicts.py \
+	--file1 $DATA_FOLDER/conflict_constraints.csv \
+	--file2 $DATA_FOLDER/second_matching_constraint.csv \
+	--output $DATA_FOLDER/constraints_for_third_matching.csv
+
 # Re-run the matching with the additional constraints.
 python -m matcher \
-	--scores ICML2025/data/aggregated_scores_q_0.75.csv ICML2025/data/numeric_bids.csv \
+	--scores $DATA_FOLDER/aggregated_scores.csv $DATA_FOLDER/numeric_bids.csv \
 	--weights 1 1 \
-	--constraints ICML2025/data/conflict_constraints.csv ICML2025/data/geographical_constraints.csv \
+	--constraints $DATA_FOLDER/constraints_for_third_matching.csv \
 	--min_papers_default 0 \
 	--max_papers_default 6 \
 	--num_reviewers 4 \
 	--num_alternates 1 \
 	--solver Randomized \
-	--probability_limits 0.5
+	--probability_limits $Q
+
+mv assignments.json $DATA_FOLDER/assignments/final_matching.json

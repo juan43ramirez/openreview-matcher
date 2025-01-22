@@ -31,16 +31,23 @@ def weighted_quantile(values, weights, quantiles):
 
 if __name__ == "__main__":
     argparser = argparse.ArgumentParser()
+    argparser.add_argument("--input", type=str, default="ICML2025/data/scores_with_origin.csv")
+    argparser.add_argument("--output", type=str, default="ICML2025/data/aggregated_scores.csv")
     argparser.add_argument("--quantile", type=float, default=0.75)
-    args = argparser.parse_args()
+    argparser.add_argument("--reweight", type=str, default="True")
 
-    QUANTILE = args.quantile
+    args = argparser.parse_args()
+    reweight = args.reweight.lower() == "true"
 
     initial_time = time.time()
 
-    csv_path = os.path.join(os.getcwd(), "ICML2025/data/scores_with_origin.csv")
+    csv_path = os.path.join(os.getcwd(), args.input)
     scores = pd.read_csv(csv_path, header=None)
-    scores.loc[:, 3] = np.vectorize(WEIGHTS_PER_ORIGIN.get)(scores.loc[:, 3])
+
+    if reweight:
+        scores.loc[:, 3] = np.vectorize(WEIGHTS_PER_ORIGIN.get)(scores.loc[:, 3])
+    else:
+        scores.loc[:, 3] = 1.0
 
     aggregated_data = []
     grouped = pd.DataFrame(scores).groupby([0, 1])
@@ -48,14 +55,14 @@ if __name__ == "__main__":
     for (paper_id, reviewer_id), group in grouped:
         scores = group[2].values
         weights = group[3].values
-        weighted_quantile_value = weighted_quantile(scores, weights, QUANTILE)
+        weighted_quantile_value = weighted_quantile(scores, weights, args.quantile)
         assert 0 <= weighted_quantile_value <= 1, f"Invalid affinity: {weighted_quantile_value}"
         aggregated_data.append([paper_id, reviewer_id, weighted_quantile_value])
 
     # Create a DataFrame and save it to a CSV file
     aggregated_df = pd.DataFrame(aggregated_data)
 
-    output_path = f"ICML2025/data/aggregated_scores_q_{QUANTILE}.csv"
+    output_path = os.path.join(os.getcwd(), args.output)
     aggregated_df.to_csv(output_path, index=False, header=False)
 
     print(f"Processing completed in {time.time() - initial_time:.2f} seconds")
