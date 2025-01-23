@@ -1,10 +1,10 @@
-# The matcher for ICML 2025 follows the following structure:
-# * Aggregate the affinity scores
-# * Filter out suspicious bids, and translate them into numeric fields
-# * Compute one first matching assigning 3 reviewers to each submission
-#    * This matching requires two constraints: conflicts and no first-time reviewers
-# * Compute a second matching assigning a 4th reviewer to each submission
-#    * Constraints: keep previous matching, conflicts, geographical diversity
+# Measure execution time and print in hours, minutes, and seconds
+function print_time {
+	local elapsed=$1
+	printf "Elapsed time: %02d:%02d:%02d\n" $((elapsed/3600)) $((elapsed%3600/60)) $((elapsed%60))
+}
+
+start_time=$SECONDS
 
 # ----------------------------------------------------------------------------------
 # Hyper-parameters
@@ -36,6 +36,7 @@ pip install pandas
 # * $DATA_FOLDER/constraints/first_time_reviewer_constraints.csv
 
 echo "\nChecking required files..."
+step_start=$SECONDS
 for file in $DATA_FOLDER/scores_with_origin.csv $DATA_FOLDER/bids.csv \
 	$DATA_FOLDER/constraints/conflict_constraints.csv $DATA_FOLDER/constraints/first_time_reviewer_constraints.csv
 do
@@ -44,7 +45,7 @@ do
 		exit 1
 	fi
 done
-
+print_time $((SECONDS - step_start))
 echo "All required files exist."
 
 # Create the output folder
@@ -55,48 +56,36 @@ mkdir -p $ASSIGNMENTS_FOLDER
 # Pre-processing
 # ----------------------------------------------------------------------------------
 
-# Aggregate affinity scores using the 0.75 quantile
+step_start=$SECONDS
 python ICML2025/scripts/aggregate_scores.py \
 	--input $DATA_FOLDER/scores_with_origin.csv \
 	--output $DATA_FOLDER/aggregated_scores.csv \
 	--quantile $QUANTILE \
 	--reweight $UPWEIGHT_OR_PAPERS
+print_time $((SECONDS - step_start))
 
-# Filter out suspicious bids. TODO: implement
+step_start=$SECONDS
 bash ICML2025/scripts/secure-paper-bidding.sh
+print_time $((SECONDS - step_start))
 
-# Translate bids into numeric fields
+step_start=$SECONDS
 python ICML2025/scripts/translate_bids.py \
 	--input $DATA_FOLDER/bids.csv \
 	--output $DATA_FOLDER/numeric_bids.csv
+print_time $((SECONDS - step_start))
 
 # ---------------------------------------------------------------------------------
-# Initial Matching of 3 reviewers per paper. The 4th reviewer is assigned later
+# Initial Matching of 3 reviewers per paper
 # ---------------------------------------------------------------------------------
 
-# This matching requires two sources of constraints:
-# * $DATA_FOLDER/constraints/conflict_constraints.csv: [paper_id, reviewer_id, constraint]
-# * $DATA_FOLDER/constraints/first_time_reviewer_constraints.csv: [paper_id, reviewer_id, constraint]
-
-# For constraint files, the possible values for the constraint attribute are:
-# * -1: conflict
-# * 0: no effect
-# * 1: forced assignment
-
-# The matcher only accepts constraints in the form of a single CSV file, so we need to
-# aggregate the constraints into a single file.
+step_start=$SECONDS
 python ICML2025/scripts/join_conflicts.py \
 	--files $DATA_FOLDER/constraints/conflict_constraints.csv \
 		$DATA_FOLDER/constraints/first_time_reviewer_constraints.csv \
 	--output $DATA_FOLDER/constraints/constraints_for_first_matching.csv
+print_time $((SECONDS - step_start))
 
-# Initial matching. This expects the following files:
-# * $DATA_FOLDER/aggregated_scores.csv [paper_id, reviewer_id, score]
-# * $DATA_FOLDER/numeric_bids.csv: [paper_id, reviewer_id, numeric_bid]
-
-# The matcher computes and uses the following score:
-# weight_1 * affinity_score + weight_2 * numeric_bid
-
+step_start=$SECONDS
 python -m matcher \
 	--scores $DATA_FOLDER/aggregated_scores.csv $DATA_FOLDER/numeric_bids.csv \
 	--weights 1 1 \
@@ -107,37 +96,40 @@ python -m matcher \
 	--num_alternates 1 \
 	--solver Randomized \
 	--probability_limits $Q
-
 mv assignments.json $ASSIGNMENTS_FOLDER/first_matching.json
+print_time $((SECONDS - step_start))
 
-# Assignments in CSV format
+step_start=$SECONDS
 python ICML2025/scripts/json_to_csv.py \
 	--input $ASSIGNMENTS_FOLDER/first_matching.json \
 	--output $ASSIGNMENTS_FOLDER/first_matching.csv
+print_time $((SECONDS - step_start))
 
 # ---------------------------------------------------------------------------------
 # Second matching. Assign a 4th reviewer to each paper
 # ---------------------------------------------------------------------------------
 
-# Compute constraints based on the initial matching to ensure the first 2 reviewers
-# assigned to a paper remain the same.
+step_start=$SECONDS
 python ICML2025/scripts/extract_matching_constraints.py \
 	--assignments $ASSIGNMENTS_FOLDER/first_matching.json \
 	--output $DATA_FOLDER/constraints/constraints_after_matching.csv
+print_time $((SECONDS - step_start))
 
-# Compute constraints to ensure geographical diversity of reviewers. TODO: implement
+step_start=$SECONDS
 python ICML2025/scripts/geographical_diversity.py \
 	--assignments $ASSIGNMENTS_FOLDER/first_matching.csv \
 	--output $DATA_FOLDER/constraints/geographical_constraints.csv
+print_time $((SECONDS - step_start))
 
-# Compute the constraints for the second matching.
+step_start=$SECONDS
 python ICML2025/scripts/join_conflicts.py \
 	--files $DATA_FOLDER/constraints/conflict_constraints.csv \
 		$DATA_FOLDER/constraints/constraints_after_matching.csv \
 		$DATA_FOLDER/constraints/geographical_constraints.csv \
 	--output $DATA_FOLDER/constraints/constraints_for_second_matching.csv
+print_time $((SECONDS - step_start))
 
-# Run the matching with the new constraints.
+step_start=$SECONDS
 python -m matcher \
 	--scores $DATA_FOLDER/aggregated_scores.csv $DATA_FOLDER/numeric_bids.csv \
 	--weights 1 1 \
@@ -148,9 +140,14 @@ python -m matcher \
 	--num_alternates 1 \
 	--solver Randomized \
 	--probability_limits $Q
-
 mv assignments.json $ASSIGNMENTS_FOLDER/second_matching.json
+print_time $((SECONDS - step_start))
 
+step_start=$SECONDS
 python ICML2025/scripts/json_to_csv.py \
 	--input $ASSIGNMENTS_FOLDER/second_matching.json \
 	--output $ASSIGNMENTS_FOLDER/second_matching.csv
+print_time $((SECONDS - step_start))
+
+# Print total execution time
+print_time $((SECONDS - start_time))
