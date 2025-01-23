@@ -39,6 +39,7 @@ if __name__ == "__main__":
     args = argparser.parse_args()
     reweight = args.reweight.lower() == "true"
 
+    print(f"\nAggregating scores with quantile {args.quantile} and reweighting {reweight}")
     initial_time = time.time()
 
     csv_path = os.path.join(os.getcwd(), args.input)
