@@ -9,6 +9,8 @@ if __name__ == "__main__":
 
     args = argparser.parse_args()
 
+    print(f"\nFiltering bids with at least {args.min_pos_bids} positive bids")
+
     df = pd.read_csv(args.input, header=None, names=["paper_id", "reviewer_id", "bid"])
 
     # Group by reviewer_id and count the number of positive bids. Filter out reviewers
@@ -20,3 +22,5 @@ if __name__ == "__main__":
     df = df[df["reviewer_id"].isin(pos_bids.index)]
 
     df.to_csv(args.output, header=False, index=False)
+    
+    print(f"Done. Kept a total of {len(df)} bids")

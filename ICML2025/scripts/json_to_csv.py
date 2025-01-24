@@ -9,6 +9,8 @@ if __name__ == "__main__":
 
     args = argparser.parse_args()
 
+    print(f"\nConverting JSON to CSV")
+
     dfs = []
     with open(args.input, "r") as f:
         data = json.load(f)
@@ -21,3 +23,5 @@ if __name__ == "__main__":
     df = df[["paper_id", "user", "aggregate_score"]]
 
     df.to_csv(args.output, index=False, header=False)
+
+    print(f"Done. Converted {len(df)} rows")

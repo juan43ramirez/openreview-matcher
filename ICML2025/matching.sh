@@ -42,18 +42,17 @@ pip install pandas tqdm openreview-py
 # * $DATA_FOLDER/constraints/conflict_constraints.csv
 # * $DATA_FOLDER/constraints/first_time_reviewer_constraints.csv
 
-echo "\nChecking required files..."
-step_start=$SECONDS
+printf "\nChecking required files..."
 for file in $DATA_FOLDER/scores_with_origin.csv $DATA_FOLDER/bids.csv \
 	$DATA_FOLDER/constraints/conflict_constraints.csv $DATA_FOLDER/constraints/first_time_reviewer_constraints.csv
 do
 	if [ ! -f $file ]; then
-		echo "File $file does not exist."
+		printf "File $file does not exist."
 		exit 1
 	fi
 done
-print_time $((SECONDS - step_start))
-echo "All required files exist."
+print_time $((SECONDS - start_time))
+printf "All required files exist."
 
 # Create the output folder
 mkdir -p $ASSIGNMENTS_FOLDER
@@ -64,46 +63,45 @@ mkdir -p $ASSIGNMENTS_FOLDER
 # ----------------------------------------------------------------------------------
 
 # Aggregate affinity scores
-step_start=$SECONDS
 python ICML2025/scripts/aggregate_scores.py \
 	--input $DATA_FOLDER/scores_with_origin.csv \
 	--output $DATA_FOLDER/aggregated_scores.csv \
 	--quantile $QUANTILE \
 	--reweight $UPWEIGHT_OR_PAPERS
-print_time $((SECONDS - step_start))
+print_time $((SECONDS - start_time))
 
 
 # TODO: Filter out suspicious bids
 
 # Translate bids to numeric values
-step_start=$SECONDS
 python ICML2025/scripts/translate_bids.py \
 	--input $DATA_FOLDER/bids.csv \
 	--output $DATA_FOLDER/numeric_bids.csv
-print_time $((SECONDS - step_start))
+print_time $((SECONDS - start_time))
 
 # Filter out bids from reviewers that do not have at least 20 positive bids
-step_start=$SECONDS
 python ICML2025/scripts/filter_bids.py \
 	--input $DATA_FOLDER/numeric_bids.csv \
 	--output $DATA_FOLDER/filtered_bids.csv \
 	--min-pos-bids 20
-print_time $((SECONDS - step_start))
+print_time $((SECONDS - start_time))
 
 # ---------------------------------------------------------------------------------
 # Initial Matching of 3 reviewers per paper
 # ---------------------------------------------------------------------------------
 
 # Join constraints into a single file
-step_start=$SECONDS
-python ICML2025/scripts/join_conflicts.py \
+python ICML2025/scripts/join_constraints.py \
 	--files $DATA_FOLDER/constraints/conflict_constraints.csv \
 		$DATA_FOLDER/constraints/first_time_reviewer_constraints.csv \
 	--output $DATA_FOLDER/constraints/constraints_for_first_matching.csv
-print_time $((SECONDS - step_start))
+print_time $((SECONDS - start_time))
 
 # Matching
-step_start=$SECONDS
+printf "\n----------------------------------------"
+printf "\nStarting first matching..."
+printf "\n----------------------------------------\n"
+
 python -m matcher \
 	--scores $DATA_FOLDER/aggregated_scores.csv $DATA_FOLDER/filtered_bids.csv \
 	--weights 1 1 \
@@ -114,15 +112,15 @@ python -m matcher \
 	--num_alternates 1 \
 	--solver Randomized \
 	--probability_limits $Q
+
 mv assignments.json $ASSIGNMENTS_FOLDER/first_matching.json
-print_time $((SECONDS - step_start))
+print_time $((SECONDS - start_time))
 
 # Convert assignments JSON to CSV
-step_start=$SECONDS
 python ICML2025/scripts/json_to_csv.py \
 	--input $ASSIGNMENTS_FOLDER/first_matching.json \
 	--output $ASSIGNMENTS_FOLDER/first_matching.csv
-print_time $((SECONDS - step_start))
+print_time $((SECONDS - start_time))
 
 # ---------------------------------------------------------------------------------
 # Second matching. Assign a 4th reviewer to each paper
@@ -130,30 +128,30 @@ print_time $((SECONDS - step_start))
 
 # Extract constraints to enforce the previous matching of 3 reviewers per paper on
 # the second matching
-step_start=$SECONDS
 python ICML2025/scripts/extract_matching_constraints.py \
 	--assignments $ASSIGNMENTS_FOLDER/first_matching.json \
 	--output $DATA_FOLDER/constraints/constraints_after_matching.csv
-print_time $((SECONDS - step_start))
+print_time $((SECONDS - start_time))
 
 # Extract geographical diversity constraints
-step_start=$SECONDS
 python ICML2025/scripts/geographical_diversity.py \
 	--assignments $ASSIGNMENTS_FOLDER/first_matching.csv \
 	--output $DATA_FOLDER/constraints/geographical_constraints.csv
-print_time $((SECONDS - step_start))
+print_time $((SECONDS - start_time))
 
 # Join constraints into a single file
-step_start=$SECONDS
-python ICML2025/scripts/join_conflicts.py \
+python ICML2025/scripts/join_constraints.py \
 	--files $DATA_FOLDER/constraints/conflict_constraints.csv \
 		$DATA_FOLDER/constraints/constraints_after_matching.csv \
 		$DATA_FOLDER/constraints/geographical_constraints.csv \
 	--output $DATA_FOLDER/constraints/constraints_for_second_matching.csv
-print_time $((SECONDS - step_start))
+print_time $((SECONDS - start_time))
 
 # Matching
-step_start=$SECONDS
+printf "\n----------------------------------------"
+printf "\nStarting second matching..."
+printf "\n----------------------------------------\n"
+
 python -m matcher \
 	--scores $DATA_FOLDER/aggregated_scores.csv $DATA_FOLDER/filtered_bids.csv \
 	--weights 1 1 \
@@ -164,15 +162,14 @@ python -m matcher \
 	--num_alternates 1 \
 	--solver Randomized \
 	--probability_limits $Q
+
 mv assignments.json $ASSIGNMENTS_FOLDER/second_matching.json
-print_time $((SECONDS - step_start))
+print_time $((SECONDS - start_time))
 
 # Convert assignments JSON to CSV
-step_start=$SECONDS
 python ICML2025/scripts/json_to_csv.py \
 	--input $ASSIGNMENTS_FOLDER/second_matching.json \
 	--output $ASSIGNMENTS_FOLDER/second_matching.csv
-print_time $((SECONDS - step_start))
-
-# Print total execution time
 print_time $((SECONDS - start_time))
+
+printf "\nDone."

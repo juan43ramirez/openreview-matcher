@@ -104,7 +104,7 @@ if __name__ == "__main__":
 
     reviewer_ids = assignments[1].unique().tolist()
 
-    print("\nGetting reviewer emails for {} reviewers".format(len(reviewer_ids)))
+    print("Getting reviewer emails for {} reviewers".format(len(reviewer_ids)))
 
     reviewer_profiles_v1 = openreview.tools.get_profiles(client_v1, reviewer_ids)
     reviewer_profiles_v2 = openreview.tools.get_profiles(client_v2, reviewer_ids)
@@ -147,7 +147,7 @@ if __name__ == "__main__":
     # * -1 if the reviewer is from the same country as any of the authors
     # * 0 otherwise
 
-    print("\nComputing geographical diversity constraints")
+    print("Computing constraints")
 
     lines = []
 

@@ -8,21 +8,22 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    print(f"\nJoining conflicts")
+    print(f"\nJoining constraints")
 
     dfs = pd.read_csv(args.files[0], header=None)
     for file in args.files[1:]:
         new_df = pd.read_csv(file, header=None)
+        print(f"Joining {len(new_df)} constraints from {file}")
         dfs = dfs.merge(new_df, on=[dfs.columns[0], dfs.columns[1]], how="outer")
 
-    # There should be no row with both a conflict and a forced assignment
-    assert not ((dfs == -1) & (dfs == 1)).any().any(), "Conflict and forced assignment in the same row"
+    # There should be no row with both a constraint and a forced assignment
+    assert not ((dfs == -1) & (dfs == 1)).any().any(), "Constraint and forced assignment in the same row"
 
-    # Conflict aggregation
-    # * If there is any conflict (-1), the final value is -1
-    # * If there is no conflict (no -1), and there is a forced assignment (1),
+    # Constraint aggregation
+    # * If there is any constraint (-1), the final value is -1
+    # * If there is no constraint (no -1), and there is a forced assignment (1),
     #   the final value is 1
-    # * If there is no conflict (no -1), and there is no forced assignment (no 1),
+    # * If there is no constraint (no -1), and there is no forced assignment (no 1),
     #   the final value is 0
 
     def aggregate(row):
@@ -40,4 +41,4 @@ if __name__ == "__main__":
 
     dfs.to_csv(args.output, index=False, header=False)
 
-    print(f"Done. Joined {len(dfs)} conflicts")
+    print(f"Done. Resulting file has {len(dfs)} constraints")
