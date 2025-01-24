@@ -129,6 +129,7 @@ if __name__ == "__main__":
     df = df.append({'Code': 'EDU', 'Name': 'United States'}, ignore_index=True)
     df = df.append({'Code': 'UK', 'Name': 'United Kingdom'}, ignore_index=True)
     df = df.append({'Code': 'EU', 'Name': 'European Union'}, ignore_index=True)
+    df = df.append({'Code': 'GOV', 'Name': 'United States'}, ignore_index=True)
 
     country_mapping = dict(zip(df['Code'], df['Name']))
 
