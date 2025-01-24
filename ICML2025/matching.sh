@@ -17,17 +17,24 @@ export QUANTILE=0.75
 export UPWEIGHT_OR_PAPERS=True
 export Q=0.5 # Upper bound on the marginal probability of each reviewer-paper pair being matched, for "Randomized" matcher
 
+export OPENREVIEW_USERNAME="your_username"
+export OPENREVIEW_PASSWORD="your_password"
+
 # ----------------------------------------------------------------------------------
 # Setup
 # ----------------------------------------------------------------------------------
 
-# # For the matcher
-# conda create -n openreview-matcher python=3.10
-# conda activate openreview-matcher
-# pip install .
+# For the matcher
+conda create -n openreview-matcher python=3.10
+conda activate openreview-matcher
+pip install .
 
-# # For other scripts
-# pip install pandas
+# For other scripts
+pip install pandas tqdm openreview-py
+
+#
+# NOTE: the OR matcher requires a Gurobi license.
+#
 
 # Assert all required files exist
 # * $DATA_FOLDER/scores_with_origin.csv
