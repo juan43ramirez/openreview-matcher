@@ -15,6 +15,8 @@ if __name__ == "__main__":
         new_df = pd.read_csv(file, header=None)
         dfs = dfs.merge(new_df, on=[dfs.columns[0], dfs.columns[1]], how="outer")
 
+    # There should be no row with both a conflict and a forced assignment
+    assert not ((dfs == -1) & (dfs == 1)).any().any(), "Conflict and forced assignment in the same row"
 
     # Conflict aggregation
     # * If there is any conflict (-1), the final value is -1
@@ -30,9 +32,6 @@ if __name__ == "__main__":
             return 1
         else:
             return 0
-
-    # There should be no row with both a conflict and a forced assignment
-    assert not ((dfs == -1) & (dfs == 1)).any().any(), "Conflict and forced assignment in the same row"
 
     dfs["final"] = dfs.apply(aggregate, axis=1)
 
