@@ -14,14 +14,7 @@ def get_countries_from_emails(emails, country_mapping):
     countries = []
     for email in emails:
         domain = email.split('@')[-1].split('.')[-1] # get the last part of the domain
-
-        if domain == "edu":
-            # Assuming that all .edu domains are from the United States.
-            # Note that .edu.co domains are not necessarily from the US
-            country = "United States"
-        else:
-            country = country_mapping.get(domain.upper(), 'Unknown')
-
+        country = country_mapping.get(domain.upper(), 'Unknown')
         if country != 'Unknown':
             countries.append(country)
 
@@ -129,8 +122,14 @@ if __name__ == "__main__":
 
 
     # Download CSV directly
-    url = "https://datahub.io/core/country-list/r/data.csv"
+    url = "https://datahub.io/core/country-list/r/data.csv" # ISO 3166-1-alpha-2
     df = pd.read_csv(url)
+
+    # Add some common domains not included in ISO 3166-1-alpha-2
+    df = df.append({'Code': 'EDU', 'Name': 'United States'}, ignore_index=True)
+    df = df.append({'Code': 'UK', 'Name': 'United Kingdom'}, ignore_index=True)
+    df = df.append({'Code': 'EU', 'Name': 'European Union'}, ignore_index=True)
+
     country_mapping = dict(zip(df['Code'], df['Name']))
 
     submission_countries = []
