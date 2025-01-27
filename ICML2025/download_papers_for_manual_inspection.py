@@ -1,6 +1,10 @@
 """
 Downloads the papers for a set of a subsample of assignments for manual inspection.
-Expects a 'data/sample_matchings_manual.pkl' file obtained from the evaluation script.
+
+Instructions:
+   1. Expects a 'data/sample_matchings_manual.pkl' file obtained from the evaluation script.
+   2. Expects the OPEN_REVIEW_USERNAME and OPEN_REVIEW_PASSWORD environment variables to be set,
+   (or directly set the USERNAME and PASSWORD variables in the script)
 """
 import openreview
 from rich import print
@@ -108,15 +112,15 @@ if __name__ == '__main__':
     sample_matchings_path = 'data/sample_matchings_manual.pkl'
     output_path = 'data/matching_info'
     
-    # client1 = openreview.Client(
-    #     baseurl='https://api.openreview.net',
-    #     username=USERNAME, password=PASSWORD,
-    # ) 
-    # client2 = openreview.api.OpenReviewClient(
-    #     baseurl='https://api2.openreview.net',
-    #     username=USERNAME, password=PASSWORD,
-    # )
-    client1, client2 = None, None
+    client1 = openreview.Client(
+        baseurl='https://api.openreview.net',
+        username=USERNAME, password=PASSWORD,
+    ) 
+    client2 = openreview.api.OpenReviewClient(
+        baseurl='https://api2.openreview.net',
+        username=USERNAME, password=PASSWORD,
+    )
+    # client1, client2 = None, None
 
     if not os.path.exists(output_path):
         os.makedirs(output_path)
