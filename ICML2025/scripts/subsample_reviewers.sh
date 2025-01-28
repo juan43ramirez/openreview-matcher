@@ -1,6 +1,20 @@
+export DATA_FOLDER="ICML2025/data"
+export ASSIGNMENTS_FOLDER="ICML2025/assignments"
+
+export QUANTILE=1
+export UPWEIGHT_OR_PAPERS=True
+export Q=0.5 # Upper bound on the marginal probability of each reviewer-paper pair being matched, for "Randomized" matcher
+
+export OPENREVIEW_USERNAME="juan43.ramirez@gmail.com"
+export OPENREVIEW_PASSWORD="979montes"
+
 # Aggregate scores using the max across a reviewer's papers'
 echo "\nAggregating scores using max"
-python ICML2025/scripts/aggregate_scores.py --quantile 1
+python ICML2025/scripts/aggregate_scores.py \
+	--input $DATA_FOLDER/scores_with_origin.csv \
+	--output $DATA_FOLDER/aggregated_scores.csv \
+	--quantile $QUANTILE \
+	--reweight $UPWEIGHT_OR_PAPERS
 
 # Run an initial matching with all reviewers and:
 # * 10 reviewers per paper

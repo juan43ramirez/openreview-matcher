@@ -13,8 +13,8 @@ start_time=$SECONDS
 export DATA_FOLDER="ICML2025/data"
 export ASSIGNMENTS_FOLDER="ICML2025/assignments"
 
-export QUANTILE=0.75
-export UPWEIGHT_OR_PAPERS=True
+export QUANTILE=0.75 # Quantile to use for the aggregation of affinity scores
+export OR_PAPER_WEIGHT=1.5 # Weight of OR papers in the aggregation of scores
 export Q=0.5 # Upper bound on the marginal probability of each reviewer-paper pair being matched, for "Randomized" matcher
 
 export OPENREVIEW_USERNAME="your_username"
@@ -67,7 +67,7 @@ python ICML2025/scripts/aggregate_scores.py \
 	--input $DATA_FOLDER/scores_with_origin.csv \
 	--output $DATA_FOLDER/aggregated_scores.csv \
 	--quantile $QUANTILE \
-	--reweight $UPWEIGHT_OR_PAPERS
+	--or_weight $OR_PAPER_WEIGHT
 print_time $((SECONDS - start_time))
 
 
@@ -107,7 +107,7 @@ python -m matcher \
 	--weights 1 1 \
 	--constraints $DATA_FOLDER/constraints/constraints_for_first_matching.csv \
 	--min_papers_default 0 \
-	--max_papers_default 6 \
+	--max_papers_default 5 \
 	--num_reviewers 3 \
 	--num_alternates 1 \
 	--solver Randomized \
