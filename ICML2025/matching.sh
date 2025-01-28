@@ -4,6 +4,8 @@ function print_time {
 	printf "Elapsed time: %02d:%02d:%02d\n" $((elapsed/3600)) $((elapsed%3600/60)) $((elapsed%60))
 }
 
+set -e  # Exit immediately if a command exits with a non-zero status
+
 start_time=$SECONDS
 
 # ----------------------------------------------------------------------------------
