@@ -1,10 +1,27 @@
+# ----------------------------------------------------------------------------------
+# Outline of the matching process for ICML 2025
+# * Aggregate Affinity Scores
+# * Pre-process bids
+# * Initial Matching of 3 reviewers per paper, with the following constraints:
+#   * Conflicts
+#   * No first-time reviewers
+# * Second Matching. Assign a 4th reviewer to each paper, with the following constraints:
+#   * Conflicts
+#   * Geographical diversity
+#   * Enforce the previous matching of 3 reviewers per paper
+# ----------------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------------
+# NOTE: the OpenReview matcher requires a Gurobi license.
+# ----------------------------------------------------------------------------------
+
+set -e  # Exit immediately if a command exits with a non-zero status
+
 # Measure execution time and print in hours, minutes, and seconds
 function print_time {
 	local elapsed=$1
 	printf "Elapsed time: %02d:%02d:%02d\n" $((elapsed/3600)) $((elapsed%3600/60)) $((elapsed%60))
 }
-
-set -e  # Exit immediately if a command exits with a non-zero status
 
 start_time=$SECONDS
 
@@ -43,11 +60,13 @@ pip install pandas tqdm openreview-py
 # * $DATA_FOLDER/scores_with_origin.csv
 # * $DATA_FOLDER/bids.csv
 # * $DATA_FOLDER/constraints/conflict_constraints.csv
-# * $DATA_FOLDER/constraints/first_time_reviewer_constraints.csv
+# * $DATA_FOLDER/constraints/first_time_reviewers.json
 
 printf "\nChecking required files..."
-for file in $DATA_FOLDER/scores_with_origin.csv $DATA_FOLDER/bids.csv \
-	$DATA_FOLDER/constraints/conflict_constraints.csv $DATA_FOLDER/constraints/first_time_reviewer_constraints.csv
+for file in $DATA_FOLDER/scores_with_origin.csv \
+	$DATA_FOLDER/bids.csv \
+	$DATA_FOLDER/constraints/conflict_constraints.csv \
+	$DATA_FOLDER/constraints/first_time_reviewers.json
 do
 	if [ ! -f $file ]; then
 		printf "File $file does not exist."
@@ -73,7 +92,6 @@ python ICML2025/scripts/aggregate_scores.py \
 	--or_weight $OR_PAPER_WEIGHT
 print_time $((SECONDS - start_time))
 
-
 # TODO: Filter out suspicious bids
 
 # Translate bids to numeric values
@@ -88,6 +106,12 @@ python ICML2025/scripts/filter_bids.py \
 	--output $DATA_FOLDER/filtered_bids.csv \
 	--min-pos-bids $MIN_POS_BIDS
 print_time $((SECONDS - start_time))
+
+# Prepare first-time reviewer constraints
+python ICML2025/scripts/extract_first_reviewer_constraints.py \
+	--papers $DATA_FOLDER/aggregated_scores.csv \
+	--first_time_reviewers $DATA_FOLDER/constraints/first_time_reviewers.json \
+	--output $DATA_FOLDER/constraints/first_time_reviewer_constraints.csv
 
 # ---------------------------------------------------------------------------------
 # Initial Matching of 3 reviewers per paper
@@ -113,6 +137,7 @@ python -m matcher \
 	--max_papers_default 5 \
 	--num_reviewers 3 \
 	--solver Randomized \
+	--allow_zero_score_assignments \
 	--probability_limits $Q
 
 mv assignments.json $ASSIGNMENTS_FOLDER/first_matching.json
@@ -163,6 +188,7 @@ python -m matcher \
 	--num_reviewers 4 \
 	--num_alternates 1 \
 	--solver Randomized \
+	--allow_zero_score_assignments \
 	--probability_limits $Q
 
 mv assignments.json $ASSIGNMENTS_FOLDER/second_matching.json

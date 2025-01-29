@@ -19,17 +19,15 @@ if __name__ == "__main__":
     #      },
     #  ...
     # }
-
-    # output is a CSV file with the following format:
-    # paper_id, review_id, 1
-
     with open(args.assignments, "r") as f:
         data = json.load(f)
 
+    # output is a CSV file with the following format:
+    # paper_id, review_id, 1
     rows = []
     for paper_id, reviews in data.items():
         for review in reviews:
-            rows.append((paper_id, review["user"], 1))
+            rows.append((paper_id, review["user"], 1)) # 1 means a forced assignment
 
     df = pd.DataFrame(rows) # [paper_id, review_id, constraint]
     df.to_csv(args.output, index=False, header=False)
