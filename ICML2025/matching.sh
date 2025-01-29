@@ -15,6 +15,7 @@ start_time=$SECONDS
 export DATA_FOLDER="ICML2025/data"
 export ASSIGNMENTS_FOLDER="ICML2025/assignments"
 
+export MIN_POS_BIDS=20 # minimum number of positive bids in order to take them into account
 export QUANTILE=0.75 # Quantile to use for the aggregation of affinity scores
 export OR_PAPER_WEIGHT=1.5 # Weight of OR papers in the aggregation of scores
 export Q=0.5 # Upper bound on the marginal probability of each reviewer-paper pair being matched, for "Randomized" matcher
@@ -85,7 +86,7 @@ print_time $((SECONDS - start_time))
 python ICML2025/scripts/filter_bids.py \
 	--input $DATA_FOLDER/numeric_bids.csv \
 	--output $DATA_FOLDER/filtered_bids.csv \
-	--min-pos-bids 20
+	--min-pos-bids $MIN_POS_BIDS
 print_time $((SECONDS - start_time))
 
 # ---------------------------------------------------------------------------------
@@ -111,7 +112,6 @@ python -m matcher \
 	--min_papers_default 0 \
 	--max_papers_default 5 \
 	--num_reviewers 3 \
-	--num_alternates 1 \
 	--solver Randomized \
 	--probability_limits $Q
 
