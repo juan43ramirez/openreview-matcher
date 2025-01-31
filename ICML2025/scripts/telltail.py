@@ -113,15 +113,15 @@ def detect_telltail(A, S_start):
         #print(f'size={np.sum(x)}, edges={(np.dot(x.T, np.dot(A, x)) / 2)[0, 0]:.0f}, score={score:.3f}, score_add={score_add:.3f}, score_del={score_del:.3f}', end=' ')
 
         if score >= score_add and score >= score_del:
-            print('-> local opt')
+            #print('-> local opt')
             break
         elif score_add >= score_del:
-            print('-> add')
+            #print('-> add')
             deg = deg + M[:, idx_add].reshape(-1, 1)
             x = x_add
             score = score_add
         else:
-            print('-> del')
+            #print('-> del')
             deg = deg - M[:, idx_del].reshape(-1, 1)
             x = x_del
             score = score_del
@@ -228,19 +228,24 @@ if __name__ == "__main__":
             edge = len(list(set(rev2bids[rev1]) & set(authors2sub_ids[rev2]))) > 0
             rev_rev_matrix[rev_id2index[rev1], rev_id2index[rev2]] = edge
 
+    # DEBUGGING
+    print("WARNING: Using a random graph for debugging.")
+    rev_rev_matrix = np.random.binomial(n=1, p=0.5, size=(10,10))
+
     print("Number of edges in the directed graph:", rev_rev_matrix.sum())
     print("Number of edges in the undirected graph:", (rev_rev_matrix * rev_rev_matrix.T).sum())
 
-    #import ipdb; ipdb.set_trace()
-
     # Run TellTail algorithm
     rng_init = np.random.RandomState(SEED)
-    #start_v = get_local_search_init(rev_rev_matrix)
-    start_v = np.argmax(rev_rev_matrix.sum(axis=0))  # Hack
+    start_v = get_local_search_init(rev_rev_matrix)
+    #start_v = np.argmax(rev_rev_matrix.sum(axis=0))  # Hack
     S_detect, method_param_string = run_telltail(rev_rev_matrix, start_v, rng_init)
 
+    S_detect_ids = [rev_index2id[index] for index in S_detect]
+    print("Potential colluders:", S_detect_ids)
+
 """
-I'm facing this error
+I'm facing this error when using the ICML2024 subset of bids... but code runs with a random graph
 
 /home/mila/l/lachaseb/openreview-matcher/ICML2025/scripts/telltail.py:68: RuntimeWarning: invalid value encountered in divide
   M = A - np.outer(d, d) / (2 * m)
