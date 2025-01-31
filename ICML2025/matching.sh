@@ -101,6 +101,7 @@ print_time $((SECONDS - start_time))
 
 # Prepare first-time reviewer constraints
 python ICML2025/scripts/fetch_first_reviewer_constraints.py \
+	--no_or_paper_reviewers $DATA_FOLDER/constraints/no_or_paper_reviewers.csv \
 	--output $DATA_FOLDER/constraints/first_time_reviewer_constraints.csv
 
 # Prepare conflict constraints
