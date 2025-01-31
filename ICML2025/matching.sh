@@ -40,8 +40,8 @@ export QUANTILE=0.75 # Quantile to use for the aggregation of affinity scores
 export OR_PAPER_WEIGHT=1.5 # Weight of OR papers in the aggregation of scores
 export Q=0.5 # Upper bound on the marginal probability of each reviewer-paper pair being matched, for "Randomized" matcher
 
-export OPENREVIEW_USERNAME="your_username"
-export OPENREVIEW_PASSWORD="your_password"
+export OPENREVIEW_USERNAME='xxx'
+export OPENREVIEW_PASSWORD='xxx'
 
 # ----------------------------------------------------------------------------------
 # Setup

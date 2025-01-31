@@ -1,44 +1,46 @@
 import pandas as pd
 import argparse
+from concurrent.futures import ThreadPoolExecutor
+import numpy as np
+
+def process_file(file):
+    """Reads a CSV file."""
+    return pd.read_csv(file, header=None)
+
+def aggregate(df):
+    """Efficiently perform constraint aggregation."""
+    # Vectorized aggregation logic using numpy for speed
+    constraints = (df.values == -1).any(axis=1)
+    forced_assignment = (df.values == 1).any(axis=1)
+    
+    # If there is any constraint (-1), the final value is -1
+    # If there is no constraint (no -1), and there is a forced assignment (1), the final value is 1
+    # If there is no constraint (no -1), and there is no forced assignment (no 1), the final value is 0
+    return np.select([constraints, forced_assignment], [-1, 1], default=0)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--files", type=str, nargs="+", help="List of files to join")
     parser.add_argument("--output", type=str, help="Output file")
-
+    
     args = parser.parse_args()
 
     print(f"\nJoining constraints")
 
-    dfs = pd.read_csv(args.files[0], header=None)
-    for file in args.files[1:]:
-        new_df = pd.read_csv(file, header=None)
-        print(f"Joining {len(new_df)} constraints from {file}")
-        dfs = dfs.merge(new_df, on=[dfs.columns[0], dfs.columns[1]], how="outer")
+    # Read and merge all files using ThreadPoolExecutor for parallel processing
+    with ThreadPoolExecutor() as executor:
+        dfs = list(executor.map(process_file, args.files))
 
-    # There should be no row with both a constraint and a forced assignment
-    assert not ((dfs == -1) & (dfs == 1)).any().any(), "Constraint and forced assignment in the same row"
+    # Concatenate all DataFrames at once for efficiency
+    final_df = pd.concat(dfs, axis=0, ignore_index=True)
 
-    # Constraint aggregation
-    # * If there is any constraint (-1), the final value is -1
-    # * If there is no constraint (no -1), and there is a forced assignment (1),
-    #   the final value is 1
-    # * If there is no constraint (no -1), and there is no forced assignment (no 1),
-    #   the final value is 0
+    # Perform aggregation using vectorized approach
+    final_df['final'] = aggregate(final_df)
 
-    def aggregate(row):
-        if -1 in row:
-            return -1
-        elif 1 in row:
-            return 1
-        else:
-            return 0
+    # Drop unnecessary columns
+    final_df = final_df[[0, 1, 'final']]
 
-    dfs["final"] = dfs.apply(aggregate, axis=1)
+    # Write the result to the output file
+    final_df.to_csv(args.output, index=False, header=False)
 
-    # Drop all columns except for paper_id, reviewer_id, and final
-    dfs = dfs[[0, 1, "final"]]
-
-    dfs.to_csv(args.output, index=False, header=False)
-
-    print(f"Done. Resulting file has {len(dfs)} constraints")
+    print(f"Done. Resulting file saved to {args.output}")
