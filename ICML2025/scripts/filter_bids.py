@@ -19,8 +19,8 @@ if __name__ == "__main__":
     pos_bids = pos_bids[pos_bids >= args.min_pos_bids]
 
     # Filter out reviewers with less than min-pos-bids
-    df = df[df["reviewer_id"].isin(pos_bids.index)]
+    filtered_bids = df[df["reviewer_id"].isin(pos_bids.index)]
 
-    df.to_csv(args.output, header=False, index=False)
+    filtered_bids.to_csv(args.output, header=False, index=False)
     
-    print(f"Done. Kept a total of {len(df)} bids")
+    print(f"Done. Kept a total of {len(filtered_bids)}/{len(df)} bids")
