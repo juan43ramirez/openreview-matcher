@@ -8,7 +8,7 @@ import time
 OR_USERNAME = os.environ.get('OPENREVIEW_USERNAME')
 OR_PASSWORD = os.environ.get('OPENREVIEW_PASSWORD')
 
-CONFERENCE_ID = 'ICML.cc/2024/Conference'
+CONFERENCE_ID = 'ICML.cc/2025/Conference'
 
 CLIENT_V1 = openreview.Client(
     baseurl='https://api.openreview.net',

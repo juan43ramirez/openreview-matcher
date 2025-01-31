@@ -52,21 +52,13 @@ pip install .
 # For other scripts
 pip install pandas tqdm openreview-py
 
-#
-# NOTE: the OR matcher requires a Gurobi license.
-#
-
-# Assert all required files exist
-# * $DATA_FOLDER/scores_with_origin.csv
+# Assert required files exist
+# * $DATA_FOLDER/scores.csv
 # * $DATA_FOLDER/bids.csv
-# * $DATA_FOLDER/constraints/conflict_constraints.csv
-# * $DATA_FOLDER/constraints/first_time_reviewers.json
 
 printf "\nChecking required files..."
-for file in $DATA_FOLDER/scores_with_origin.csv \
+for file in $DATA_FOLDER/scores.csv \
 	$DATA_FOLDER/bids.csv \
-	$DATA_FOLDER/constraints/conflict_constraints.csv \
-	$DATA_FOLDER/constraints/first_time_reviewers.json
 do
 	if [ ! -f $file ]; then
 		printf "File $file does not exist."
@@ -86,7 +78,7 @@ mkdir -p $ASSIGNMENTS_FOLDER
 
 # Aggregate affinity scores
 python ICML2025/scripts/aggregate_scores.py \
-	--input $DATA_FOLDER/scores_with_origin.csv \
+	--input $DATA_FOLDER/scores.csv \
 	--output $DATA_FOLDER/aggregated_scores.csv \
 	--quantile $QUANTILE \
 	--or_weight $OR_PAPER_WEIGHT
@@ -108,10 +100,12 @@ python ICML2025/scripts/filter_bids.py \
 print_time $((SECONDS - start_time))
 
 # Prepare first-time reviewer constraints
-python ICML2025/scripts/extract_first_reviewer_constraints.py \
-	--papers $DATA_FOLDER/aggregated_scores.csv \
-	--first_time_reviewers $DATA_FOLDER/constraints/first_time_reviewers.json \
+python ICML2025/scripts/fetch_first_reviewer_constraints.py \
 	--output $DATA_FOLDER/constraints/first_time_reviewer_constraints.csv
+
+# Prepare conflict constraints
+python ICML2025/scripts/fetch_conflict_constraints.py \
+	--output $DATA_FOLDER/constraints/conflict_constraints.csv
 
 # ---------------------------------------------------------------------------------
 # Initial Matching of 3 reviewers per paper
