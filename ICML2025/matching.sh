@@ -29,8 +29,11 @@ start_time=$SECONDS
 # Hyper-parameters
 # ----------------------------------------------------------------------------------
 
-export DATA_FOLDER="ICML2025/data"
-export ASSIGNMENTS_FOLDER="ICML2025/assignments"
+export SCORES_FOLDER="$SCRATCH/ICML2025"
+export DATA_FOLDER="$SCRATCH/ICML2025/data"
+export ASSIGNMENTS_FOLDER="$SCRATCH/ICML2025/assignments"
+
+mkdir -p $ASSIGNMENTS_FOLDER # create the output folder
 
 export MIN_POS_BIDS=20 # minimum number of positive bids in order to take them into account
 export QUANTILE=0.75 # Quantile to use for the aggregation of affinity scores
@@ -53,12 +56,14 @@ pip install .
 pip install pandas tqdm openreview-py
 
 # Assert required files exist
-# * $DATA_FOLDER/scores.csv
+# * $SCORES_FOLDER/scores.csv
 # * $DATA_FOLDER/bids.csv
+# * $DATA_FOLDER/constraints/no_or_paper_reviewers.csv
 
 printf "\nChecking required files..."
-for file in $DATA_FOLDER/scores.csv \
+for file in $SCORES_FOLDER/scores.csv \
 	$DATA_FOLDER/bids.csv \
+	$DATA_FOLDER/constraints/no_or_paper_reviewers.csv;
 do
 	if [ ! -f $file ]; then
 		printf "File $file does not exist."
@@ -68,20 +73,16 @@ done
 print_time $((SECONDS - start_time))
 printf "All required files exist."
 
-# Create the output folder
-mkdir -p $ASSIGNMENTS_FOLDER
-
-
 # ----------------------------------------------------------------------------------
 # Pre-processing
 # ----------------------------------------------------------------------------------
 
 # Aggregate affinity scores
 python ICML2025/scripts/aggregate_scores.py \
-	--input $DATA_FOLDER/scores.csv \
-	--output $DATA_FOLDER/aggregated_scores.csv \
+	--input $SCORES_FOLDER/scores.csv \
+	--output $SCORES_FOLDER/aggregated_scores.csv \
 	--quantile $QUANTILE \
-	--or_weight $OR_PAPER_WEIGHT
+	--or_weight $OR_PAPER_WEIGHT 
 print_time $((SECONDS - start_time))
 
 # TODO: Filter out suspicious bids
@@ -125,7 +126,7 @@ printf "\nStarting first matching..."
 printf "\n----------------------------------------\n"
 
 python -m matcher \
-	--scores $DATA_FOLDER/aggregated_scores.csv $DATA_FOLDER/filtered_bids.csv \
+	--scores $SCORES_FOLDER/aggregated_scores.csv $DATA_FOLDER/filtered_bids.csv \
 	--weights 1 1 \
 	--constraints $DATA_FOLDER/constraints/constraints_for_first_matching.csv \
 	--min_papers_default 0 \
