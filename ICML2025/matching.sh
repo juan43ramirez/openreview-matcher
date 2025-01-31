@@ -79,7 +79,7 @@ printf "All required files exist."
 
 # Aggregate affinity scores
 python ICML2025/scripts/aggregate_scores.py \
-	--input $SCORES_FOLDER/scores.csv \
+	--scores_folder $SCORES_FOLDER/scores \
 	--output $SCORES_FOLDER/aggregated_scores.csv \
 	--quantile $QUANTILE \
 	--or_weight $OR_PAPER_WEIGHT 
