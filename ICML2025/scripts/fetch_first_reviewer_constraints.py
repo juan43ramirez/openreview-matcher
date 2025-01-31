@@ -102,4 +102,8 @@ if __name__ == "__main__":
     first_time_and_no_or = len(no_or_paper_reviewers) - len(no_or_paper_reviewers_set)
     print(f"Number of reviewers with no OR papers and who are first-time reviewers: {first_time_and_no_or}")
 
+    num_submissions = len(submission_ids)
+    num_constrained_reviewers = len(no_or_paper_reviewers_set) + len(first_time_reviewers)
+    assert len(df) == num_submissions * num_constrained_reviewers, f"Expected {num_submissions * num_constrained_reviewers} constraints, got {len(df)}"
+    
     print(f"Extracted {len(df)} constraints, for a total of {len(no_or_paper_reviewers_set) + len(first_time_reviewers)} unique reviewers")
