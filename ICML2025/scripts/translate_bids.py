@@ -7,6 +7,7 @@ TRANSLATE_MAP = {
     "Neutral": 0,
     "Low": -0.5,
     "Very Low": -1,
+    "Conflict": -50 # Ensure that conflicts do not get selected
 }
 
 if __name__ == "__main__":
