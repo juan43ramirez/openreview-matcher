@@ -9,12 +9,6 @@ OR_PASSWORD = os.environ.get('OPENREVIEW_PASSWORD')
 
 CONFERENCE_ID = 'ICML.cc/2025/Conference'
 
-CLIENT_V1 = openreview.Client(
-    baseurl='https://api.openreview.net',
-    username=OR_USERNAME,
-    password=OR_PASSWORD,
-)
-
 CLIENT_V2 = openreview.api.OpenReviewClient(
     baseurl='https://api2.openreview.net',
     username=OR_USERNAME,
