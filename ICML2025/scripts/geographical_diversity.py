@@ -10,12 +10,6 @@ OR_PASSWORD = os.environ.get('OPENREVIEW_PASSWORD')
 
 CONFERENCE_ID = 'ICML.cc/2025/Conference'
 
-CLIENT_V1 = openreview.Client(
-    baseurl='https://api.openreview.net',
-    username=OR_USERNAME,
-    password=OR_PASSWORD,
-)
-
 CLIENT_V2 = openreview.api.OpenReviewClient(
     baseurl='https://api2.openreview.net',
     username=OR_USERNAME,
@@ -35,9 +29,9 @@ def get_countries_from_emails(emails, country_mapping):
     return countries
 
 
-def get_submission_emails(submission_ids):
+def get_submission_emails(submissions, submission_ids):
     submission_emails = []
-    for submission in all_submissions:
+    for submission in submissions:
         if submission.id in submission_ids:
             author_profiles = openreview.tools.get_profiles(CLIENT_V2, submission.content['authorids']['value'])
             author_emails = [profile.content['emails'] for profile in author_profiles]
@@ -49,17 +43,12 @@ def get_submission_emails(submission_ids):
 
 def get_reviewer_emails(reviewer_ids):
 
-    reviewer_profiles_v1 = openreview.tools.get_profiles(CLIENT_V1, reviewer_ids)
-    reviewer_profiles_v2 = openreview.tools.get_profiles(CLIENT_V2, reviewer_ids)
+    reviewer_profiles = openreview.tools.get_profiles(CLIENT_V2, reviewer_ids)
 
     reviewer_emails = []
-    for profile_v1, profile_v2 in zip(reviewer_profiles_v1, reviewer_profiles_v2):
-        emails_v1 = profile_v1.content.get('emails', [])
-        emails_v2 = profile_v2.content.get('emails', [])
-
-        assert emails_v1 == emails_v2, f"Emails for user {profile_v1.id} do not match across OpenReview API versions"
-
-        reviewer_emails.append((profile_v1.id, emails_v1))
+    for profile in reviewer_profiles:
+        emails = profile.content.get('emails', [])
+        reviewer_emails.append((profile.id, emails))
 
     return reviewer_emails
 
@@ -87,30 +76,17 @@ if __name__ == "__main__":
 
     print("\nGetting submission authors emails for {} submissions".format(len(submission_ids)))
 
-    # Code for getting all submissions below.
-    # NOTE: I did not find a way to get notes by submission ID
-    submissions_v1 = CLIENT_V1.get_all_notes(
-        invitation=f'{CONFERENCE_ID}/-/Submission',
-        )
-
     # This code gets *all* submissions, which may include withdrawn and desk-rejected papers
     venue_group = CLIENT_V2.get_group(CONFERENCE_ID)
     submission_name = venue_group.content['submission_name']['value']
-    submissions_v2 = CLIENT_V2.get_all_notes(invitation=f'{CONFERENCE_ID}/-/{submission_name}')
+    submissions = CLIENT_V2.get_all_notes(invitation=f'{CONFERENCE_ID}/-/{submission_name}')
+
+    submission_emails = get_submission_emails(submissions, submission_ids)
 
     # # This code gets submissions under review only
     # venue_group = client_v2.get_group(CONFERENCE_ID)
     # under_review_id = venue_group.content['submission_venue_id']['value']
     # submissions = client_v2.get_all_notes(content={'venueid': under_review_id})
-
-    all_submissions = submissions_v1 + submissions_v2
-    submission_emails = get_submission_emails(submission_ids)
-
-    # FIXME: this code is necessary since I do not have access to notes for rejected papers
-    # complete submission_emails list
-    for submission_id in submission_ids:
-        if submission_id not in [submission.id for submission in all_submissions]:
-            submission_emails.append((submission_id, []))
 
     assert len(submission_emails) == len(submission_ids), "Some submissions were not found"
 
