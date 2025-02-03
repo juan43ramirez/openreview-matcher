@@ -114,6 +114,13 @@ parser.add_argument(
     help="""JSON file with attribute constraints"""
 )
 
+# Output folder
+parser.add_argument(
+    "--output_folder",
+    help="Output folder for assignments and alternates",
+    default=".",
+)
+
 args = parser.parse_args()
 
 # Main Logic
@@ -288,8 +295,8 @@ match_data = {
     "num_alternates": num_alternates,
     "allow_zero_score_assignments": args.allow_zero_score_assignments,
     "attribute_constraints": attr_constraints,
-    "assignments_output": "assignments.json",
-    "alternates_output": "alternates.json",
+    "assignments_output": args.output_folder + "/assignments.json",
+    "alternates_output": args.output_folder + "/alternates.json",
     "logger": logger,
 }
 

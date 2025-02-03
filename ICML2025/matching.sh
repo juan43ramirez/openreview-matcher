@@ -1,3 +1,17 @@
+#!/bin/bash
+#SBATCH --reservation=ICML2025              # Reservation name
+#SBATCH --output=/home/mila/j/juan.ramirez/output/%x-%j.out           # Output file
+#SBATCH --error=/home/mila/j/juan.ramirez/output/%x-%j.err            # Error file
+#SBATCH --time=24:00:00                     # Time limit hrs:min:sec
+#SBATCH --ntasks=1                          # Number of tasks (cores)
+#SBATCH --cpus-per-task=10			        # Number of CPUs per task
+#SBATCH --mem=150GB                         # Memory limit
+#SBATCH --mail-type=ALL                     # Email notifications
+#SBATCH --mail-user=juan.ramirez@mila.quebec
+
+# Redirect stderr to stdout so both logs go to the same file
+exec 2>&1
+
 # ----------------------------------------------------------------------------------
 # Outline of the matching process for ICML 2025 Reviewers
 # * Aggregate Affinity Scores
@@ -10,6 +24,22 @@
 #   * Geographical diversity
 #   * Enforce the previous matching of 3 reviewers per paper
 # ----------------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------------
+# Setup
+# ----------------------------------------------------------------------------------
+
+# # For the matcher
+# module load anaconda
+# conda create -n openreview-matcher python=3.10
+# conda activate openreview-matcher
+# pip install .
+
+# # For other scripts
+# pip install pandas tqdm openreview-py dask pyarrow
+
+module load anaconda
+conda activate openreview-matcher
 
 # ----------------------------------------------------------------------------------
 # NOTE: the OpenReview matcher requires a Gurobi license.
@@ -29,40 +59,53 @@ start_time=$SECONDS
 # Hyper-parameters
 # ----------------------------------------------------------------------------------
 
-export SCORES_FOLDER="$SCRATCH/ICML2025"
-export DATA_FOLDER="$SCRATCH/ICML2025/data"
-export ASSIGNMENTS_FOLDER="$SCRATCH/ICML2025/assignments"
-
-mkdir -p $ASSIGNMENTS_FOLDER # create the output folder
+export DEBUG=False # Used to subsample submission and reviewer data
 
 export MIN_POS_BIDS=20 # minimum number of positive bids in order to take them into account
 export QUANTILE=0.75 # Quantile to use for the aggregation of affinity scores
 export OR_PAPER_WEIGHT=1.5 # Weight of OR papers in the aggregation of scores
 export Q=0.5 # Upper bound on the marginal probability of each reviewer-paper pair being matched, for "Randomized" matcher
 
-export OPENREVIEW_USERNAME='xxx'
-export OPENREVIEW_PASSWORD='xxx'
+export OPENREVIEW_USERNAME=''
+export OPENREVIEW_PASSWORD=''
 
-# ----------------------------------------------------------------------------------
-# Setup
-# ----------------------------------------------------------------------------------
 
-# For the matcher
-conda create -n openreview-matcher python=3.10
-conda activate openreview-matcher
-pip install .
+if [ -z "$SLURM_JOB_NAME" ] && [ -z "$SLURM_JOB_ID" ]; then
+    # Local execution (not running under SLURM or in an interactive session)
+    export ROOT_FOLDER="ICML2025"
+    export DATA_FOLDER="ICML2025/data"
+    export ASSIGNMENTS_FOLDER="ICML2025/assignments"
+elif [ -z "$SLURM_JOB_NAME" ]; then
+    # Interactive session
+    export ROOT_FOLDER="$SCRATCH/ICML2025"
+    export DATA_FOLDER="$SCRATCH/ICML2025/data"
+    export ASSIGNMENTS_FOLDER="$SCRATCH/ICML2025/assignments"
+else
+    # sbatch job
+    export ROOT_FOLDER="$SCRATCH/ICML2025/jobs/$SLURM_JOB_ID"
+    export DATA_FOLDER="$SCRATCH/ICML2025/jobs/$SLURM_JOB_ID/data"
+    export ASSIGNMENTS_FOLDER="$SCRATCH/ICML2025/jobs/$SLURM_JOB_ID/assignments"
+fi
 
-# For other scripts
-pip install pandas tqdm openreview-py
+mkdir -p $ROOT_FOLDER # create the scores folder
+mkdir -p $DATA_FOLDER # create the data folder
+mkdir -p $ASSIGNMENTS_FOLDER # create the output folder
+
+SCORES_FOLDER="$SCRATCH/ICML2025/scores" # folder with disaggregated score csv files
+
+# Copy data to the scratch folder
+rsync -av --exclude 'archives' $HOME/github/openreview-expertise/ICML2025/data/ $DATA_FOLDER
+
+# Copy first-time reviewer constraints to DATA_FOLDER/constraints
+mkdir -p $DATA_FOLDER/constraints
+cp $SCRATCH/ICML2025/no_or_paper_reviewers.csv $DATA_FOLDER/constraints
 
 # Assert required files exist
-# * $SCORES_FOLDER/scores.csv
 # * $DATA_FOLDER/bids.csv
 # * $DATA_FOLDER/constraints/no_or_paper_reviewers.csv
 
 printf "\nChecking required files..."
-for file in $SCORES_FOLDER/scores.csv \
-	$DATA_FOLDER/bids.csv \
+for file in $DATA_FOLDER/bids.csv \
 	$DATA_FOLDER/constraints/no_or_paper_reviewers.csv;
 do
 	if [ ! -f $file ]; then
@@ -77,10 +120,10 @@ printf "All required files exist."
 # Pre-processing
 # ----------------------------------------------------------------------------------
 
-# Aggregate affinity scores
+# Aggregate affinity scores - If DEBUG, only the first chunk of the scores file is used
 python ICML2025/scripts/aggregate_scores.py \
-	--scores_folder $SCORES_FOLDER/scores \
-	--output $SCORES_FOLDER/aggregated_scores.csv \
+	--scores_folder $SCORES_FOLDER \
+	--output $ROOT_FOLDER/aggregated_scores.csv \
 	--quantile $QUANTILE \
 	--or_weight $OR_PAPER_WEIGHT 
 print_time $((SECONDS - start_time))
@@ -110,6 +153,16 @@ python ICML2025/scripts/fetch_first_reviewer_constraints.py \
 python ICML2025/scripts/fetch_conflict_constraints.py \
 	--output $DATA_FOLDER/constraints/conflict_constraints.csv
 
+# If in DEBUG mode, subsample the scores, bids, and constraints. Will overwrite the
+# original files.
+if [ "$DEBUG" = "True" ]; then
+	python ICML2025/scripts/subsample.py \
+	--scores $ROOT_FOLDER/aggregated_scores.csv \
+	--bids $DATA_FOLDER/filtered_bids.csv \
+	--first_time_reviewer_constraints $DATA_FOLDER/constraints/first_time_reviewer_constraints.csv \
+	--conflict_constraints $DATA_FOLDER/constraints/conflict_constraints.csv
+fi
+
 # ---------------------------------------------------------------------------------
 # Initial Matching of 3 reviewers per paper
 # ---------------------------------------------------------------------------------
@@ -128,7 +181,7 @@ printf "\n----------------------------------------\n"
 
 start_time=$SECONDS
 python -m matcher \
-	--scores $SCORES_FOLDER/aggregated_scores.csv $DATA_FOLDER/filtered_bids.csv \
+	--scores $ROOT_FOLDER/aggregated_scores.csv $DATA_FOLDER/filtered_bids.csv \
 	--weights 1 1 \
 	--constraints $DATA_FOLDER/constraints/constraints_for_first_matching.csv \
 	--min_papers_default 0 \
@@ -136,9 +189,10 @@ python -m matcher \
 	--num_reviewers 3 \
 	--solver Randomized \
 	--allow_zero_score_assignments \
-	--probability_limits $Q
+	--probability_limits $Q \
+	--output_folder $ASSIGNMENTS_FOLDER
 
-mv assignments.json $ASSIGNMENTS_FOLDER/first_matching.json
+mv $ASSIGNMENTS_FOLDER/assignments.json $ASSIGNMENTS_FOLDER/first_matching.json
 print_time $((SECONDS - start_time))
 
 # Convert assignments JSON to CSV
@@ -179,7 +233,7 @@ printf "\n----------------------------------------\n"
 
 start_time=$SECONDS
 python -m matcher \
-	--scores $DATA_FOLDER/aggregated_scores.csv $DATA_FOLDER/filtered_bids.csv \
+	--scores $ROOT_FOLDER/aggregated_scores.csv $DATA_FOLDER/filtered_bids.csv \
 	--weights 1 1 \
 	--constraints $DATA_FOLDER/constraints/constraints_for_second_matching.csv \
 	--min_papers_default 0 \
@@ -188,9 +242,10 @@ python -m matcher \
 	--num_alternates 1 \
 	--solver Randomized \
 	--allow_zero_score_assignments \
-	--probability_limits $Q
+	--probability_limits $Q \
+	--output_folder $ASSIGNMENTS_FOLDER
 
-mv assignments.json $ASSIGNMENTS_FOLDER/second_matching.json
+mv $ASSIGNMENTS_FOLDER/assignments.json $ASSIGNMENTS_FOLDER/second_matching.json
 print_time $((SECONDS - start_time))
 
 # Convert assignments JSON to CSV
