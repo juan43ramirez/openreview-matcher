@@ -3,6 +3,7 @@ import pandas as pd
 import openreview
 import os
 import time
+from collections.abc import Iterable
 
 # Use environment variables to store the username and password
 OR_USERNAME = os.environ.get('OPENREVIEW_USERNAME')
@@ -71,24 +72,15 @@ if __name__ == "__main__":
     # Get email addresses of the submission authors
     # ---------------------------------------------------------------------------------
 
-
     submission_ids = assignments[0].unique().tolist()
 
     print("\nGetting submission authors emails for {} submissions".format(len(submission_ids)))
 
-    # This code gets *all* submissions, which may include withdrawn and desk-rejected papers
+    # This code gets submissions under review only
     venue_group = CLIENT_V2.get_group(CONFERENCE_ID)
-    submission_name = venue_group.content['submission_name']['value']
-    submissions = CLIENT_V2.get_all_notes(invitation=f'{CONFERENCE_ID}/-/{submission_name}')
-
+    under_review_id = venue_group.content['submission_venue_id']['value']
+    submissions = CLIENT_V2.get_all_notes(content={'venueid': under_review_id})
     submission_emails = get_submission_emails(submissions, submission_ids)
-
-    # # This code gets submissions under review only
-    # venue_group = client_v2.get_group(CONFERENCE_ID)
-    # under_review_id = venue_group.content['submission_venue_id']['value']
-    # submissions = client_v2.get_all_notes(content={'venueid': under_review_id})
-
-    assert len(submission_emails) == len(submission_ids), "Some submissions were not found"
 
     print("Done in {:.2f} seconds".format((time.time() - initial_time)))
     print("Recovered emails for {} submissions".format(len(submission_emails)))
@@ -156,10 +148,22 @@ if __name__ == "__main__":
     # Does the current assignment respect the geographical diversity constraint?
     # * -1 if all assigned reviewers show a country overlap with the union of the authors' countries
     # * 0 otherwise
-    assignments['overlap'] = assignments.apply(
-        lambda row: -1 if any([country in row['reviewer_countries'] for country in row['submission_countries']]) else 0,
-        axis=1
-    )
+    
+    def overlap(row):
+        if not isinstance(row['reviewer_countries'], Iterable):
+            reviewer_countries = []
+        else:
+            reviewer_countries = row["reviewer_countries"]
+
+        if not isinstance(row['submission_countries'], Iterable):
+            submission_countries = []
+        else:
+            submission_countries = row["submission_countries"]
+        
+        return -1 if any(country in reviewer_countries for country in submission_countries) else 0
+
+    assignments['overlap'] = assignments.apply(overlap, axis=1)
+
     assignments_diversity = assignments.groupby('paper_id')['overlap'].max() # if any reviewer is 0, result is 0
     violating_papers = assignments_diversity[assignments_diversity == -1]
     num_violations = len(violating_papers)

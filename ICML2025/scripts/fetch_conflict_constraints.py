@@ -17,18 +17,19 @@ CLIENT_V2 = openreview.api.OpenReviewClient(
 
 if __name__ == "__main__":
     argparser = argparse.ArgumentParser()
+    argparser.add_argument("--match_group", type=str, help="Match group")
     argparser.add_argument("--output", type=str, help="Output file")
 
     args = argparser.parse_args()
 
-    print(f"Fetching reviewer conflicts")
+    print(f"Fetching conflicts for match group {args.match_group}")
 
     # ---------------------------------------------------------
     # Get conflicts
     # ---------------------------------------------------------
 
     rev_conflicts=CLIENT_V2.get_grouped_edges(
-        invitation='ICML.cc/2025/Conference/Reviewers/-/Conflict',
+        invitation=f'{CONFERENCE_ID}/{args.match_group}/-/Conflict',
         groupby='tail',
         select='head'
     )
@@ -48,5 +49,8 @@ if __name__ == "__main__":
     df = pd.DataFrame(constraints)
     df.to_csv(args.output, index=False, header=False)
 
-    print(f"Done. Extracted {len(df)} conflict constraints")
+    num_papers = len(df[0].unique())
+    num_reviewers = len(df[1].unique())
+
+    print(f"Done. Extracted {len(df)} conflict constraints for {num_papers} papers and {num_reviewers} reviewers")
 

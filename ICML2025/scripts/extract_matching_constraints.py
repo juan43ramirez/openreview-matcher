@@ -32,5 +32,7 @@ if __name__ == "__main__":
     df = pd.DataFrame(rows) # [paper_id, review_id, constraint]
     df.to_csv(args.output, index=False, header=False)
 
-    print(f"Done. Extracted {len(df)} matching constraints")
+    num_submissions, num_reviewers = df[0].nunique(), df[1].nunique()
+
+    print(f"Done. Extracted {len(df)} matching constraints for {num_submissions} submissions and {num_reviewers} reviewers.")
 
