@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------------------
-# Outline of the matching process for ICML 2025
+# Outline of the matching process for ICML 2025 Reviewers
 # * Aggregate Affinity Scores
 # * Pre-process bids
 # * Initial Matching of 3 reviewers per paper, with the following constraints:
@@ -102,6 +102,7 @@ print_time $((SECONDS - start_time))
 
 # Prepare first-time reviewer constraints
 python ICML2025/scripts/fetch_first_reviewer_constraints.py \
+	--submission_ids $DATA_FOLDER/submission_ids.csv \
 	--no_or_paper_reviewers $DATA_FOLDER/constraints/no_or_paper_reviewers.csv \
 	--output $DATA_FOLDER/constraints/first_time_reviewer_constraints.csv
 
@@ -125,6 +126,7 @@ printf "\n----------------------------------------"
 printf "\nStarting first matching..."
 printf "\n----------------------------------------\n"
 
+start_time=$SECONDS
 python -m matcher \
 	--scores $SCORES_FOLDER/aggregated_scores.csv $DATA_FOLDER/filtered_bids.csv \
 	--weights 1 1 \
@@ -175,6 +177,7 @@ printf "\n----------------------------------------"
 printf "\nStarting second matching..."
 printf "\n----------------------------------------\n"
 
+start_time=$SECONDS
 python -m matcher \
 	--scores $DATA_FOLDER/aggregated_scores.csv $DATA_FOLDER/filtered_bids.csv \
 	--weights 1 1 \

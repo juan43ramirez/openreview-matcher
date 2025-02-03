@@ -71,22 +71,15 @@ if __name__ == "__main__":
     # Get email addresses of the submission authors
     # ---------------------------------------------------------------------------------
 
-
     submission_ids = assignments[0].unique().tolist()
 
     print("\nGetting submission authors emails for {} submissions".format(len(submission_ids)))
 
-    # This code gets *all* submissions, which may include withdrawn and desk-rejected papers
+    # This code gets submissions under review only
     venue_group = CLIENT_V2.get_group(CONFERENCE_ID)
-    submission_name = venue_group.content['submission_name']['value']
-    submissions = CLIENT_V2.get_all_notes(invitation=f'{CONFERENCE_ID}/-/{submission_name}')
-
+    under_review_id = venue_group.content['submission_venue_id']['value']
+    submissions = CLIENT_V2.get_all_notes(content={'venueid': under_review_id})
     submission_emails = get_submission_emails(submissions, submission_ids)
-
-    # # This code gets submissions under review only
-    # venue_group = client_v2.get_group(CONFERENCE_ID)
-    # under_review_id = venue_group.content['submission_venue_id']['value']
-    # submissions = client_v2.get_all_notes(content={'venueid': under_review_id})
 
     assert len(submission_emails) == len(submission_ids), "Some submissions were not found"
 

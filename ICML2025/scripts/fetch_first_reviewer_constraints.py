@@ -30,13 +30,6 @@ def fetch_first_time_reviewer_info():
         }
     return rev_info
 
-def fetch_submission_ids():
-    print(f"\nFetching submission ids")
-    venue_group = CLIENT_V2.get_group(CONFERENCE_ID)
-    submission_name = venue_group.content['submission_name']['value']
-    submissions = CLIENT_V2.get_all_notes(invitation=f'{CONFERENCE_ID}/-/{submission_name}')
-    return [submission.id for submission in submissions]
-
 def extract_constraints(submission_ids, rev_info, no_or_paper_reviewers):
     rows = []
     first_time_reviewers = set()
@@ -62,6 +55,7 @@ def extract_constraints(submission_ids, rev_info, no_or_paper_reviewers):
 
 if __name__ == "__main__":
     argparser = argparse.ArgumentParser()
+    argparser.add_argument("--submission_ids", type=str, required=True)
     argparser.add_argument("--no_or_paper_reviewers", type=str, required=True)
     argparser.add_argument("--output", type=str, required=True)
 
@@ -72,10 +66,9 @@ if __name__ == "__main__":
     # ---------------------------------------------------------
     with ThreadPoolExecutor() as executor:
         rev_info_future = executor.submit(fetch_first_time_reviewer_info)
-        submission_ids_future = executor.submit(fetch_submission_ids)
-
         rev_info = rev_info_future.result()
-        submission_ids = submission_ids_future.result()
+
+    submission_ids = pd.read_csv(args.submission_ids, header=None)[0].tolist()
 
     # ---------------------------------------------------------
     # Extract first-time reviewer constraints and no OR paper constraints
@@ -84,7 +77,7 @@ if __name__ == "__main__":
     no_or_paper_reviewers = set(pd.read_csv(args.no_or_paper_reviewers, header=None)[0])
 
     # Collect all constraints
-    rows, first_time_reviewers, no_or_paper_reviewers_set = extract_constraints(submission_ids, rev_info, no_or_paper_reviewers)
+    rows, first_time_reviewers, no_or_non_first_time = extract_constraints(submission_ids, rev_info, no_or_paper_reviewers)
 
     # ---------------------------------------------------------
     # Save the constraints to CSV
@@ -95,15 +88,22 @@ if __name__ == "__main__":
     # ---------------------------------------------------------
     # Print counts of first-time reviewers and reviewers with no OR papers
     # ---------------------------------------------------------
-    print(f"Number of first-time reviewers: {len(first_time_reviewers)}")
-    print(f"Number of reviewers with no OR papers: {len(no_or_paper_reviewers)}")
-
-    # Intersection of first-time reviewers and reviewers with no OR papers
-    first_time_and_no_or = len(no_or_paper_reviewers) - len(no_or_paper_reviewers_set)
-    print(f"Number of reviewers with no OR papers and who are first-time reviewers: {first_time_and_no_or}")
-
     num_submissions = len(submission_ids)
-    num_constrained_reviewers = len(no_or_paper_reviewers_set) + len(first_time_reviewers)
+
+    total_reviewers = len(rev_info)
+    num_first_time = len(first_time_reviewers)
+    num_no_or = len(no_or_paper_reviewers)
+    num_no_or_non_first_time = len(no_or_non_first_time)
+    num_constrained_reviewers = num_no_or_non_first_time + num_first_time
+
+    num_no_or_yes_first_time = num_no_or + num_first_time - num_constrained_reviewers
+
     assert len(df) == num_submissions * num_constrained_reviewers, f"Expected {num_submissions * num_constrained_reviewers} constraints, got {len(df)}"
-    
-    print(f"Extracted {len(df)} constraints, for a total of {len(no_or_paper_reviewers_set) + len(first_time_reviewers)} unique reviewers")
+    print(f"\nDone. Extracted constraints for {len(submission_ids)} submissions and {num_constrained_reviewers} reviewers")
+
+    print(f"\nTotal number of reviewers: {total_reviewers}")
+    print(f"Number of first-time reviewers: {num_first_time}")
+    print(f"Number of reviewers with no OR papers: {num_no_or}")
+    print(f"Number of reviewers with no OR papers and who are first-time reviewers (intersection): {num_no_or_yes_first_time}")
+
+    print(f"Extracted {len(df)} constraints, for a total of {num_no_or_non_first_time + num_first_time} unique reviewers")

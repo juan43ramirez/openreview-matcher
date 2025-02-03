@@ -48,5 +48,8 @@ if __name__ == "__main__":
     df = pd.DataFrame(constraints)
     df.to_csv(args.output, index=False, header=False)
 
-    print(f"Done. Extracted {len(df)} conflict constraints")
+    num_papers = len(df[0].unique())
+    num_reviewers = len(df[1].unique())
+
+    print(f"Done. Extracted {len(df)} conflict constraints for {num_papers} papers and {num_reviewers} reviewers")
 
