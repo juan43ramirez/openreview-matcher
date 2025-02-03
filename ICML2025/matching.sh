@@ -158,9 +158,9 @@ python ICML2025/scripts/fetch_conflict_constraints.py \
 if [ "$DEBUG" = "True" ]; then
 	python ICML2025/scripts/subsample.py \
 	--scores $ROOT_FOLDER/aggregated_scores.csv \
-	--bids $DATA_FOLDER/filtered_bids.csv \
-	--first_time_reviewer_constraints $DATA_FOLDER/constraints/first_time_reviewer_constraints.csv \
-	--conflict_constraints $DATA_FOLDER/constraints/conflict_constraints.csv
+	--files $DATA_FOLDER/filtered_bids.csv \
+		$DATA_FOLDER/constraints/first_time_reviewer_constraints.csv \
+		$DATA_FOLDER/constraints/conflict_constraints.csv
 fi
 
 # ---------------------------------------------------------------------------------
@@ -217,6 +217,15 @@ python ICML2025/scripts/geographical_diversity.py \
 	--assignments $ASSIGNMENTS_FOLDER/first_matching.csv \
 	--output $DATA_FOLDER/constraints/geographical_constraints.csv
 print_time $((SECONDS - start_time))
+
+# If in DEBUG mode, subsample the new constraints. Will overwrite the original files.
+if [ "$DEBUG" = "True" ]; then
+	python ICML2025/scripts/subsample.py \
+	--scores $ROOT_FOLDER/aggregated_scores.csv \
+	--files $DATA_FOLDER/filtered_bids.csv \
+		$DATA_FOLDER/constraints/constraints_after_matching.csv \
+		$DATA_FOLDER/constraints/geographical_constraints.csv
+fi
 
 # Join constraints into a single file
 python ICML2025/scripts/join_constraints.py \
