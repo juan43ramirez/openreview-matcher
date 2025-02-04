@@ -20,13 +20,13 @@ if __name__ == '__main__':
     result = pd.concat(dfs)
 
     # Assert that the number of reviewers per paper is the same accross papers
-    num_reviewers_per_paper = result.groupby(0).size().unique()
-    if not len(num_reviewers_per_paper) == 1:
+    num_reviewers_per_paper = result.groupby(0).size()
+    if not len(num_reviewers_per_paper).unique() == 1:
         raise AssertionError(f"Number of reviewers per paper is not the same accross papers: {num_reviewers_per_paper}")
 
     print(f"Resulting assignment has {num_reviewers_per_paper[0]} reviewers per paper")
 
-    num_reviews_per_reviewer = result.groupby(1).size().unique()
+    num_reviews_per_reviewer = result.groupby(1).size()
     print(f"Resulting assignment has a max of {max(num_reviews_per_reviewer)} reviews per reviewer")
 
     # Save as csv and json

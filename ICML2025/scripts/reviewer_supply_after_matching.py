@@ -41,5 +41,10 @@ if __name__ == "__main__":
 
     total_supply = counts["supply"].sum()
 
-    print(f"Done. Total reviewer supply: {total_supply}, as opposed to {args.max_papers * len(counts)} in the beginning.")
+    num_reviewers_without_supply = counts[counts["supply"] <= 0].shape[0]
+    print(f"\nNumber of reviewers without supply: {num_reviewers_without_supply}")
 
+    print(f"\nTotal reviewer supply (ignoring non-assigned reviewers): {total_supply}, as opposed to {args.max_papers * len(counts)} in the beginning.")
+    print(f"Average reviewer supply (ignoring non-assigned reviewers): {total_supply / len(counts)}, as opposed to {args.max_papers} in the beginning.")
+
+    print("\nDone!")

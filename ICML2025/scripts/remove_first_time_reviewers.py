@@ -77,6 +77,7 @@ if __name__ == "__main__":
 
     print(f"Number of first-time reviewers: {num_first_time_reviewers}")
     print(f"Number of reviewers with no OR papers: {num_no_or_paper_reviewers}")
+    print(f"Number of reviewers with either no OR papers or first-time reviewers (union): {num_removed_reviewers}")
     print(f"Number of reviewers with no OR papers and who are first-time reviewers (intersection): {num_intersection}")
 
     # ---------------------------------------------------------
@@ -92,26 +93,28 @@ if __name__ == "__main__":
     scores = pd.read_csv(args.scores, header=None)
     bids = pd.read_csv(args.bids, header=None)
     constraints = pd.read_csv(args.constraints, header=None)
-    total_num_reviewers = max(len(scores[1].unique()), len(bids[1].unique()), len(constraints[1].unique()))
-    num_kept_reviewers = total_num_reviewers - num_removed_reviewers
-    
-    print(f"\nTotal number of reviewers: {total_num_reviewers}")
-    print(f"Removing {num_removed_reviewers} first-time reviewers from scores, bids, and constraints")
-    print(f"Keeping {num_kept_reviewers} reviewers")
+
+    num_reviewers_with_scores = len(scores[1].unique())
+    num_reviewers_with_bids = len(bids[1].unique())
+    num_reviewers_with_constraints = len(constraints[1].unique())
+    total_num_reviewers = max(num_reviewers_with_scores, num_reviewers_with_bids, num_reviewers_with_constraints)
 
     scores = scores[~scores[1].isin(all_first_time_reviewers)]
-    print(f"Saving scores for {len(scores[1].unique())} reviewers to {args.output_prefix}_scores.csv")
+    print(f"\nSaving scores for {len(scores[1].unique())} reviewers, out of {num_reviewers_with_scores} reviewers")
     filename = Path(args.scores).parent / f"{args.output_prefix}_scores.csv"
     scores.to_csv(filename, header=False, index=False)
+    print(f"Saved filtered scores to {filename}")
 
     bids = bids[~bids[1].isin(all_first_time_reviewers)]
-    print(f"Saving bids for {len(bids[1].unique())} reviewers to {args.output_prefix}_bids.csv")
+    print(f"\nSaving bids for {len(bids[1].unique())} reviewers, out of {num_reviewers_with_bids} reviewers")
     filename = Path(args.bids).parent / f"{args.output_prefix}_bids.csv"
     bids.to_csv(filename, header=False, index=False)
+    print(f"Saved filtered bids to {filename}")
 
     constraints = constraints[~constraints[1].isin(all_first_time_reviewers)]
-    print(f"Saving constraints for {len(constraints[1].unique())} reviewers to {args.output_prefix}_constraints.csv")
+    print(f"\nSaving constraints for {len(constraints[1].unique())} reviewers, out of {num_reviewers_with_constraints} reviewers")
     filename = Path(args.constraints).parent / f"{args.output_prefix}_constraints.csv"
     constraints.to_csv(filename, header=False, index=False)
+    print(f"Saved filtered constraints to {filename}")
 
     print(f"\nDone!")

@@ -2,7 +2,7 @@
 #SBATCH --reservation=ICML2025              # Reservation name
 #SBATCH --output=/home/mila/j/juan.ramirez/output/%x-%j.out           # Output file
 #SBATCH --error=/home/mila/j/juan.ramirez/output/%x-%j.err            # Error file
-#SBATCH --time=24:00:00                     # Time limit hrs:min:sec
+#SBATCH --time=48:00:00                     # Time limit hrs:min:sec
 #SBATCH --ntasks=1                          # Number of tasks (cores)
 #SBATCH --cpus-per-task=10			        # Number of CPUs per task
 #SBATCH --mem=150GB                         # Memory limit
@@ -14,7 +14,7 @@ exec 2>&1
 
 # ----------------------------------------------------------------------------------
 # Outline of the matching process for ICML 2025 Reviewers
-# * Aggregate Affinity Scores
+# * Aggregate Affinity Scores (see aggregate_scores.sh)
 # * Pre-process bids
 # * Initial Matching of 3 reviewers per paper, with the following constraints:
 #   * Conflicts
@@ -59,18 +59,46 @@ start_time=$SECONDS
 # Hyper-parameters
 # ----------------------------------------------------------------------------------
 
+# -------------------------------- Edit these variables --------------------------------
+
 export DEBUG=False # Used to subsample submission and reviewer data
 
-export MAX_PAPERS=6 # Maximum number of papers each reviewer can review
+# # Max score: 1, 1, .55
+# export Q=.55 # Upper bound on the marginal probability of each reviewer-paper pair being matched, for "Randomized" matcher
+# export SCORES_FILE=aggregated_scores_max.csv
+
+# # Least conservative: .75, .5, .55
+# export Q=0.55
+# export SCORES_FILE=least_conservative.csv
+
+# # Moderately conservative: .825, .7, .7
+# export Q=0.7
+# export SCORES_FILE=moderately_conservative.csv
+
+# # Most conservative: .9, .9, .9
+# export Q=0.9
+# export SCORES_FILE=most_conservative.csv
+
+# # Emphasizing randomization: .825, .7, .55
+# export Q=0.55
+# export SCORES_FILE=emphasizing_randomization.csv
+
+# # Emphasizing non-OR weight: .825, .5, .7
+# export Q=0.7
+# export SCORES_FILE=emphasizing_non_or_weight.csv
+
+# # Emphasizing quantiles: .75, .7, .7
+# export Q=0.7
+# export SCORES_FILE=emphasizing_quantiles.csv
+
+export OPENREVIEW_USERNAME=''
+export OPENREVIEW_PASSWORD=''
+
+# ---------------------------- Do not edit these variables ----------------------------
+
+export MAX_PAPERS=5 # Maximum number of papers each reviewer can review
 export NUM_REVIEWS=4 # Number of reviewers per paper
-
-export MIN_POS_BIDS=20 # minimum number of positive bids in order to take them into account
-export QUANTILE=0.75 # Quantile to use for the aggregation of affinity scores
-export OR_PAPER_WEIGHT=1.5 # Weight of OR papers in the aggregation of scores
-export Q=0.5 # Upper bound on the marginal probability of each reviewer-paper pair being matched, for "Randomized" matcher
-
-
-
+export MIN_POS_BIDS=10 # minimum number of positive bids in order to take them into account
 
 if [ -z "$SLURM_JOB_NAME" ] && [ -z "$SLURM_JOB_ID" ]; then
     # Local execution (not running under SLURM or in an interactive session)
@@ -93,7 +121,26 @@ mkdir -p $ROOT_FOLDER # create the scores folder
 mkdir -p $DATA_FOLDER # create the data folder
 mkdir -p $ASSIGNMENTS_FOLDER # create the output folder
 
-SCORES_FOLDER="$SCRATCH/ICML2025/scores" # folder with disaggregated score csv files
+# Assert required files exist
+# * $HOME/github/openreview-expertise/ICML2025/data/bids.csv
+# * $SCRATCH/ICML2025/no_or_paper_reviewers.csv
+# * $SCRATCH/ICML2025/emergency-4plus-reviewers.csv
+# * $SCRATCH/ICML2025/reciprocal-reviewer-noBid.csv
+# * $SCRATCH/ICML2025/colluders.csv
+# * $SCRATCH/ICML2025/$SCORES_FILE
+
+for file in $HOME/github/openreview-expertise/ICML2025/data/bids.csv \
+	$SCRATCH/ICML2025/no_or_paper_reviewers.csv \
+	$SCRATCH/ICML2025/emergency-4plus-reviewers.csv \
+	$SCRATCH/ICML2025/reciprocal-reviewer-noBid.csv \
+	$SCRATCH/ICML2025/colluders.csv \
+	$SCRATCH/ICML2025/$SCORES_FILE
+do
+	if [ ! -f $file ]; then
+		echo "File $file does not exist."
+		exit 1
+	fi
+done
 
 # Copy data to the scratch folder
 rsync -av --exclude 'archives' $HOME/github/openreview-expertise/ICML2025/data/ $DATA_FOLDER
@@ -102,33 +149,38 @@ rsync -av --exclude 'archives' $HOME/github/openreview-expertise/ICML2025/data/ 
 mkdir -p $DATA_FOLDER/constraints
 cp $SCRATCH/ICML2025/no_or_paper_reviewers.csv $DATA_FOLDER/constraints
 
-# Assert required files exist
-# * $DATA_FOLDER/bids.csv
-# * $DATA_FOLDER/constraints/no_or_paper_reviewers.csv
+# Copy emergency reviewers to the root folder - they are ignored in the matching
+cp $SCRATCH/ICML2025/emergency-4plus-reviewers.csv $ROOT_FOLDER/emergency-4plus-reviewers.csv
+cp $SCRATCH/ICML2025/reciprocal-reviewer-noBid.csv $ROOT_FOLDER/reciprocal-reviewer-noBid.csv
 
-printf "\nChecking required files..."
-for file in $DATA_FOLDER/bids.csv \
-	$DATA_FOLDER/constraints/no_or_paper_reviewers.csv;
-do
-	if [ ! -f $file ]; then
-		printf "File $file does not exist."
-		exit 1
-	fi
-done
+# Copy scores to the root folder
+cp $SCRATCH/ICML2025/$SCORES_FILE $ROOT_FOLDER/scores.csv
+
+printf "\n----------------------------------------"
+printf "\nStarting matching..."
+printf "\n----------------------------------------\n"
+
+printf "\nHyper-parameters:"
+printf "\n----------------------------------------"
+printf "\nSCORES_FILE: $SCORES_FILE"
+printf "\nQ: $Q"
+printf "\nMAX_PAPERS: $MAX_PAPERS"
+printf "\nNUM_REVIEWS: $NUM_REVIEWS"
+printf "\nMIN_POS_BIDS: $MIN_POS_BIDS"
+printf "\nDEBUG: $DEBUG"
+printf "\nROOT_FOLDER: $ROOT_FOLDER"
+printf "\nDATA_FOLDER: $DATA_FOLDER"
+printf "\nASSIGNMENTS_FOLDER: $ASSIGNMENTS_FOLDER"
+
 print_time $((SECONDS - start_time))
-printf "All required files exist."
 
 # ----------------------------------------------------------------------------------
-# Pre-processing
+# Pre-process data
 # ----------------------------------------------------------------------------------
 
-# Aggregate affinity scores - If DEBUG, only the first chunk of the scores file is used
-python ICML2025/scripts/aggregate_scores.py \
-	--scores_folder $SCORES_FOLDER \
-	--output $ROOT_FOLDER/aggregated_scores.csv \
-	--quantile $QUANTILE \
-	--or_weight $OR_PAPER_WEIGHT 
-print_time $((SECONDS - start_time))
+printf "\n----------------------------------------"
+printf "\nPre-processing data..."
+printf "\n----------------------------------------\n"
 
 # TODO: Filter out suspicious bids
 
@@ -140,15 +192,27 @@ python ICML2025/scripts/filter_bids.py \
 print_time $((SECONDS - start_time))
 
 # Prepare conflict constraints
+printf "\n----------------------------------------"
 python ICML2025/scripts/fetch_conflict_constraints.py \
 	--match_group Reviewers \
 	--output $DATA_FOLDER/constraints/conflict_constraints.csv
 
+# Remove emergency reviewers from scores, bids, and constraints. NOTE: this will
+# overwrite the original files.
+printf "\n----------------------------------------"
+python ICML2025/scripts/exclude_reviewers.py \
+	--emergency_reviewers_files $ROOT_FOLDER/emergency-4plus-reviewers.csv \
+		$ROOT_FOLDER/reciprocal-reviewer-noBid.csv \
+	--files $ROOT_FOLDER/scores.csv \
+		$DATA_FOLDER/filtered_bids.csv \
+		$DATA_FOLDER/constraints/conflict_constraints.csv
+
 # If in DEBUG mode, subsample the scores, bids, and constraints. Will overwrite the
 # original files.
 if [ "$DEBUG" = "True" ]; then
+	printf "\n----------------------------------------"
 	python ICML2025/scripts/subsample.py \
-	--scores $ROOT_FOLDER/aggregated_scores.csv \
+	--scores $ROOT_FOLDER/scores.csv \
 	--files $DATA_FOLDER/filtered_bids.csv \
 		$DATA_FOLDER/constraints/conflict_constraints.csv
 fi
@@ -157,10 +221,12 @@ fi
 # Initial Matching of 3 reviewers per paper
 # ---------------------------------------------------------------------------------
 
-# Remove first-time reviewers from scores, bids, and constraints from the initial matching
+# Remove first-time reviewers from scores, bids, and constraints for the initial
+# matching only. Will produce new files with the prefix "first_matching_".
+printf "\n----------------------------------------"
 python ICML2025/scripts/remove_first_time_reviewers.py \
 	--no_or_paper_reviewers $DATA_FOLDER/no_or_paper_reviewers.csv \
-	--scores $ROOT_FOLDER/aggregated_scores.csv \
+	--scores $ROOT_FOLDER/scores.csv \
 	--bids $DATA_FOLDER/filtered_bids.csv \
 	--constraints $DATA_FOLDER/constraints/conflict_constraints.csv \
 	--output_prefix first_matching
@@ -176,7 +242,7 @@ python -m matcher \
 	--weights 1 1 \
 	--constraints $DATA_FOLDER/constraints/first_matching_constraints.csv \
 	--min_papers_default 0 \
-	--max_papers_default $(($MAX_PAPERS - 1)) \
+	--max_papers_default $MAX_PAPERS \
 	--num_reviewers $(($NUM_REVIEWS - 1)) \
 	--solver Randomized \
 	--allow_zero_score_assignments \
@@ -184,20 +250,27 @@ python -m matcher \
 	--output_folder $ASSIGNMENTS_FOLDER
 
 mv $ASSIGNMENTS_FOLDER/assignments.json $ASSIGNMENTS_FOLDER/first_matching.json
+mv $ASSIGNMENTS_FOLDER/alternates.json $ASSIGNMENTS_FOLDER/first_matching_alternates.json
 print_time $((SECONDS - start_time))
 
 # Convert assignments JSON to CSV for convenience
 python ICML2025/scripts/json_to_csv.py \
 	--input $ASSIGNMENTS_FOLDER/first_matching.json \
 	--output $ASSIGNMENTS_FOLDER/first_matching.csv
-print_time $((SECONDS - start_time))
+
+# Convert alternates JSON to CSV for convenience
+python ICML2025/scripts/json_to_csv.py \
+	--input $ASSIGNMENTS_FOLDER/first_matching_alternates.json \
+	--output $ASSIGNMENTS_FOLDER/first_matching_alternates.csv
 
 # ---------------------------------------------------------------------------------
 # Second matching. Assign a 4th reviewer to each paper
 # ---------------------------------------------------------------------------------
 
 # Extract the number of papers each reviewer can review in the second matching as
-# 6 - number of papers assigned in the first matching
+# MAX_PAPERS - number of papers assigned in the first matching
+# TODO: remove reviewers with 0 supply from reviewer list to speed up matching
+printf "\n----------------------------------------"
 python ICML2025/scripts/reviewer_supply_after_matching.py \
 	--assignments $ASSIGNMENTS_FOLDER/first_matching.json \
 	--max_papers $MAX_PAPERS \
@@ -205,20 +278,32 @@ python ICML2025/scripts/reviewer_supply_after_matching.py \
 print_time $((SECONDS - start_time))
 
 # Extract geographical diversity constraints
+printf "\n----------------------------------------"
 python ICML2025/scripts/geographical_diversity.py \
 	--assignments $ASSIGNMENTS_FOLDER/first_matching.csv \
 	--output $DATA_FOLDER/constraints/geographical_constraints.csv
 print_time $((SECONDS - start_time))
 
+# Remove emergency reviewers from the geographical constraints. While not necessary,
+# we also remove them from the reviewer supply after matching.
+printf "\n----------------------------------------"
+python ICML2025/scripts/exclude_reviewers.py \
+	--emergency_reviewers_files $ROOT_FOLDER/emergency-4plus-reviewers.csv \
+		$ROOT_FOLDER/reciprocal-reviewer-noBid.csv \
+	--files $DATA_FOLDER/constraints/geographical_constraints.csv \
+		$DATA_FOLDER/constraints/reviewer_supply_after_matching.csv
+
 # If in DEBUG mode, subsample the new constraints. Will overwrite the original files.
 if [ "$DEBUG" = "True" ]; then
+	printf "\n----------------------------------------"
 	python ICML2025/scripts/subsample.py \
-	--scores $ROOT_FOLDER/aggregated_scores.csv \
+	--scores $ROOT_FOLDER/scores.csv \
 	--files $DATA_FOLDER/constraints/reviewer_supply_after_matching.csv \
 		$DATA_FOLDER/constraints/geographical_constraints.csv
 fi
 
 # Join constraints into a single file
+printf "\n----------------------------------------"
 python ICML2025/scripts/join_constraints.py \
 	--files $DATA_FOLDER/constraints/conflict_constraints.csv \
 		$DATA_FOLDER/constraints/geographical_constraints.csv \
@@ -232,7 +317,7 @@ printf "\n----------------------------------------\n"
 
 start_time=$SECONDS
 python -m matcher \
-	--scores $ROOT_FOLDER/aggregated_scores.csv $DATA_FOLDER/filtered_bids.csv \
+	--scores $ROOT_FOLDER/scores.csv $DATA_FOLDER/filtered_bids.csv \
 	--weights 1 1 \
 	--constraints $DATA_FOLDER/constraints/constraints_for_second_matching.csv \
 	--min_papers_default 0 \
@@ -246,13 +331,21 @@ python -m matcher \
 	--output_folder $ASSIGNMENTS_FOLDER
 
 mv $ASSIGNMENTS_FOLDER/assignments.json $ASSIGNMENTS_FOLDER/second_matching.json
+mv $ASSIGNMENTS_FOLDER/alternates.json $ASSIGNMENTS_FOLDER/second_matching_alternates.json
 print_time $((SECONDS - start_time))
 
 # Convert assignments JSON to CSV for convenience
 python ICML2025/scripts/json_to_csv.py \
 	--input $ASSIGNMENTS_FOLDER/second_matching.json \
 	--output $ASSIGNMENTS_FOLDER/second_matching.csv
-print_time $((SECONDS - start_time))
+
+# Convert alternates JSON to CSV for convenience
+python ICML2025/scripts/json_to_csv.py \
+	--input $ASSIGNMENTS_FOLDER/second_matching_alternates.json \
+	--output $ASSIGNMENTS_FOLDER/second_matching_alternates.csv
+
+# ---------------------------------------------------------------------------------
+printf "\n----------------------------------------"
 
 # Join first and second matching assignments
 python ICML2025/scripts/join_assignments.py \
@@ -260,5 +353,6 @@ python ICML2025/scripts/join_assignments.py \
 		$ASSIGNMENTS_FOLDER/second_matching.csv \
 	--output $ASSIGNMENTS_FOLDER/final_assignments.csv
 
-
 printf "\nDone."
+printf "\nSCORES_FILE: $SCORES_FILE"
+printf "\nAssignments saved in $ASSIGNMENTS_FOLDER"
