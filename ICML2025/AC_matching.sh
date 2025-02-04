@@ -146,12 +146,6 @@ fi
 # Matching
 # ---------------------------------------------------------------------------------
 
-# Join constraints into a single file
-python ICML2025/scripts/join_constraints.py \
-	--files $DATA_FOLDER/constraints/conflict_constraints.csv \
-	--output $DATA_FOLDER/constraints/aggregated_constraints.csv
-print_time $((SECONDS - start_time))
-
 # Matching
 printf "\n----------------------------------------"
 printf "\nStarting first matching..."
@@ -161,7 +155,7 @@ start_time=$SECONDS
 python -m matcher \
 	--scores $ROOT_FOLDER/aggregated_scores.csv $DATA_FOLDER/filtered_bids.csv \
 	--weights 1 1 \
-	--constraints $DATA_FOLDER/constraints/aggregated_constraints.csv \
+	--constraints $DATA_FOLDER/constraints/conflict_constraints.csv \
 	--min_papers_default 0 \
 	--max_papers_default 10 \
 	--num_reviewers 1 \

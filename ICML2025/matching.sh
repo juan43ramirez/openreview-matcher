@@ -143,12 +143,6 @@ python ICML2025/scripts/filter_bids.py \
 	--min-pos-bids $MIN_POS_BIDS
 print_time $((SECONDS - start_time))
 
-# Prepare first-time reviewer constraints
-python ICML2025/scripts/fetch_first_reviewer_constraints.py \
-	--submission_ids $DATA_FOLDER/submission_ids.csv \
-	--no_or_paper_reviewers $DATA_FOLDER/constraints/no_or_paper_reviewers.csv \
-	--output $DATA_FOLDER/constraints/first_time_reviewer_constraints.csv
-
 # Prepare conflict constraints
 python ICML2025/scripts/fetch_conflict_constraints.py \
 	--match_group Reviewers \
@@ -160,7 +154,6 @@ if [ "$DEBUG" = "True" ]; then
 	python ICML2025/scripts/subsample.py \
 	--scores $ROOT_FOLDER/aggregated_scores.csv \
 	--files $DATA_FOLDER/filtered_bids.csv \
-		$DATA_FOLDER/constraints/first_time_reviewer_constraints.csv \
 		$DATA_FOLDER/constraints/conflict_constraints.csv
 fi
 
@@ -168,12 +161,13 @@ fi
 # Initial Matching of 3 reviewers per paper
 # ---------------------------------------------------------------------------------
 
-# Join constraints into a single file
-python ICML2025/scripts/join_constraints.py \
-	--files $DATA_FOLDER/constraints/conflict_constraints.csv \
-		$DATA_FOLDER/constraints/first_time_reviewer_constraints.csv \
-	--output $DATA_FOLDER/constraints/constraints_for_first_matching.csv
-print_time $((SECONDS - start_time))
+# Remove first-time reviewers from scores, bids, and constraints from the initial matching
+python ICML2025/scripts/remove_first_time_reviewers.py \
+	--no_or_paper_reviewers $DATA_FOLDER/no_or_paper_reviewers.csv \
+	--scores $ROOT_FOLDER/aggregated_scores.csv \
+	--bids $DATA_FOLDER/filtered_bids.csv \
+	--constraints $DATA_FOLDER/constraints/conflict_constraints.csv \
+	--output_prefix first_matching
 
 # Matching
 printf "\n----------------------------------------"
@@ -182,9 +176,9 @@ printf "\n----------------------------------------\n"
 
 start_time=$SECONDS
 python -m matcher \
-	--scores $ROOT_FOLDER/aggregated_scores.csv $DATA_FOLDER/filtered_bids.csv \
+	--scores $ROOT_FOLDER/first_matching_scores.csv $DATA_FOLDER/first_matching_bids.csv \
 	--weights 1 1 \
-	--constraints $DATA_FOLDER/constraints/constraints_for_first_matching.csv \
+	--constraints $DATA_FOLDER/constraints/first_matching_constraints.csv \
 	--min_papers_default 0 \
 	--max_papers_default 5 \
 	--num_reviewers 3 \
@@ -196,7 +190,7 @@ python -m matcher \
 mv $ASSIGNMENTS_FOLDER/assignments.json $ASSIGNMENTS_FOLDER/first_matching.json
 print_time $((SECONDS - start_time))
 
-# Convert assignments JSON to CSV
+# Convert assignments JSON to CSV for convenience
 python ICML2025/scripts/json_to_csv.py \
 	--input $ASSIGNMENTS_FOLDER/first_matching.json \
 	--output $ASSIGNMENTS_FOLDER/first_matching.csv
@@ -258,7 +252,7 @@ python -m matcher \
 mv $ASSIGNMENTS_FOLDER/assignments.json $ASSIGNMENTS_FOLDER/second_matching.json
 print_time $((SECONDS - start_time))
 
-# Convert assignments JSON to CSV
+# Convert assignments JSON to CSV for convenience
 python ICML2025/scripts/json_to_csv.py \
 	--input $ASSIGNMENTS_FOLDER/second_matching.json \
 	--output $ASSIGNMENTS_FOLDER/second_matching.csv
