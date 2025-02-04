@@ -109,7 +109,6 @@ if __name__ == "__main__":
     filename = Path(args.bids).parent / f"{args.output_prefix}_bids.csv"
     bids.to_csv(filename, header=False, index=False)
 
-    breakpoint()
     constraints = constraints[~constraints[1].isin(all_first_time_reviewers)]
     print(f"Saving constraints for {len(constraints[1].unique())} reviewers to {args.output_prefix}_constraints.csv")
     filename = Path(args.constraints).parent / f"{args.output_prefix}_constraints.csv"
