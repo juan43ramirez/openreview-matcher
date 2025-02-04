@@ -280,7 +280,7 @@ def top_k_scores(affinity_file, k=10):
 
     return top_scores
 
-def set_rev_assignments(assignments_by_forum, paper_numbers, label, venue_id):
+def set_rev_assignments(assignments_by_forum, paper_numbers, label, venue_id, invitation_name):
 
     assignment_edges = []
     score_edges = []
@@ -302,7 +302,7 @@ def set_rev_assignments(assignments_by_forum, paper_numbers, label, venue_id):
                     tail=user,
                     weight=score,
                     label=label,
-                    invitation=f"{venue_id}/Reviewers/-/Proposed_Assignment",
+                    invitation=f"{venue_id}/Reviewers/-/{invitation_name}_Assignment",
                     readers=[venue_id,f"{venue_id}/Submission{paper_number}/Senior_Area_Chairs",f"{venue_id}/Submission{paper_number}/Area_Chairs",user],
                     nonreaders=[f"{venue_id}/Submission{paper_number}/Authors"],
                     writers=[venue_id,f"{venue_id}/Submission{paper_number}/Senior_Area_Chairs",f"{venue_id}/Submission{paper_number}/Area_Chairs"],
@@ -327,7 +327,7 @@ def set_rev_assignments(assignments_by_forum, paper_numbers, label, venue_id):
     return assignment_edges, score_edges
 
 
-def set_ac_assignments(assignments_by_forum, paper_numbers, label, venue_id):
+def set_ac_assignments(assignments_by_forum, paper_numbers, label, venue_id, invitation_name):
 
     assignment_edges = []
     score_edges = []
@@ -349,7 +349,7 @@ def set_ac_assignments(assignments_by_forum, paper_numbers, label, venue_id):
                     tail=user,
                     weight=score,
                     label=label,
-                    invitation=f"{venue_id}/Area_Chairs/-/Proposed_Assignment",
+                    invitation=f"{venue_id}/Area_Chairs/-/{invitation_name}_Assignment",
                     readers=[venue_id,f"{venue_id}/Submission{paper_number}/Senior_Area_Chairs",user],
                     nonreaders=[f"{venue_id}/Submission{paper_number}/Authors"],
                     writers=[venue_id,f"{venue_id}/Submission{paper_number}/Senior_Area_Chairs"],
@@ -373,24 +373,26 @@ def set_ac_assignments(assignments_by_forum, paper_numbers, label, venue_id):
     
     return assignment_edges, score_edges
 
-def post_assignments(assignment_title, assignment_file, match_group='reviewers'):
+def post_assignments(assignment_title, assignment_file, match_group, invitation_name):
+    
+    print(f"\nPosting {match_group} assignments from {assignment_file}")
     assignment_dict=json.load(open(assignment_file))
 
     active_submissions = CLIENT_V2.get_all_notes(content={'venueid': 'ICML.cc/2025/Conference/Submission'})
     forum_number={s.id:s.number for s in active_submissions} # map paper forum id to paper number
 
     if match_group == 'reviewers':
-        assignment_edges, score_edges = set_rev_assignments(assignment_dict, forum_number, assignment_title, CONFERENCE_ID)
+        assignment_edges, score_edges = set_rev_assignments(assignment_dict, forum_number, assignment_title, CONFERENCE_ID, invitation_name)
     elif match_group == 'area_chairs':
-        assignment_edges, score_edges = set_ac_assignments(assignment_dict, forum_number, assignment_title, CONFERENCE_ID)
+        assignment_edges, score_edges = set_ac_assignments(assignment_dict, forum_number, assignment_title, CONFERENCE_ID, invitation_name)
     else:
         raise ValueError(f"Unknown match group: {match_group}")
 
     post=openreview.tools.post_bulk_edges(CLIENT_V2, assignment_edges)
     post=openreview.tools.post_bulk_edges(CLIENT_V2, score_edges)
     
-    return assignment_edges, score_edges
-
+    print(f"Posted {len(assignment_edges)} {match_group} assignments")
+    
 def delete_invitation(invitation_name):
     CLIENT_V2.delete_edges(invitation=f'ICML.cc/2025/Conference/Reviewers/-/{invitation_name}')
     CLIENT_V2.delete_edges(invitation=f'ICML.cc/2025/Conference/Area_Chairs/-/{invitation_name}')
@@ -427,8 +429,8 @@ if __name__ == '__main__':
     # Upload affinity scores
     # -----------------------------------------------------------------
 
-    # # Delete previous invitation. Commented out to keep history of previous uploads
-    # delete_invitation(args.invitation_name)
+    # Delete previous invitation. Commented out to keep history of previous uploads
+    delete_invitation(args.invitation_name)
 
     # Create invitations for uploading affinity scores. Hard-deleting the previous
     # invitation first
@@ -448,20 +450,26 @@ if __name__ == '__main__':
     # -----------------------------------------------------------------
     print(f"\nUploading assignments...")
 
+    # Delete invitation
+    delete_invitation(args.invitation_name + '_Assignment')
+    create_invitation(args.invitation_name + '_Assignment')
+
     # ----------------------- Reviewers -----------------------
     if args.reviewer_assignment_file is not None:
-        print(f"\nReading reviewer assignments from {args.reviewer_assignment_file}")
-        rev_assignment_edges, rev_score_edges = post_assignments(
-            args.reviewer_assignment_title, args.reviewer_assignment_file, match_group='reviewers'
-            )
-        print(f"Posted {len(rev_assignment_edges)} reviewer assignments")
+        post_assignments(
+            args.reviewer_assignment_title,
+            args.reviewer_assignment_file,
+            match_group='reviewers',
+            invitation_name=args.invitation_name
+        )
 
     # ----------------------- Area Chairs -----------------------
     if args.ac_assignment_file is not None:
-        print(f"\nReading area chair assignments from {args.ac_assignment_file}")
-        ac_assignment_edges, ac_score_edges = post_assignments(
-            args.ac_assignment_title, args.ac_assignment_file, match_group='area_chairs'
-            )
-        print(f"Posted {len(ac_assignment_edges)} area chair assignments")
+        post_assignments(
+            args.ac_assignment_title,
+            args.ac_assignment_file,
+            match_group='area_chairs',
+            invitation_name=args.invitation_name
+        )
 
     print(f"\nElapsed time: {time.time()-start_time:.2f} seconds")
