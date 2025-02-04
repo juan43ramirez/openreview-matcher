@@ -5,16 +5,17 @@ import json
 if __name__ == "__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument("--assignments", type=str, required=True)
+    argparser.add_argument("--max_papers", type=int, required=True)
     argparser.add_argument("--output", type=str, required=True)
 
     args = argparser.parse_args()
 
-    print(f"\nExtracting matching constraints")
+    print(f"\nGathering reviewer supply after first matching")
 
     # assignments is a json file with the following format:
     # {
     #     "paper_id": {
-    #         "review_id",
+    #         "reviewer_id",
     #         "score",
     #      },
     #  ...
@@ -23,16 +24,20 @@ if __name__ == "__main__":
         data = json.load(f)
 
     # output is a CSV file with the following format:
-    # paper_id, review_id, 1
-    rows = []
+    # reviewer_id, supply
+
+    # Count number of reviews per reviewer
+    counts = {}
     for paper_id, reviews in data.items():
         for review in reviews:
-            rows.append((paper_id, review["user"], 1)) # 1 means a forced assignment
+            reviewer_id = review["user"]
+            counts[reviewer_id] = counts.get(reviewer_id, 0) + 1
 
-    df = pd.DataFrame(rows) # [paper_id, review_id, constraint]
-    df.to_csv(args.output, index=False, header=False)
+    counts = pd.DataFrame(list(counts.items()), columns=["reviewer_id", "supply"])
+    
+    # Supply is max_papers - number of reviews
+    counts["supply"] = args.max_papers - counts["supply"]
+    counts.to_csv(args.output, index=False, header=False)
 
-    num_submissions, num_reviewers = df[0].nunique(), df[1].nunique()
-
-    print(f"Done. Extracted {len(df)} matching constraints for {num_submissions} submissions and {num_reviewers} reviewers.")
+    print(f"Done.")
 

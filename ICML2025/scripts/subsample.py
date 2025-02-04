@@ -21,7 +21,18 @@ if __name__ == '__main__':
     for file in args.files:
         print(f"\nSubsampling {file.split('/')[-1]}...")
         df = pd.read_csv(file, header=None)
-        df = df[df[0].isin(submissions) & df[1].isin(reviewers)]
-        num_submissions, num_reviewers = df[0].nunique(), df[1].nunique()
-        df.to_csv(file, header=False, index=False)
-        print(f"Subsampled {len(df)} constraints from {num_submissions} submissions and {num_reviewers} reviewers.")
+        
+        if len(df.columns) == 3:
+            # Three columns: submission, reviewer, score
+            df = df[df[0].isin(submissions) & df[1].isin(reviewers)]
+            num_submissions, num_reviewers = df[0].nunique(), df[1].nunique()
+            df.to_csv(file, header=False, index=False)
+            print(f"Subsampled {len(df)} constraints from {num_submissions} submissions and {num_reviewers} reviewers.")
+        elif len(df.columns) == 2:
+            # Two columns: reviewer, supply
+            df = df[df[0].isin(reviewers)]
+            num_reviewers = df[0].nunique()
+            df.to_csv(file, header=False, index=False)
+            print(f"Subsampled {len(df)} bids from {num_reviewers} reviewers.")
+        else:
+            raise ValueError(f"Invalid number of columns in {file}.")

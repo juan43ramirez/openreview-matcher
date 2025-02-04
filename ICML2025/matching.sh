@@ -61,13 +61,15 @@ start_time=$SECONDS
 
 export DEBUG=False # Used to subsample submission and reviewer data
 
+export MAX_PAPERS=6 # Maximum number of papers each reviewer can review
+export NUM_REVIEWS=4 # Number of reviewers per paper
+
 export MIN_POS_BIDS=20 # minimum number of positive bids in order to take them into account
 export QUANTILE=0.75 # Quantile to use for the aggregation of affinity scores
 export OR_PAPER_WEIGHT=1.5 # Weight of OR papers in the aggregation of scores
 export Q=0.5 # Upper bound on the marginal probability of each reviewer-paper pair being matched, for "Randomized" matcher
 
-export OPENREVIEW_USERNAME=''
-export OPENREVIEW_PASSWORD=''
+
 
 
 if [ -z "$SLURM_JOB_NAME" ] && [ -z "$SLURM_JOB_ID" ]; then
@@ -174,8 +176,8 @@ python -m matcher \
 	--weights 1 1 \
 	--constraints $DATA_FOLDER/constraints/first_matching_constraints.csv \
 	--min_papers_default 0 \
-	--max_papers_default 5 \
-	--num_reviewers 3 \
+	--max_papers_default $(($MAX_PAPERS - 1)) \
+	--num_reviewers $(($NUM_REVIEWS - 1)) \
 	--solver Randomized \
 	--allow_zero_score_assignments \
 	--probability_limits $Q \
@@ -194,11 +196,12 @@ print_time $((SECONDS - start_time))
 # Second matching. Assign a 4th reviewer to each paper
 # ---------------------------------------------------------------------------------
 
-# Extract constraints to enforce the previous matching of 3 reviewers per paper on
-# the second matching
-python ICML2025/scripts/extract_matching_constraints.py \
+# Extract the number of papers each reviewer can review in the second matching as
+# 6 - number of papers assigned in the first matching
+python ICML2025/scripts/reviewer_supply_after_matching.py \
 	--assignments $ASSIGNMENTS_FOLDER/first_matching.json \
-	--output $DATA_FOLDER/constraints/constraints_after_matching.csv
+	--max_papers $MAX_PAPERS \
+	--output $DATA_FOLDER/constraints/reviewer_supply_after_matching.csv
 print_time $((SECONDS - start_time))
 
 # Extract geographical diversity constraints
@@ -211,15 +214,13 @@ print_time $((SECONDS - start_time))
 if [ "$DEBUG" = "True" ]; then
 	python ICML2025/scripts/subsample.py \
 	--scores $ROOT_FOLDER/aggregated_scores.csv \
-	--files $DATA_FOLDER/filtered_bids.csv \
-		$DATA_FOLDER/constraints/constraints_after_matching.csv \
+	--files $DATA_FOLDER/constraints/reviewer_supply_after_matching.csv \
 		$DATA_FOLDER/constraints/geographical_constraints.csv
 fi
 
 # Join constraints into a single file
 python ICML2025/scripts/join_constraints.py \
 	--files $DATA_FOLDER/constraints/conflict_constraints.csv \
-		$DATA_FOLDER/constraints/constraints_after_matching.csv \
 		$DATA_FOLDER/constraints/geographical_constraints.csv \
 	--output $DATA_FOLDER/constraints/constraints_for_second_matching.csv
 print_time $((SECONDS - start_time))
@@ -235,8 +236,9 @@ python -m matcher \
 	--weights 1 1 \
 	--constraints $DATA_FOLDER/constraints/constraints_for_second_matching.csv \
 	--min_papers_default 0 \
-	--max_papers_default 6 \
-	--num_reviewers 4 \
+	--max_papers_default $MAX_PAPERS \
+	--max_papers $DATA_FOLDER/constraints/reviewer_supply_after_matching.csv \
+	--num_reviewers $NUM_REVIEWS \
 	--num_alternates 1 \
 	--solver Randomized \
 	--allow_zero_score_assignments \
@@ -251,5 +253,12 @@ python ICML2025/scripts/json_to_csv.py \
 	--input $ASSIGNMENTS_FOLDER/second_matching.json \
 	--output $ASSIGNMENTS_FOLDER/second_matching.csv
 print_time $((SECONDS - start_time))
+
+# Join first and second matching assignments
+python ICML2025/scripts/join_assignments.py \
+	--files $ASSIGNMENTS_FOLDER/first_matching.csv \
+		$ASSIGNMENTS_FOLDER/second_matching.csv \
+	--output $ASSIGNMENTS_FOLDER/final_assignments.csv
+
 
 printf "\nDone."
