@@ -39,5 +39,7 @@ if __name__ == "__main__":
     counts["supply"] = args.max_papers - counts["supply"]
     counts.to_csv(args.output, index=False, header=False)
 
-    print(f"Done.")
+    total_supply = counts["supply"].sum()
+
+    print(f"Done. Total reviewer supply: {total_supply}, as opposed to {args.max_papers * len(counts)} in the beginning.")
 

@@ -238,7 +238,7 @@ python -m matcher \
 	--min_papers_default 0 \
 	--max_papers_default $MAX_PAPERS \
 	--max_papers $DATA_FOLDER/constraints/reviewer_supply_after_matching.csv \
-	--num_reviewers $NUM_REVIEWS \
+	--num_reviewers 1 \
 	--num_alternates 1 \
 	--solver Randomized \
 	--allow_zero_score_assignments \
