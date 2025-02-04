@@ -130,15 +130,9 @@ print_time $((SECONDS - start_time))
 
 # TODO: Filter out suspicious bids
 
-# Translate bids to numeric values
-python ICML2025/scripts/translate_bids.py \
-	--input $DATA_FOLDER/bids.csv \
-	--output $DATA_FOLDER/numeric_bids.csv
-print_time $((SECONDS - start_time))
-
 # Filter out bids from reviewers that do not have at least 20 positive bids
 python ICML2025/scripts/filter_bids.py \
-	--input $DATA_FOLDER/numeric_bids.csv \
+	--input $DATA_FOLDER/bids.csv \
 	--output $DATA_FOLDER/filtered_bids.csv \
 	--min-pos-bids $MIN_POS_BIDS
 print_time $((SECONDS - start_time))

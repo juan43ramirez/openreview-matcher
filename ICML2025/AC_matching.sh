@@ -122,12 +122,6 @@ python ICML2025/scripts/aggregate_scores.py \
 	--or_weight $OR_PAPER_WEIGHT 
 print_time $((SECONDS - start_time))
 
-# Translate bids to numeric values
-python ICML2025/scripts/translate_bids.py \
-	--input $DATA_FOLDER/bids.csv \
-	--output $DATA_FOLDER/numeric_bids.csv
-print_time $((SECONDS - start_time))
-
 # Prepare conflict constraints
 python ICML2025/scripts/fetch_conflict_constraints.py \
 	--match_group Area_Chairs \
@@ -138,7 +132,7 @@ python ICML2025/scripts/fetch_conflict_constraints.py \
 if [ "$DEBUG" = "True" ]; then
 	python ICML2025/scripts/subsample.py \
 	--scores $ROOT_FOLDER/aggregated_scores.csv \
-	--files $DATA_FOLDER/filtered_bids.csv \
+	--files $DATA_FOLDER/bids.csv \
 		$DATA_FOLDER/constraints/conflict_constraints.csv
 fi
 
@@ -153,7 +147,7 @@ printf "\n----------------------------------------\n"
 
 start_time=$SECONDS
 python -m matcher \
-	--scores $ROOT_FOLDER/aggregated_scores.csv $DATA_FOLDER/filtered_bids.csv \
+	--scores $ROOT_FOLDER/aggregated_scores.csv $DATA_FOLDER/bids.csv \
 	--weights 1 1 \
 	--constraints $DATA_FOLDER/constraints/conflict_constraints.csv \
 	--min_papers_default 0 \
