@@ -28,11 +28,9 @@ if __name__ == "__main__":
     # Get conflicts
     # ---------------------------------------------------------
 
-    rev_conflicts=CLIENT_V2.get_grouped_edges(
-        invitation=f'{CONFERENCE_ID}/{args.match_group}/-/Conflict',
-        groupby='tail',
-        select='head'
-    )
+    invitation = f'{CONFERENCE_ID}/{args.match_group}/-/Conflict'
+    rev_conflicts=CLIENT_V2.get_grouped_edges(invitation=invitation, groupby='tail', select='head')
+    assert len(rev_conflicts) > 0, f"Could not find any conflicts for match group {args.match_group}"
 
     # ---------------------------------------------------------
     # Translate conflicts to constraints

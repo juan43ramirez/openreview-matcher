@@ -89,6 +89,7 @@ if __name__ == "__main__":
     # Filename: add prefix to the filename, not the parent directory
     filename = Path(args.no_or_paper_reviewers).parent / "first_time_reviewers.csv"
     all_first_time_reviewers.to_csv(filename, header=False, index=False)
+    all_first_time_reviewers = all_first_time_reviewers[0].values
 
     scores = pd.read_csv(args.scores, header=None)
     bids = pd.read_csv(args.bids, header=None)
