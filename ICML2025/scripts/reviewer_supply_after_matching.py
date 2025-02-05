@@ -6,7 +6,8 @@ if __name__ == "__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument("--assignments", type=str, required=True)
     argparser.add_argument("--max_papers", type=int, required=True)
-    argparser.add_argument("--output", type=str, required=True)
+    argparser.add_argument("--supply_output", type=str, required=True, help="Output file with reviewer supply")
+    argparser.add_argument("--exhausted_reviewers_output", type=str, required=True, help="Output file with exhausted reviewers")
 
     args = argparser.parse_args()
 
@@ -34,17 +35,21 @@ if __name__ == "__main__":
             counts[reviewer_id] = counts.get(reviewer_id, 0) + 1
 
     counts = pd.DataFrame(list(counts.items()), columns=["reviewer_id", "supply"])
-    
+
     # Supply is max_papers - number of reviews
     counts["supply"] = args.max_papers - counts["supply"]
-    counts.to_csv(args.output, index=False, header=False)
 
     total_supply = counts["supply"].sum()
-
-    num_reviewers_without_supply = counts[counts["supply"] <= 0].shape[0]
-    print(f"\nNumber of reviewers without supply: {num_reviewers_without_supply}")
-
     print(f"\nTotal reviewer supply (ignoring non-assigned reviewers): {total_supply}, as opposed to {args.max_papers * len(counts)} in the beginning.")
     print(f"Average reviewer supply (ignoring non-assigned reviewers): {total_supply / len(counts)}, as opposed to {args.max_papers} in the beginning.")
+
+    print(f"\nSaving reviewer supply to {args.supply_output}")
+    counts.to_csv(args.supply_output, index=False, header=False)
+
+    exhausted_reviewers = counts[counts["supply"] <= 0]
+    num_exhausted_reviewers = len(exhausted_reviewers)
+    print(f"\nNumber of reviewers without supply: {num_exhausted_reviewers}")
+    print(f"Saving exhausted reviewers to {args.exhausted_reviewers_output}")
+    exhausted_reviewers.to_csv(args.exhausted_reviewers_output, index=False, header=False)
 
     print("\nDone!")

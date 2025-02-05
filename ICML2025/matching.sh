@@ -142,6 +142,24 @@ do
 	fi
 done
 
+printf "\n----------------------------------------"
+printf "\nStarting matching..."
+printf "\n----------------------------------------\n"
+
+print_time $((SECONDS - start_time))
+
+printf "\nHyper-parameters:"
+printf "\n----------------------------------------"
+printf "\nSCORES_FILE: $SCORES_FILE"
+printf "\nQ: $Q"
+printf "\nMAX_PAPERS: $MAX_PAPERS"
+printf "\nNUM_REVIEWS: $NUM_REVIEWS"
+printf "\nMIN_POS_BIDS: $MIN_POS_BIDS"
+printf "\nDEBUG: $DEBUG"
+printf "\nROOT_FOLDER: $ROOT_FOLDER"
+printf "\nDATA_FOLDER: $DATA_FOLDER"
+printf "\nASSIGNMENTS_FOLDER: $ASSIGNMENTS_FOLDER"
+
 # Copy data to the scratch folder
 rsync -av --exclude 'archives' $HOME/github/openreview-expertise/ICML2025/data/ $DATA_FOLDER
 
@@ -156,23 +174,6 @@ cp $SCRATCH/ICML2025/reciprocal-reviewer-noBid.csv $ROOT_FOLDER/reciprocal-revie
 # Copy scores to the root folder
 cp $SCRATCH/ICML2025/$SCORES_FILE $ROOT_FOLDER/scores.csv
 
-printf "\n----------------------------------------"
-printf "\nStarting matching..."
-printf "\n----------------------------------------\n"
-
-printf "\nHyper-parameters:"
-printf "\n----------------------------------------"
-printf "\nSCORES_FILE: $SCORES_FILE"
-printf "\nQ: $Q"
-printf "\nMAX_PAPERS: $MAX_PAPERS"
-printf "\nNUM_REVIEWS: $NUM_REVIEWS"
-printf "\nMIN_POS_BIDS: $MIN_POS_BIDS"
-printf "\nDEBUG: $DEBUG"
-printf "\nROOT_FOLDER: $ROOT_FOLDER"
-printf "\nDATA_FOLDER: $DATA_FOLDER"
-printf "\nASSIGNMENTS_FOLDER: $ASSIGNMENTS_FOLDER"
-
-print_time $((SECONDS - start_time))
 
 # ----------------------------------------------------------------------------------
 # Pre-process data
@@ -197,16 +198,6 @@ python ICML2025/scripts/fetch_conflict_constraints.py \
 	--match_group Reviewers \
 	--output $DATA_FOLDER/constraints/conflict_constraints.csv
 
-# Remove emergency reviewers from scores, bids, and constraints. NOTE: this will
-# overwrite the original files.
-printf "\n----------------------------------------"
-python ICML2025/scripts/exclude_reviewers.py \
-	--emergency_reviewers_files $ROOT_FOLDER/emergency-4plus-reviewers.csv \
-		$ROOT_FOLDER/reciprocal-reviewer-noBid.csv \
-	--files $ROOT_FOLDER/scores.csv \
-		$DATA_FOLDER/filtered_bids.csv \
-		$DATA_FOLDER/constraints/conflict_constraints.csv
-
 # If in DEBUG mode, subsample the scores, bids, and constraints. Will overwrite the
 # original files.
 if [ "$DEBUG" = "True" ]; then
@@ -216,6 +207,17 @@ if [ "$DEBUG" = "True" ]; then
 	--files $DATA_FOLDER/filtered_bids.csv \
 		$DATA_FOLDER/constraints/conflict_constraints.csv
 fi
+
+# Remove emergency reviewers from scores, bids, and constraints. NOTE: this will
+# overwrite the original files.
+printf "\n----------------------------------------"
+python ICML2025/scripts/exclude_reviewers.py \
+	--exclude_reviewer_files $ROOT_FOLDER/emergency-4plus-reviewers.csv \
+		$ROOT_FOLDER/reciprocal-reviewer-noBid.csv \
+	--files $ROOT_FOLDER/scores.csv \
+		$DATA_FOLDER/filtered_bids.csv \
+		$DATA_FOLDER/constraints/conflict_constraints.csv
+
 
 # ---------------------------------------------------------------------------------
 # Initial Matching of 3 reviewers per paper
@@ -269,12 +271,12 @@ python ICML2025/scripts/json_to_csv.py \
 
 # Extract the number of papers each reviewer can review in the second matching as
 # MAX_PAPERS - number of papers assigned in the first matching
-# TODO: remove reviewers with 0 supply from reviewer list to speed up matching
 printf "\n----------------------------------------"
 python ICML2025/scripts/reviewer_supply_after_matching.py \
 	--assignments $ASSIGNMENTS_FOLDER/first_matching.json \
 	--max_papers $MAX_PAPERS \
-	--output $DATA_FOLDER/constraints/reviewer_supply_after_matching.csv
+	--supply_output $DATA_FOLDER/constraints/reviewer_supply_after_matching.csv \
+	--exhausted_reviewers_output $DATA_FOLDER/exhausted_reviewers.csv
 print_time $((SECONDS - start_time))
 
 # Extract geographical diversity constraints
@@ -284,13 +286,17 @@ python ICML2025/scripts/geographical_diversity.py \
 	--output $DATA_FOLDER/constraints/geographical_constraints.csv
 print_time $((SECONDS - start_time))
 
-# Remove emergency reviewers from the geographical constraints. While not necessary,
-# we also remove them from the reviewer supply after matching.
+# Remove emergency reviewers and reviewers without more reviews left before the
+# second matching.
 printf "\n----------------------------------------"
 python ICML2025/scripts/exclude_reviewers.py \
-	--emergency_reviewers_files $ROOT_FOLDER/emergency-4plus-reviewers.csv \
+	--exclude_reviewer_files $ROOT_FOLDER/emergency-4plus-reviewers.csv \
 		$ROOT_FOLDER/reciprocal-reviewer-noBid.csv \
-	--files $DATA_FOLDER/constraints/geographical_constraints.csv \
+		$DATA_FOLDER/exhausted_reviewers.csv \
+	--files $ROOT_FOLDER/scores.csv \
+		$DATA_FOLDER/filtered_bids.csv \
+		$DATA_FOLDER/constraints/conflict_constraints.csv \
+		$DATA_FOLDER/constraints/geographical_constraints.csv \
 		$DATA_FOLDER/constraints/reviewer_supply_after_matching.csv
 
 # If in DEBUG mode, subsample the new constraints. Will overwrite the original files.

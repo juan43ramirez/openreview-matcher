@@ -3,23 +3,26 @@ import pandas as pd
 
 if __name__ == "__main__":
     argparser = argparse.ArgumentParser()
-    argparser.add_argument("--emergency_reviewers_files", type=str, nargs="+", help="List of files with emergency reviewers")
+    argparser.add_argument("--exclude_reviewer_files", type=str, nargs="+", help="List of files with emergency reviewers")
     argparser.add_argument("--files", type=str, nargs="+", help="List of files to subsample")
 
     args = argparser.parse_args()
 
-    print(f"\nFiltering reviewers from the emergency reviewers list")
+    print(f"\nExcluding reviewers from files")
 
     emergency_reviewers = set()
-    for file in args.emergency_reviewers_files:
-        this_reviewers = set(pd.read_csv(file, header=None)[0])
+    for file in args.exclude_reviewer_files:
+        try:
+            this_reviewers = set(pd.read_csv(file, header=None)[0])
+        except pd.errors.EmptyDataError:
+            this_reviewers = set()
         emergency_reviewers = emergency_reviewers.union(this_reviewers)
 
-    print(f"Loaded {len(emergency_reviewers)} emergency reviewers")
+    print(f"Loaded {len(emergency_reviewers)} reviewers to exclude")
 
     for file in args.files:
 
-        print(f"\nRemoving emergency reviewers from {file}")
+        print(f"\nRemoving reviewers from {file}")
         df = pd.read_csv(file, header=None)
 
         if len(df.columns) == 3:

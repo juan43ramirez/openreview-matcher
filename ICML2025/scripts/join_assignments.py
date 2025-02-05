@@ -1,6 +1,9 @@
 import argparse
 import pandas as pd
 import json
+import warnings
+
+warnings.filterwarnings("ignore") # pandas deprecation warnings
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -21,13 +24,13 @@ if __name__ == '__main__':
 
     # Assert that the number of reviewers per paper is the same accross papers
     num_reviewers_per_paper = result.groupby(0).size()
-    if not len(num_reviewers_per_paper).unique() == 1:
+    if not len(num_reviewers_per_paper.unique()) == 1:
         raise AssertionError(f"Number of reviewers per paper is not the same accross papers: {num_reviewers_per_paper}")
 
-    print(f"Resulting assignment has {num_reviewers_per_paper[0]} reviewers per paper")
+    print(f"\nResulting assignment has {num_reviewers_per_paper[0]} reviewers per paper")
 
     num_reviews_per_reviewer = result.groupby(1).size()
-    print(f"Resulting assignment has a max of {max(num_reviews_per_reviewer)} reviews per reviewer")
+    print(f"Resulting assignment has a min of {min(num_reviews_per_reviewer)} and a max of {max(num_reviews_per_reviewer)} reviews per reviewer")
 
     # Save as csv and json
     result.to_csv(args.output, index=False, header=False)
@@ -37,4 +40,4 @@ if __name__ == '__main__':
     with open(args.output.replace('.csv', '.json'), 'w') as f:
         f.write(json.dumps(nested_json, indent=4))
 
-    print(f"Final assignment saved to {args.output}")
+    print(f"\nFinal assignment saved to {args.output}")

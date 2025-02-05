@@ -23,11 +23,19 @@ if __name__ == '__main__':
 
     print(f"\nSubsampling scores to {N} submissions and {N} reviewers...")
     # Subsample the number of papers to N for debugging purposes
-    sampled_submissions = np.random.choice(submissions, N, replace=False)
+    try:
+        sampled_submissions = np.random.choice(submissions, N, replace=False)
+    except ValueError:
+        print(f"Number of submissions is less than {N}.")
+        sampled_submissions = submissions
     scores = scores[scores[0].isin(sampled_submissions)]
 
     # Subsample the number of reviewers to N for debugging purposes
-    sampled_reviewers = np.random.choice(reviewers, N, replace=False)
+    try:
+        sampled_reviewers = np.random.choice(reviewers, N, replace=False)
+    except ValueError:
+        print(f"Number of reviewers is less than {N}.")
+        sampled_reviewers = reviewers
     scores = scores[scores[1].isin(sampled_reviewers)]
     scores.to_csv(args.scores, header=False, index=False)
 
