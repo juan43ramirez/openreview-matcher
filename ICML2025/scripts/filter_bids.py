@@ -23,4 +23,7 @@ if __name__ == "__main__":
 
     filtered_bids.to_csv(args.output, header=False, index=False)
     
-    print(f"Done. Kept a total of {len(filtered_bids)}/{len(df)} bids")
+    num_papers = len(filtered_bids["paper_id"].unique())
+    num_reviewers = len(filtered_bids["reviewer_id"].unique())
+    
+    print(f"Done. Kept a total of {len(filtered_bids)}/{len(df)} bids from {num_reviewers} reviewers to {num_papers} papers.")

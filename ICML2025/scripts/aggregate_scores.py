@@ -74,16 +74,11 @@ if __name__ == "__main__":
 
     weights_per_origin = {"OR": args.or_weight, "dblp": 1.0, "other": 1.0}
 
-    print(f"\nAggregating scores with quantile {args.quantile}")
+    print(f"\nAggregating scores with quantile {args.quantile} and weights {weights_per_origin}")
     start_time = time.time()
 
     csv_files = [os.path.join(args.scores_folder, f) for f in os.listdir(args.scores_folder) if f.endswith(".csv")]
     csv_files.sort()
-
-    DEBUG = os.environ.get("DEBUG", "False")
-
-    if DEBUG.lower() == "true":
-        csv_files = csv_files[:1]  # Process only the first file in debug mode
 
     num_workers = max(1, mp.cpu_count() - 1)  # Leave one core free
     print(f"Processing {len(csv_files)} files with {num_workers} workers")
@@ -94,15 +89,6 @@ if __name__ == "__main__":
 
     # Load the resulting dataframe for printing the number of unique papers and reviewers
     result_df = pd.read_csv(args.output, header=None)
-
-    num_reviewers = result_df[1].nunique()
-
-    if DEBUG.lower() == "true":
-        # Subsample the number of papers to match the number of reviewers
-        all_submissions = result_df[0].unique()
-        submissions_sample = np.random.choice(all_submissions, num_reviewers, replace=False)
-        result_df = result_df[result_df[0].isin(submissions_sample)]
-        result_df.to_csv(args.output, header=False, index=False)
 
     num_papers = result_df[0].nunique()
     num_reviewers = result_df[1].nunique()

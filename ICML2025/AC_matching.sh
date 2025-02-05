@@ -122,10 +122,11 @@ python ICML2025/scripts/aggregate_scores.py \
 	--or_weight $OR_PAPER_WEIGHT 
 print_time $((SECONDS - start_time))
 
-# Translate bids to numeric values
-python ICML2025/scripts/translate_bids.py \
+# Filter out bids from reviewers that do not have at least 20 positive bids
+python ICML2025/scripts/filter_bids.py \
 	--input $DATA_FOLDER/bids.csv \
-	--output $DATA_FOLDER/numeric_bids.csv
+	--output $DATA_FOLDER/filtered_bids.csv \
+	--min-pos-bids $MIN_POS_BIDS
 print_time $((SECONDS - start_time))
 
 # Prepare conflict constraints
@@ -146,12 +147,6 @@ fi
 # Matching
 # ---------------------------------------------------------------------------------
 
-# Join constraints into a single file
-python ICML2025/scripts/join_constraints.py \
-	--files $DATA_FOLDER/constraints/conflict_constraints.csv \
-	--output $DATA_FOLDER/constraints/aggregated_constraints.csv
-print_time $((SECONDS - start_time))
-
 # Matching
 printf "\n----------------------------------------"
 printf "\nStarting first matching..."
@@ -159,9 +154,9 @@ printf "\n----------------------------------------\n"
 
 start_time=$SECONDS
 python -m matcher \
-	--scores $ROOT_FOLDER/aggregated_scores.csv $DATA_FOLDER/filtered_bids.csv \
+	--scores $ROOT_FOLDER/aggregated_scores.csv $DATA_FOLDER/bids.csv \
 	--weights 1 1 \
-	--constraints $DATA_FOLDER/constraints/aggregated_constraints.csv \
+	--constraints $DATA_FOLDER/constraints/conflict_constraints.csv \
 	--min_papers_default 0 \
 	--max_papers_default 10 \
 	--num_reviewers 1 \
