@@ -166,18 +166,18 @@ printf "\nDATA_FOLDER: $DATA_FOLDER"
 printf "\nASSIGNMENTS_FOLDER: $ASSIGNMENTS_FOLDER"
 
 # Copy data to the scratch folder
-rsync -av --exclude 'archives' $SCRATCH/ICML2025/data/ $DATA_FOLDER
+rsync -av --exclude 'archives' $SCRATCH/ICML2025/$GROUP/data/ $DATA_FOLDER
 
 # Copy first-time reviewer constraints to DATA_FOLDER/constraints
 mkdir -p $DATA_FOLDER/constraints
-cp $SCRATCH/ICML2025/no_or_paper_reviewers.csv $DATA_FOLDER/constraints
+cp $SCRATCH/ICML2025/$GROUP/no_or_paper_reviewers.csv $DATA_FOLDER/constraints
 
 # Copy emergency reviewers to the root folder - they are ignored in the matching
-cp $SCRATCH/ICML2025/emergency-4plus-reviewers.csv $ROOT_FOLDER/emergency-4plus-reviewers.csv
-cp $SCRATCH/ICML2025/reciprocal-reviewer-noBid.csv $ROOT_FOLDER/reciprocal-reviewer-noBid.csv
+cp $SCRATCH/ICML2025/$GROUP/emergency-4plus-reviewers.csv $ROOT_FOLDER/emergency-4plus-reviewers.csv
+cp $SCRATCH/ICML2025/$GROUP/reciprocal-reviewer-noBid.csv $ROOT_FOLDER/reciprocal-reviewer-noBid.csv
 
 # Copy scores to the root folder
-cp $SCRATCH/ICML2025/$SCORES_FILE $ROOT_FOLDER/scores.csv
+cp $SCRATCH/ICML2025/$GROUP/$SCORES_FILE $ROOT_FOLDER/scores.csv
 
 
 # ----------------------------------------------------------------------------------

@@ -74,10 +74,11 @@ if __name__ == "__main__":
 
     # Filter out reviewers without supply
     constraints_df = constraints_df[~constraints_df[1].isin(exhausted_reviewers["reviewer_id"])]
+    num_constraints = len(constraints_df)
+    nun_constraints_reviewers = len(constraints_df[1].unique())
 
-    print(f"Saving remaining reviewer constraints to {args.remaining_reviewer_constraints_output}")
+    print(f"Saving {len(constraints_df)} constraints for {nun_constraints_reviewers} reviewers to {args.remaining_reviewer_constraints_output}")
 
     constraints_df.to_csv(args.remaining_reviewer_constraints_output, index=False, header=False)
-
 
     print("\nDone!")

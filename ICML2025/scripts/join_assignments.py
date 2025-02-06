@@ -39,5 +39,10 @@ if __name__ == '__main__':
     nested_json = result.groupby('paper_id').apply(lambda x: x[['user', 'aggregate_score']].to_dict(orient='records')).to_dict()
     with open(args.output.replace('.csv', '.json'), 'w') as f:
         f.write(json.dumps(nested_json, indent=4))
+    
+    # Assert that there are no duplicates in the assignment. If there are it means
+    # that a reviewer has been assigned to the same paper during the first and second
+    # matchings
+    assert len(result) == len(result.drop_duplicates()), "There are duplicates in the assignment"
 
     print(f"\nFinal assignment saved to {args.output}")
