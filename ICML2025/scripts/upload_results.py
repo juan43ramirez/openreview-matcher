@@ -4,6 +4,9 @@ import os
 import argparse
 import time
 import json
+import warnings
+
+warnings.filterwarnings("ignore")
 
 # Use environment variables to store the username and password
 OR_USERNAME = os.environ.get('OPENREVIEW_USERNAME')
@@ -380,7 +383,7 @@ def delete_invitation(invitation_name, match_group='Reviewers'):
     print(f"Found {len(rev_edges)} scores in invitation {score_edge_invitation}")
 
     if len(rev_edges) > 0:
-        delete_invitation(invitation_name, match_group=match_group)
+        CLIENT_V2.delete_edges(invitation=score_edge_invitation)
 
         while len(rev_edges) > 0:
             # Wait and check again
@@ -390,7 +393,6 @@ def delete_invitation(invitation_name, match_group='Reviewers'):
 
         print(f"Deleted previous scores")
         
-        CLIENT_V2.delete_edges(invitation=f'ICML.cc/2025/Conference/{match_group}/-/{invitation_name}')
 
     else:
         print(f"No previous scores to delete")
@@ -442,6 +444,8 @@ if __name__ == '__main__':
         --match_group $GROUP \
         --assignment_title "Emphasizing_quantiles_(.75-.7-.7)" \
         --assignment_file $ROOT_FOLDER/jobs/$jobid/assignments/assignments.json
+    
+
     """
 
     args = argparse.ArgumentParser()
@@ -483,22 +487,22 @@ if __name__ == '__main__':
     # top_scores = top_k_scores(args.affinity_file, args.k)
 
     # # Post affinity scores
-    # post_score_edges(args.invitation_name, top_scores)
+    # post_score_edges(args.invitation_name, top_scores, match_group=args.match_group)
 
 
-    # -----------------------------------------------------------------
-    # Delete previous assignments
-    # -----------------------------------------------------------------
+    # # -----------------------------------------------------------------
+    # # Delete previous assignments
+    # # -----------------------------------------------------------------
     
-    print(f"\nDeleting previous assignments for {args.match_group} under title {args.assignment_title}")
-    delete_assignments(args.assignment_title, match_group=args.match_group)
+    # print(f"\nDeleting previous assignments for {args.match_group} under title {args.assignment_title}")
+    # delete_assignments(args.assignment_title, match_group=args.match_group)
 
-    # -----------------------------------------------------------------
-    # Upload assignments
-    # -----------------------------------------------------------------
+    # # -----------------------------------------------------------------
+    # # Upload assignments
+    # # -----------------------------------------------------------------
 
-    print(f"\nUploading assignments...")
-    post_assignments(args.assignment_title, args.assignment_file, match_group=args.match_group)
+    # print(f"\nUploading assignments...")
+    # post_assignments(args.assignment_title, args.assignment_file, match_group=args.match_group)
 
 
     print(f"\nDone. Elapsed time: {time.time()-start_time:.2f} seconds")
