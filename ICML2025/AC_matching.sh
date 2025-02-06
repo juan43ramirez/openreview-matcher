@@ -233,18 +233,15 @@ python -m matcher \
 	--allow_zero_score_assignments \
 	--probability_limits $Q \
 	--output_folder $ASSIGNMENTS_FOLDER
-
-mv $ASSIGNMENTS_FOLDER/assignments.json $ASSIGNMENTS_FOLDER/first_matching.json
-mv $ASSIGNMENTS_FOLDER/alternates.json $ASSIGNMENTS_FOLDER/first_matching_alternates.json
 print_time $((SECONDS - start_time))
 
 # Convert assignments JSON to CSV for convenience
 python ICML2025/scripts/json_to_csv.py \
-	--input $ASSIGNMENTS_FOLDER/first_matching.json \
-	--output $ASSIGNMENTS_FOLDER/first_matching.csv
+	--input $ASSIGNMENTS_FOLDER/assignments.json \
+	--output $ASSIGNMENTS_FOLDER/assignments.csv
 
 # Convert alternates JSON to CSV for convenience
 python ICML2025/scripts/json_to_csv.py \
-	--input $ASSIGNMENTS_FOLDER/first_matching_alternates.json \
-	--output $ASSIGNMENTS_FOLDER/first_matching_alternates.csv
+	--input $ASSIGNMENTS_FOLDER/alternates.json \
+	--output $ASSIGNMENTS_FOLDER/alternates.csv
 print_time $((SECONDS - start_time))
