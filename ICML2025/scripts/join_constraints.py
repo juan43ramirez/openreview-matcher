@@ -39,6 +39,7 @@ if __name__ == "__main__":
 
     # Drop unnecessary columns
     final_df = final_df[[0, 1, 'final']]
+    final_df.drop_duplicates(inplace=True)
 
     # Write the result to the output file
     final_df.to_csv(args.output, index=False, header=False)

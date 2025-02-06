@@ -63,6 +63,7 @@ start_time=$SECONDS
 
 export DEBUG=False # Used to subsample submission and reviewer data
 
+
 # # Max score: 1, 1, .55
 # export Q=.55 # Upper bound on the marginal probability of each reviewer-paper pair being matched, for "Randomized" matcher
 # export SCORES_FILE=aggregated_scores_max.csv
@@ -96,25 +97,27 @@ export OPENREVIEW_PASSWORD=''
 
 # ---------------------------- Do not edit these variables ----------------------------
 
+export GROUP="Reviewers"
+
 export MAX_PAPERS=5 # Maximum number of papers each reviewer can review
 export NUM_REVIEWS=4 # Number of reviewers per paper
 export MIN_POS_BIDS=10 # minimum number of positive bids in order to take them into account
 
 if [ -z "$SLURM_JOB_NAME" ] && [ -z "$SLURM_JOB_ID" ]; then
     # Local execution (not running under SLURM or in an interactive session)
-    export ROOT_FOLDER="ICML2025"
-    export DATA_FOLDER="ICML2025/data"
-    export ASSIGNMENTS_FOLDER="ICML2025/assignments"
+    export ROOT_FOLDER="ICML2025/$GROUP"
+    export DATA_FOLDER="ICML2025/$GROUP/data"
+    export ASSIGNMENTS_FOLDER="ICML2025/$GROUP/assignments"
 elif [ -z "$SLURM_JOB_NAME" ]; then
     # Interactive session
-    export ROOT_FOLDER="$SCRATCH/ICML2025"
-    export DATA_FOLDER="$SCRATCH/ICML2025/data"
-    export ASSIGNMENTS_FOLDER="$SCRATCH/ICML2025/assignments"
+    export ROOT_FOLDER="$SCRATCH/ICML2025/$GROUP"
+    export DATA_FOLDER="$SCRATCH/ICML2025/$GROUP/data"
+    export ASSIGNMENTS_FOLDER="$SCRATCH/ICML2025/$GROUP/assignments"
 else
     # sbatch job
-    export ROOT_FOLDER="$SCRATCH/ICML2025/jobs/$SLURM_JOB_ID"
-    export DATA_FOLDER="$SCRATCH/ICML2025/jobs/$SLURM_JOB_ID/data"
-    export ASSIGNMENTS_FOLDER="$SCRATCH/ICML2025/jobs/$SLURM_JOB_ID/assignments"
+    export ROOT_FOLDER="$SCRATCH/ICML2025/$GROUP/jobs/$SLURM_JOB_ID"
+    export DATA_FOLDER="$SCRATCH/ICML2025/$GROUP/jobs/$SLURM_JOB_ID/data"
+    export ASSIGNMENTS_FOLDER="$SCRATCH/ICML2025/$GROUP/jobs/$SLURM_JOB_ID/assignments"
 fi
 
 mkdir -p $ROOT_FOLDER # create the scores folder
@@ -122,25 +125,27 @@ mkdir -p $DATA_FOLDER # create the data folder
 mkdir -p $ASSIGNMENTS_FOLDER # create the output folder
 
 # Assert required files exist
-# * $HOME/github/openreview-expertise/ICML2025/data/bids.csv
-# * $SCRATCH/ICML2025/no_or_paper_reviewers.csv
-# * $SCRATCH/ICML2025/emergency-4plus-reviewers.csv
-# * $SCRATCH/ICML2025/reciprocal-reviewer-noBid.csv
-# * $SCRATCH/ICML2025/colluders.csv
-# * $SCRATCH/ICML2025/$SCORES_FILE
+# * $SCRATCH/ICML2025/$GROUP/data/bids.csv
+# * $SCRATCH/ICML2025/$GROUP/no_or_paper_reviewers.csv
+# * $SCRATCH/ICML2025/$GROUP/emergency-4plus-reviewers.csv
+# * $SCRATCH/ICML2025/$GROUP/reciprocal-reviewer-noBid.csv
+# * $SCRATCH/ICML2025/$GROUP/colluders.csv
+# * $SCRATCH/ICML2025/$GROUP/$SCORES_FILE
 
-for file in $HOME/github/openreview-expertise/ICML2025/data/bids.csv \
-	$SCRATCH/ICML2025/no_or_paper_reviewers.csv \
-	$SCRATCH/ICML2025/emergency-4plus-reviewers.csv \
-	$SCRATCH/ICML2025/reciprocal-reviewer-noBid.csv \
-	$SCRATCH/ICML2025/colluders.csv \
-	$SCRATCH/ICML2025/$SCORES_FILE
+for file in $SCRATCH/ICML2025/$GROUP/data/bids.csv \
+	$SCRATCH/ICML2025/$GROUP/no_or_paper_reviewers.csv \
+	$SCRATCH/ICML2025/$GROUP/emergency-4plus-reviewers.csv \
+	$SCRATCH/ICML2025/$GROUP/reciprocal-reviewer-noBid.csv \
+	$SCRATCH/ICML2025/$GROUP/colluders.csv \
+	$SCRATCH/ICML2025/$GROUP/$SCORES_FILE
 do
 	if [ ! -f $file ]; then
 		echo "File $file does not exist."
 		exit 1
 	fi
 done
+
+printf "All required files exist."
 
 printf "\n----------------------------------------"
 printf "\nStarting matching..."
@@ -161,18 +166,18 @@ printf "\nDATA_FOLDER: $DATA_FOLDER"
 printf "\nASSIGNMENTS_FOLDER: $ASSIGNMENTS_FOLDER"
 
 # Copy data to the scratch folder
-rsync -av --exclude 'archives' $HOME/github/openreview-expertise/ICML2025/data/ $DATA_FOLDER
+rsync -av --exclude 'archives' $SCRATCH/ICML2025/$GROUP/data/ $DATA_FOLDER
 
 # Copy first-time reviewer constraints to DATA_FOLDER/constraints
 mkdir -p $DATA_FOLDER/constraints
-cp $SCRATCH/ICML2025/no_or_paper_reviewers.csv $DATA_FOLDER/constraints
+cp $SCRATCH/ICML2025/$GROUP/no_or_paper_reviewers.csv $DATA_FOLDER/constraints
 
 # Copy emergency reviewers to the root folder - they are ignored in the matching
-cp $SCRATCH/ICML2025/emergency-4plus-reviewers.csv $ROOT_FOLDER/emergency-4plus-reviewers.csv
-cp $SCRATCH/ICML2025/reciprocal-reviewer-noBid.csv $ROOT_FOLDER/reciprocal-reviewer-noBid.csv
+cp $SCRATCH/ICML2025/$GROUP/emergency-4plus-reviewers.csv $ROOT_FOLDER/emergency-4plus-reviewers.csv
+cp $SCRATCH/ICML2025/$GROUP/reciprocal-reviewer-noBid.csv $ROOT_FOLDER/reciprocal-reviewer-noBid.csv
 
 # Copy scores to the root folder
-cp $SCRATCH/ICML2025/$SCORES_FILE $ROOT_FOLDER/scores.csv
+cp $SCRATCH/ICML2025/$GROUP/$SCORES_FILE $ROOT_FOLDER/scores.csv
 
 
 # ----------------------------------------------------------------------------------
@@ -185,7 +190,7 @@ printf "\n----------------------------------------\n"
 
 # TODO: Filter out suspicious bids
 
-# Filter out bids from reviewers that do not have at least 20 positive bids
+# Filter out bids from reviewers that do not have at least MIN_POS_BIDS positive bids
 python ICML2025/scripts/filter_bids.py \
 	--input $DATA_FOLDER/bids.csv \
 	--output $DATA_FOLDER/filtered_bids.csv \
@@ -195,7 +200,7 @@ print_time $((SECONDS - start_time))
 # Prepare conflict constraints
 printf "\n----------------------------------------"
 python ICML2025/scripts/fetch_conflict_constraints.py \
-	--match_group Reviewers \
+	--match_group $GROUP \
 	--output $DATA_FOLDER/constraints/conflict_constraints.csv
 
 # If in DEBUG mode, subsample the scores, bids, and constraints. Will overwrite the
