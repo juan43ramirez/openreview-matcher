@@ -166,18 +166,18 @@ printf "\nDATA_FOLDER: $DATA_FOLDER"
 printf "\nASSIGNMENTS_FOLDER: $ASSIGNMENTS_FOLDER"
 
 # Copy data to the scratch folder
-rsync -av --exclude 'archives' $SCRATCH/ICML2025/$GROUP/data/ $DATA_FOLDER
+rsync -av --exclude 'archives' $SCRATCH/ICML2025/data/ $DATA_FOLDER
 
 # Copy first-time reviewer constraints to DATA_FOLDER/constraints
 mkdir -p $DATA_FOLDER/constraints
-cp $SCRATCH/ICML2025/$GROUP/no_or_paper_reviewers.csv $DATA_FOLDER/constraints
+cp $SCRATCH/ICML2025/no_or_paper_reviewers.csv $DATA_FOLDER/constraints
 
 # Copy emergency reviewers to the root folder - they are ignored in the matching
-cp $SCRATCH/ICML2025/$GROUP/emergency-4plus-reviewers.csv $ROOT_FOLDER/emergency-4plus-reviewers.csv
-cp $SCRATCH/ICML2025/$GROUP/reciprocal-reviewer-noBid.csv $ROOT_FOLDER/reciprocal-reviewer-noBid.csv
+cp $SCRATCH/ICML2025/emergency-4plus-reviewers.csv $ROOT_FOLDER/emergency-4plus-reviewers.csv
+cp $SCRATCH/ICML2025/reciprocal-reviewer-noBid.csv $ROOT_FOLDER/reciprocal-reviewer-noBid.csv
 
 # Copy scores to the root folder
-cp $SCRATCH/ICML2025/$GROUP/$SCORES_FILE $ROOT_FOLDER/scores.csv
+cp $SCRATCH/ICML2025/$SCORES_FILE $ROOT_FOLDER/scores.csv
 
 
 # ----------------------------------------------------------------------------------
@@ -281,7 +281,8 @@ python ICML2025/scripts/reviewer_supply_after_matching.py \
 	--assignments $ASSIGNMENTS_FOLDER/first_matching.json \
 	--max_papers $MAX_PAPERS \
 	--supply_output $DATA_FOLDER/constraints/reviewer_supply_after_matching.csv \
-	--exhausted_reviewers_output $DATA_FOLDER/exhausted_reviewers.csv
+	--exhausted_reviewers_output $DATA_FOLDER/exhausted_reviewers.csv \
+	--remaining_reviewer_constraints_output $DATA_FOLDER/constraints/remaining_reviewer_constraints.csv
 print_time $((SECONDS - start_time))
 
 # Extract geographical diversity constraints
@@ -310,7 +311,8 @@ if [ "$DEBUG" = "True" ]; then
 	python ICML2025/scripts/subsample.py \
 	--scores $ROOT_FOLDER/scores.csv \
 	--files $DATA_FOLDER/constraints/reviewer_supply_after_matching.csv \
-		$DATA_FOLDER/constraints/geographical_constraints.csv
+		$DATA_FOLDER/constraints/geographical_constraints.csv \
+		$DATA_FOLDER/constraints/remaining_reviewer_constraints.csv
 fi
 
 # Join constraints into a single file
@@ -318,6 +320,7 @@ printf "\n----------------------------------------"
 python ICML2025/scripts/join_constraints.py \
 	--files $DATA_FOLDER/constraints/conflict_constraints.csv \
 		$DATA_FOLDER/constraints/geographical_constraints.csv \
+		$DATA_FOLDER/constraints/remaining_reviewer_constraints.csv \
 	--output $DATA_FOLDER/constraints/constraints_for_second_matching.csv
 print_time $((SECONDS - start_time))
 
