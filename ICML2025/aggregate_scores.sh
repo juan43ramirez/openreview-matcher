@@ -27,27 +27,30 @@ start_time=$SECONDS
 # Setup
 # ----------------------------------------------------------------------------------
 
+export GROUP="Reviewers"
+export GROUP="Area_Chairs"
+
 if [ -z "$SLURM_JOB_NAME" ] && [ -z "$SLURM_JOB_ID" ]; then
     # Local execution (not running under SLURM or in an interactive session)
-    export ROOT_FOLDER="ICML2025"
+    export ROOT_FOLDER="ICML2025/$GROUP"
 elif [ -z "$SLURM_JOB_NAME" ]; then
     # Interactive session
-    export ROOT_FOLDER="$SCRATCH/ICML2025"
+    export ROOT_FOLDER="$SCRATCH/ICML2025/$GROUP"
 else
     # sbatch job
-    export ROOT_FOLDER="$SCRATCH/ICML2025/jobs/$SLURM_JOB_ID"
+    export ROOT_FOLDER="$SCRATCH/ICML2025/$GROUP/jobs/$SLURM_JOB_ID"
 fi
 
-SCORES_FOLDER="$SCRATCH/ICML2025/scores" # folder with disaggregated score csv files
+SCORES_FOLDER="$SCRATCH/ICML2025/$GROUP/scores" # folder with disaggregated score csv files
 
 # ----------------------------------------------------------------------------------
 # Aggregation hyper-parameters
 # ----------------------------------------------------------------------------------
 
-# # Max score: 1, 1, .55
-# export OR_PAPER_WEIGHT=1 # Weight of OR papers in the aggregation of scores
-# export QUANTILE=1 # Quantile to use for the aggregation of affinity scores
-# export SCORES_NAME="aggregated_scores_max.csv"
+# Max score: 1, 1, .55
+export OR_PAPER_WEIGHT=1 # Weight of OR papers in the aggregation of scores
+export QUANTILE=1 # Quantile to use for the aggregation of affinity scores
+export SCORES_NAME="aggregated_scores_max.csv"
 
 # # Least conservative: .75, .5, .5
 # export QUANTILE=0.75 # Quantile to use for the aggregation of affinity scores
