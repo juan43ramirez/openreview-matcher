@@ -27,8 +27,8 @@ start_time=$SECONDS
 # Setup
 # ----------------------------------------------------------------------------------
 
-export GROUP="Reviewers"
-export GROUP="Area_Chairs"
+# export GROUP="Reviewers"
+# export GROUP="Area_Chairs"
 
 if [ -z "$SLURM_JOB_NAME" ] && [ -z "$SLURM_JOB_ID" ]; then
     # Local execution (not running under SLURM or in an interactive session)
@@ -47,10 +47,10 @@ SCORES_FOLDER="$SCRATCH/ICML2025/$GROUP/scores" # folder with disaggregated scor
 # Aggregation hyper-parameters
 # ----------------------------------------------------------------------------------
 
-# Max score: 1, 1, .55
-export OR_PAPER_WEIGHT=1 # Weight of OR papers in the aggregation of scores
-export QUANTILE=1 # Quantile to use for the aggregation of affinity scores
-export SCORES_NAME="aggregated_scores_max.csv"
+# # Max score: 1, 1, .55
+# export OR_PAPER_WEIGHT=1 # Weight of OR papers in the aggregation of scores
+# export QUANTILE=1 # Quantile to use for the aggregation of affinity scores
+# export SCORES_NAME="aggregated_scores_max.csv"
 
 # # Least conservative: .75, .5, .5
 # export QUANTILE=0.75 # Quantile to use for the aggregation of affinity scores
