@@ -370,3 +370,5 @@ python ICML2025/scripts/join_assignments.py \
 printf "\nDone."
 printf "\nSCORES_FILE: $SCORES_FILE"
 printf "\nAssignments saved in $ASSIGNMENTS_FOLDER"
+
+print_time $((SECONDS - start_time))

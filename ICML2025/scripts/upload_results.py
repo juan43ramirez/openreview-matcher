@@ -198,57 +198,36 @@ def create_invitation(name):
         invitation=ac_invitation
     )
 
-def post_score_edges(intivation_name, reviewer_affinity=None, ac_affinity=None):
+def post_score_edges(intivation_name, affinity_scores, match_group):
 
-    if reviewer_affinity is not None:
-        print(f"\nPosting affinity scores for {len(reviewer_affinity)} reviewers")
+    invitation = f'ICML.cc/2025/Conference/{match_group}/-/{intivation_name}'
+    
+    if match_group == 'Reviewers':
+        readers = ['ICML.cc/2025/Conference','ICML.cc/2025/Conference/Senior_Area_Chairs','ICML.cc/2025/Conference/Area_Chairs']
+    elif match_group == 'Area_Chairs':
+        readers = ['ICML.cc/2025/Conference']
+    else:
+        raise ValueError(f"Unknown match group: {match_group}")
 
-        rev_edges=[]
-        for _,row in reviewer_affinity.iterrows():
-            rev_edges.append(openreview.Edge(
-                                    invitation=f'ICML.cc/2025/Conference/Reviewers/-/{intivation_name}',
-                                    head=row[0],
-                                    tail=row[1],
-                                    weight=row[2],
-                                    readers=['ICML.cc/2025/Conference','ICML.cc/2025/Conference/Senior_Area_Chairs','ICML.cc/2025/Conference/Area_Chairs',row[1]],
-                                    nonreaders=[],
-                                    writers=['ICML.cc/2025/Conference'],
-                                    signatures=['ICML.cc/2025/Conference']
-                                    ))
-        post=openreview.tools.post_bulk_edges(CLIENT_V2, rev_edges)
+    print(f"\nPosting {len(affinity_scores)} affinity scores for {match_group}")
+    
+    rev_edges=[]
+    for _,row in affinity_scores.iterrows():
+        rev_edges.append(openreview.Edge(
+                                invitation=invitation,
+                                head=row[0],
+                                tail=row[1],
+                                weight=row[2],
+                                readers=readers+[row[1]],
+                                nonreaders=[],
+                                writers=['ICML.cc/2025/Conference'],
+                                signatures=['ICML.cc/2025/Conference']
+                                ))
 
-        print(f"Posted {len(rev_edges)} reviewer affinity scores")
+    post=openreview.tools.post_bulk_edges(CLIENT_V2, rev_edges)
 
-    if ac_affinity is not None:
-        print(f"\nPosting affinity scores for {len(ac_affinity)} area chairs")
+    print(f"Posted {len(rev_edges)} area chair affinity scores")
 
-        ac_edges=[]
-        for _,row in ac_affinity.iterrows():
-            ac_edges.append(openreview.Edge(
-                                    invitation=f'ICML.cc/2025/Conference/Area_Chairs/-/{intivation_name}',
-                                    head=row[0],
-                                    tail=row[1],
-                                    weight=row[2],
-                                    readers=['ICML.cc/2025/Conference',row[1]], # if getting readers not match invitation error, try this readers=['ICML.cc/2025/Conference','ICML.cc/2025/Conference/Senior_Area_Chairs',row[1]]
-                                    nonreaders=[],
-                                    writers=['ICML.cc/2025/Conference'],
-                                    signatures=['ICML.cc/2025/Conference']
-                                    ))
-        post=openreview.tools.post_bulk_edges(CLIENT_V2, ac_edges)
-
-        print(f"Posted {len(ac_edges)} area chair affinity scores")
-        
-    # Verify the uploaded scores
-    print(f"\nVerifying uploaded scores")
-    if reviewer_affinity is not None:
-        rev_edges = CLIENT_V2.get_edges(invitation=f'ICML.cc/2025/Conference/Reviewers/-/{intivation_name}')
-        assert len(rev_edges) == len(top_reviewer_scores), "Some reviewer scores were not uploaded"
-        print(f"Found {len(rev_edges)} reviewer scores")
-
-    if ac_affinity is not None:
-        ac_edges = CLIENT_V2.get_edges(invitation=f'ICML.cc/2025/Conference/Area_Chairs/-/{intivation_name}')
-        assert len(ac_edges) == len(top_ac_scores), "Some area chair scores were not uploaded"
-        print(f"Found {len(ac_edges)} area chair scores")
 
 def top_k_scores(affinity_file, k=10):
 
@@ -280,7 +259,7 @@ def top_k_scores(affinity_file, k=10):
 
     return top_scores
 
-def set_rev_assignments(assignments_by_forum, paper_numbers, label, venue_id, invitation_name):
+def set_rev_assignments(assignments_by_forum, paper_numbers, label, venue_id):
 
     assignment_edges = []
     score_edges = []
@@ -302,7 +281,7 @@ def set_rev_assignments(assignments_by_forum, paper_numbers, label, venue_id, in
                     tail=user,
                     weight=score,
                     label=label,
-                    invitation=f"{venue_id}/Reviewers/-/{invitation_name}_Assignment",
+                    invitation=f"{venue_id}/Reviewers/-/Proposed_Assignment",
                     readers=[venue_id,f"{venue_id}/Submission{paper_number}/Senior_Area_Chairs",f"{venue_id}/Submission{paper_number}/Area_Chairs",user],
                     nonreaders=[f"{venue_id}/Submission{paper_number}/Authors"],
                     writers=[venue_id,f"{venue_id}/Submission{paper_number}/Senior_Area_Chairs",f"{venue_id}/Submission{paper_number}/Area_Chairs"],
@@ -323,11 +302,11 @@ def set_rev_assignments(assignments_by_forum, paper_numbers, label, venue_id, in
                     signatures=[f"{venue_id}/Program_Chairs"]
                 )
             )
-    
+
     return assignment_edges, score_edges
 
 
-def set_ac_assignments(assignments_by_forum, paper_numbers, label, venue_id, invitation_name):
+def set_ac_assignments(assignments_by_forum, paper_numbers, label, venue_id):
 
     assignment_edges = []
     score_edges = []
@@ -349,7 +328,7 @@ def set_ac_assignments(assignments_by_forum, paper_numbers, label, venue_id, inv
                     tail=user,
                     weight=score,
                     label=label,
-                    invitation=f"{venue_id}/Area_Chairs/-/{invitation_name}_Assignment",
+                    invitation=f"{venue_id}/Area_Chairs/-/Proposed_Assignment",
                     readers=[venue_id,f"{venue_id}/Submission{paper_number}/Senior_Area_Chairs",user],
                     nonreaders=[f"{venue_id}/Submission{paper_number}/Authors"],
                     writers=[venue_id,f"{venue_id}/Submission{paper_number}/Senior_Area_Chairs"],
@@ -370,106 +349,156 @@ def set_ac_assignments(assignments_by_forum, paper_numbers, label, venue_id, inv
                     signatures=[f"{venue_id}/Program_Chairs"]
                 )
             )
-    
+
     return assignment_edges, score_edges
 
-def post_assignments(assignment_title, assignment_file, match_group, invitation_name):
-    
+def post_assignments(assignment_title, assignment_file, match_group):
+
     print(f"\nPosting {match_group} assignments from {assignment_file}")
     assignment_dict=json.load(open(assignment_file))
 
     active_submissions = CLIENT_V2.get_all_notes(content={'venueid': 'ICML.cc/2025/Conference/Submission'})
     forum_number={s.id:s.number for s in active_submissions} # map paper forum id to paper number
 
-    if match_group == 'reviewers':
-        assignment_edges, score_edges = set_rev_assignments(assignment_dict, forum_number, assignment_title, CONFERENCE_ID, invitation_name)
-    elif match_group == 'area_chairs':
-        assignment_edges, score_edges = set_ac_assignments(assignment_dict, forum_number, assignment_title, CONFERENCE_ID, invitation_name)
+    if match_group == 'Reviewers':
+        assignment_edges, score_edges = set_rev_assignments(assignment_dict, forum_number, assignment_title, CONFERENCE_ID)
+    elif match_group == 'Area_Chairs':
+        assignment_edges, score_edges = set_ac_assignments(assignment_dict, forum_number, assignment_title, CONFERENCE_ID)
     else:
         raise ValueError(f"Unknown match group: {match_group}")
 
     post=openreview.tools.post_bulk_edges(CLIENT_V2, assignment_edges)
     post=openreview.tools.post_bulk_edges(CLIENT_V2, score_edges)
-    
+
     print(f"Posted {len(assignment_edges)} {match_group} assignments")
+
+def delete_invitation(invitation_name, match_group='Reviewers'):
     
-def delete_invitation(invitation_name):
-    CLIENT_V2.delete_edges(invitation=f'ICML.cc/2025/Conference/Reviewers/-/{invitation_name}')
-    CLIENT_V2.delete_edges(invitation=f'ICML.cc/2025/Conference/Area_Chairs/-/{invitation_name}')
+    score_edge_invitation = f'ICML.cc/2025/Conference/{match_group}/-/{invitation_name}'
+
+    rev_edges = CLIENT_V2.get_grouped_edges(invitation=score_edge_invitation, groupby='tail', select='head,weight')
+    print(f"Found {len(rev_edges)} scores in invitation {score_edge_invitation}")
+
+    if len(rev_edges) > 0:
+        delete_invitation(invitation_name, match_group=match_group)
+
+        while len(rev_edges) > 0:
+            # Wait and check again
+            time.sleep(30)
+            rev_edges = CLIENT_V2.get_grouped_edges(invitation=score_edge_invitation, groupby='tail', select='head,weight')
+            print(f"Found {len(rev_edges)} scores still in the invitation")
+
+        print(f"Deleted previous scores")
+        
+        CLIENT_V2.delete_edges(invitation=f'ICML.cc/2025/Conference/{match_group}/-/{invitation_name}')
+
+    else:
+        print(f"No previous scores to delete")
+
+def delete_assignments(assignment_title, match_group='Reviewers'):
+    
+    assignment_invitation = f'ICML.cc/2025/Conference/{match_group}/-/Proposed_Assignment'
+
+    edges = CLIENT_V2.get_grouped_edges(invitation=assignment_invitation, label=assignment_title, groupby='tail', select='head,weight')
+    print(f"Found {len(edges)} assignments in invitation {assignment_invitation} with label {assignment_title}")
+    
+    if len(edges) > 0:
+        CLIENT_V2.delete_edges(label=assignment_title, invitation=assignment_invitation)
+
+        while len(edges) > 0:
+            # Wait and check again
+            time.sleep(30)
+            edges = CLIENT_V2.get_grouped_edges(invitation=assignment_invitation, label=assignment_title, groupby='tail', select='head,weight')
+            print(f"Found {len(edges)} assignments still in the invitation")
+
+        print(f"Deleted previous assignments")
+
+    else:
+        print(f"No previous assignments to delete")
 
 if __name__ == '__main__':
     """
     Example usage:
 
+    module load anaconda
+    conda activate openreview-matcher
+
+    export OPENREVIEW_USERNAME=''
+    export OPENREVIEW_PASSWORD=''
+
+    export GROUP='Area_Chairs'
+    export ROOT_FOLDER=$SCRATCH/ICML2025/$GROUP
+
+    # Upload affinity scores
     python ICML2025/scripts/upload_results.py \
-        --invitation_name robust_affinity_Q75 \
-        --reviewer_affinity_file $ROOT_FOLDER/robust_affinity_Q75.csv \
-        --k 50 \
-        --reviewer_assignment_title Test-visualization-first-3-Q75 \
-        --reviewer_assignment_file $ROOT_FOLDER/assignments/first_matching.json
+        --invitation_name Affinity_Score \
+        --match_group $GROUP \
+        --ac_affinity_file $ROOT_FOLDER/aggregated_scores_max.csv \
+        --k 400
+
+    # Upload assignments
+    export jobid=6051552
+    python ICML2025/scripts/upload_results.py \
+        --match_group $GROUP \
+        --assignment_title "Emphasizing_quantiles_(.75-.7-.7)" \
+        --assignment_file $ROOT_FOLDER/jobs/$jobid/assignments/assignments.json
     """
 
     args = argparse.ArgumentParser()
-    args.add_argument('--invitation_name', type=str, required=True, help='Name of the invitation')
-    args.add_argument('--reviewer_affinity_file', type=str, required=False, help='Path to the reviewer affinity file')
-    args.add_argument('--ac_affinity_file', type=str, required=False, help='Path to the area chair affinity file')
+    args.add_argument('--invitation_name', type=str, required=False, help='Name of the invitation')
+    args.add_argument('--match_group', type=str, required=False, help='Match group (Reviewers or Area_Chairs)')
+    args.add_argument('--affinity_file', type=str, required=False, help='Path to the area chair affinity file')
     args.add_argument('--k', type=int, required=False, help='Top k scores to keep')
 
-    args.add_argument('--reviewer_assignment_title', type=str, required=False, help='Title of the assignment')
-    args.add_argument('--reviewer_assignment_file', type=str, required=False, help='Path to the reviewer assignment file')
+    args.add_argument('--assignment_title', type=str, required=False, help='Title of the assignment')
+    args.add_argument('--assignment_file', type=str, required=False, help='Path to the reviewer assignment file')
 
-    args.add_argument('--ac_assignment_title', type=str, required=False, help='Title of the assignment')
-    args.add_argument('--ac_assignment_file', type=str, required=False, help='Path to the area chair assignment file')
 
     args = args.parse_args()
 
     start_time = time.time()
 
+    # # -----------------------------------------------------------------
+    # # Delete previous scores
+    # # -----------------------------------------------------------------
+    
+    # print(f"\nDeleting previous scores for {args.match_group} under invitation {args.invitation_name}")
+    # delete_invitation(args.invitation_name, match_group=args.match_group)
+
+    # # -----------------------------------------------------------------
+    # # Create invitations for uploading affinity scores. 
+    # # -----------------------------------------------------------------
+    
+    # print(f"\nCreating invitation {args.invitation_name}")
+
+    # create_invitation(args.invitation_name)
+
+    # print(f"Invitation {args.invitation_name} created")
+
+    # # -----------------------------------------------------------------
+    # # Upload affinity scores
+    # # -----------------------------------------------------------------
+
+    # # Filter top k scores
+    # top_scores = top_k_scores(args.affinity_file, args.k)
+
+    # # Post affinity scores
+    # post_score_edges(args.invitation_name, top_scores)
+
+
     # -----------------------------------------------------------------
-    # Upload affinity scores
+    # Delete previous assignments
     # -----------------------------------------------------------------
-
-    # Delete previous invitation. Commented out to keep history of previous uploads
-    delete_invitation(args.invitation_name)
-
-    # Create invitations for uploading affinity scores. Hard-deleting the previous
-    # invitation first
-    print(f"\nCreating invitation {args.invitation_name}")
-    create_invitation(args.invitation_name)
-    print(f"Invitation {args.invitation_name} created")
-
-    # Filter top k scores
-    top_reviewer_scores = top_k_scores(args.reviewer_affinity_file, args.k)
-    top_ac_scores = top_k_scores(args.ac_affinity_file, args.k)
-
-    # Post affinity scores
-    post_score_edges(args.invitation_name, top_reviewer_scores, top_ac_scores)
+    
+    print(f"\nDeleting previous assignments for {args.match_group} under title {args.assignment_title}")
+    delete_assignments(args.assignment_title, match_group=args.match_group)
 
     # -----------------------------------------------------------------
     # Upload assignments
     # -----------------------------------------------------------------
+
     print(f"\nUploading assignments...")
+    post_assignments(args.assignment_title, args.assignment_file, match_group=args.match_group)
 
-    # Delete invitation
-    delete_invitation(args.invitation_name + '_Assignment')
-    create_invitation(args.invitation_name + '_Assignment')
 
-    # ----------------------- Reviewers -----------------------
-    if args.reviewer_assignment_file is not None:
-        post_assignments(
-            args.reviewer_assignment_title,
-            args.reviewer_assignment_file,
-            match_group='reviewers',
-            invitation_name=args.invitation_name
-        )
-
-    # ----------------------- Area Chairs -----------------------
-    if args.ac_assignment_file is not None:
-        post_assignments(
-            args.ac_assignment_title,
-            args.ac_assignment_file,
-            match_group='area_chairs',
-            invitation_name=args.invitation_name
-        )
-
-    print(f"\nElapsed time: {time.time()-start_time:.2f} seconds")
+    print(f"\nDone. Elapsed time: {time.time()-start_time:.2f} seconds")

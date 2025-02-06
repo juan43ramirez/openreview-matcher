@@ -28,7 +28,7 @@ start_time=$SECONDS
 # ----------------------------------------------------------------------------------
 
 # export GROUP="Reviewers"
-# export GROUP="Area_Chairs"
+export GROUP="Area_Chairs"
 
 if [ -z "$SLURM_JOB_NAME" ] && [ -z "$SLURM_JOB_ID" ]; then
     # Local execution (not running under SLURM or in an interactive session)
